@@ -1,0 +1,1321 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Module 4: Type Conversion</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="../assets/css/main.css" />
+	</head>
+	<body>
+		<nav class="top-nav">
+			<a class="top-nav-home" href="../index.html" title="Home">
+				<span class="material-icons">home</span>
+			</a>
+		</nav>
+
+		<header class="lesson-header">
+			<div class="header-inner">
+				<div class="lesson-meta">
+					<span class="badge">Module 4 of 10</span>
+				</div>
+				<h1>Type Conversion</h1>
+			</div>
+			<div class="progress-bar-wrap">
+				<div class="progress-bar-fill" style="width: 40%"></div>
+			</div>
+		</header>
+
+		<div class="page-wrap">
+			<aside class="sidebar" id="sidebar">
+				<div class="sidebar-label">In this module</div>
+				<ul class="sidebar-nav">
+					<li><a href="#s1">Learning Objectives</a></li>
+					<li><a href="#s2">Why Types Matter</a></li>
+					<li><a href="#s3">Truthy and Falsy</a></li>
+					<li><a href="#s4">Coercion</a></li>
+					<li><a href="#s5">Reflection</a></li>
+					<li><a href="#s6">Explicit Conversion</a></li>
+					<li><a href="#s7">parseInt and parseFloat</a></li>
+					<li><a href="#s8">Knowledge Check</a></li>
+					<li><a href="#s9">Coding Exercise</a></li>
+					<li><a href="#s10">Summary</a></li>
+				</ul>
+			</aside>
+
+			<button
+				class="sidebar-toggle"
+				id="sidebarToggle"
+				aria-label="Toggle menu"
+			>
+				<svg
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<line x1="3" y1="6" x2="21" y2="6" />
+					<line x1="3" y1="12" x2="21" y2="12" />
+					<line x1="3" y1="18" x2="21" y2="18" />
+				</svg>
+			</button>
+
+			<main class="lesson-body">
+				<!-- 1. LEARNING OBJECTIVE -->
+				<div class="section" id="s1">
+					<div class="section-label">
+						<div class="section-num">1</div>
+						<span class="section-title-sm">Learning Objectives</span>
+					</div>
+					<div class="objective-box">
+						<p class="obj-intro">
+							By the end of this module you will be able to:
+						</p>
+						<ul class="obj-list">
+							<li>
+								Explain what truthy and falsy values are and list the six falsy
+								values in JavaScript
+							</li>
+							<li>
+								Understand the results of implicit type coercion in mixed-type
+								expressions
+							</li>
+							<li>Use built-in functions to convert types explicitly</li>
+						</ul>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 2. WHY TYPES MATTER -->
+				<div class="section" id="s2">
+					<div class="section-label">
+						<div class="section-num">2</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Why Types Matter</h2>
+
+					<p>
+						In Module 1 you learned that every value in JavaScript has a type.
+						In Module 2 you saw that arithmetic works on numbers. In Module 3
+						you saw that strings have their own set of rules. These modules kept
+						things separate. In practice, values of different types end up in
+						the same expression all the time, and that is where things get
+						interesting.
+					</p>
+
+					<p>
+						JavaScript is what is called a
+						<strong>dynamically typed</strong> language. You do not declare what
+						type a variable holds. JavaScript figures it out from the value. And
+						when you combine two values of different types in an operation,
+						JavaScript does not stop and ask you what you meant. It makes a
+						decision on its own. Sometimes that decision is what you wanted.
+						Sometimes it is not.
+					</p>
+
+					<p>
+						There are two ways types change in JavaScript.
+						<strong>Type coercion</strong> is when JavaScript converts types
+						implicitly and automatically, with no intervention from your end.
+						<strong>Explicit conversion</strong> is when you do it deliberately
+						using a conversion function. This module covers both. But first we
+						need to understand the concept of truthy and falsy values.
+					</p>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 3. TRUTHY AND FALSY -->
+				<div class="section" id="s3">
+					<div class="section-label">
+						<div class="section-num">3</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Truthy and Falsy</h2>
+
+					<p>
+						In JavaScript, every value has an inherent boolean quality. When
+						JavaScript needs to evaluate something as true or false, it does not
+						require it be an actual boolean. It takes whatever value it finds
+						and asks: is this truthy or falsy?
+					</p>
+
+					<p>
+						There are exactly <strong>six falsy values</strong> in JavaScript.
+						Everything else is truthy.
+					</p>
+
+					<div class="type-grid">
+						<div class="type-card">
+							<div class="type-name">false</div>
+							<div class="type-desc">
+								The boolean value itself. Obviously falsy.
+							</div>
+							<div class="type-examples">
+								<span class="type-example">false</span>
+							</div>
+						</div>
+						<div class="type-card">
+							<div class="type-name">0</div>
+							<div class="type-desc">
+								The number zero. Only zero is falsy. Every other number,
+								positive or negative, is truthy.
+							</div>
+							<div class="type-examples">
+								<span class="type-example">0</span>
+							</div>
+						</div>
+						<div class="type-card">
+							<div class="type-name">""</div>
+							<div class="type-desc">
+								An empty string. A string with even one space inside is truthy.
+							</div>
+							<div class="type-examples">
+								<span class="type-example">""</span>
+								<span class="type-example">''</span>
+							</div>
+						</div>
+						<div class="type-card">
+							<div class="type-name">null</div>
+							<div class="type-desc">Intentionally empty. Always falsy.</div>
+							<div class="type-examples">
+								<span class="type-example">null</span>
+							</div>
+						</div>
+						<div class="type-card">
+							<div class="type-name">undefined</div>
+							<div class="type-desc">
+								A variable declared but not given a value. Always falsy.
+							</div>
+							<div class="type-examples">
+								<span class="type-example">undefined</span>
+							</div>
+						</div>
+						<div class="type-card">
+							<div class="type-name">NaN</div>
+							<div class="type-desc">
+								Not a Number. The result of an invalid arithmetic operation.
+								Always falsy.
+							</div>
+							<div class="type-examples">
+								<span class="type-example">NaN</span>
+							</div>
+						</div>
+					</div>
+
+					<p>
+						A few things worth highlighting. The number <strong>0</strong> is
+						the only falsy number: -1, 0.1, and 100 are all truthy. An empty
+						string is the only falsy string. The string <strong>"0"</strong> and
+						a string containing just a space are truthy because they are not
+						empty.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex1')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex1')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex1-code"
+						><span class="cmt">// Falsy values</span>
+<span class="fn">console</span>.log(<span class="fn">Boolean</span>(<span class="kw">false</span>))      <span class="cmt">// false</span>
+<span class="fn">console</span>.log(<span class="fn">Boolean</span>(<span class="num">0</span>))           <span class="cmt">// false</span>
+<span class="fn">console</span>.log(<span class="fn">Boolean</span>(<span class="str">""</span>))          <span class="cmt">// false</span>
+<span class="fn">console</span>.log(<span class="fn">Boolean</span>(<span class="kw">null</span>))        <span class="cmt">// false</span>
+<span class="fn">console</span>.log(<span class="fn">Boolean</span>(<span class="kw">undefined</span>))   <span class="cmt">// false</span>
+<span class="fn">console</span>.log(<span class="fn">Boolean</span>(<span class="kw">NaN</span>))         <span class="cmt">// false</span></pre>
+						<div class="code-output" id="ex1-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex2')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex2')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex2-code"
+						><span class="cmt">// Everything else aside from the 6 above is truthy including these</span>
+<span class="fn">console</span>.log(<span class="fn">Boolean</span>(<span class="num">1</span>))          <span class="cmt">// true</span>
+<span class="fn">console</span>.log(<span class="fn">Boolean</span>(<span class="op">-</span><span class="num">1</span>))         <span class="cmt">// true - any non-zero number</span>
+<span class="fn">console</span>.log(<span class="fn">Boolean</span>(<span class="str">"0"</span>))        <span class="cmt">// true - non-empty string</span>
+<span class="fn">console</span>.log(<span class="fn">Boolean</span>(<span class="str">" "</span>))        <span class="cmt">// true - a string with a space is not empty</span>
+<span class="fn">console</span>.log(<span class="fn">Boolean</span>(<span class="str">"false"</span>))   <span class="cmt">// true - non-empty string</span></pre>
+						<div class="code-output" id="ex2-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<div class="callout warn">
+						<div class="callout-label">The string "false" is truthy</div>
+						<p>
+							The string
+							<strong>"false"</strong> looks like it should be falsy, but
+							JavaScript only cares about one thing when evaluating a string: is
+							it empty or not? It has five characters in it, so it is truthy.
+							The content of the string is irrelevant. Only an empty string is
+							falsy.
+						</p>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 4. IMPLICIT COERCION -->
+				<div class="section" id="s4">
+					<div class="section-label">
+						<div class="section-num">4</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Coercion</h2>
+
+					<p>
+						Coercion is what happens when JavaScript converts a value from one
+						type to another automatically, without you writing any conversion
+						code. It kicks in whenever you use an operator with values of
+						different data types. The results follow rules, but those rules are
+						not always obvious.
+					</p>
+
+					<h3>The + operator</h3>
+					<p>
+						<code>+</code> is the only arithmetic operator that works on both
+						numbers and strings. When one side is a string, JavaScript assumes
+						you want concatenation and converts the other side to a string. This
+						is why <strong>"5" + 2</strong> gives you
+						<strong>"52"</strong> instead of <strong>7</strong>.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex3')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex3')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex3-code"
+						><span class="fn">console</span>.log(<span class="str">"5"</span> <span class="op">+</span> <span class="num">2</span>)      <span class="cmt">// "52" - number coerced to string</span>
+<span class="fn">console</span>.log(<span class="num">2</span> <span class="op">+</span> <span class="str">"5"</span>)      <span class="cmt">// "25" - same, order does not matter</span>
+<span class="fn">console</span>.log(<span class="str">"10"</span> <span class="op">+</span> <span class="str">"20"</span>)  <span class="cmt">// "1020" - both strings, both concatenate</span>
+<span class="fn">console</span>.log(<span class="num">10</span> <span class="op">+</span> <span class="num">20</span>)      <span class="cmt">// 30 - both numbers, addition</span></pre>
+						<div class="code-output" id="ex3-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>Every other arithmetic operator</h3>
+					<p>
+						Subtraction, multiplication, division, and remainder only work on
+						numbers. When JavaScript sees a string in these operations, it tries
+						to convert the string to a number first. If the string contains a
+						valid number, the conversion works. If not, the result is
+						<strong>NaN</strong>.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex4')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex4')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex4-code"
+						><span class="cmt">// String looks like a number - JavaScript converts it</span>
+<span class="fn">console</span>.log(<span class="str">"10"</span> <span class="op">-</span> <span class="num">3</span>)   <span class="cmt">// 7</span>
+<span class="fn">console</span>.log(<span class="str">"6"</span> <span class="op">*</span> <span class="num">2</span>)    <span class="cmt">// 12</span>
+<span class="fn">console</span>.log(<span class="str">"9"</span> <span class="op">/</span> <span class="num">3</span>)    <span class="cmt">// 3</span>
+
+<span class="cmt">// String does not look like a number - NaN</span>
+<span class="fn">console</span>.log(<span class="str">"hello"</span> <span class="op">-</span> <span class="num">1</span>)  <span class="cmt">// NaN - hello cannot be changed to a valied number</span>
+<span class="fn">console</span>.log(<span class="str">"bye"</span> <span class="op">*</span> <span class="num">2</span>)  <span class="cmt">// NaN</span></pre>
+						<div class="code-output" id="ex4-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>Booleans in arithmetic</h3>
+					<p>
+						Booleans also get coerced when used in arithmetic.
+						<strong>true</strong> becomes <strong>1</strong> and
+						<strong>false</strong> becomes <strong>0</strong>.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex5')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex5')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex5-code"
+						><span class="fn">console</span>.log(<span class="kw">true</span> <span class="op">+</span> <span class="num">true</span>)    <span class="cmt">// 2 - true becomes 1</span>
+<span class="fn">console</span>.log(<span class="kw">4</span> <span class="op">-</span> <span class="num">false</span>)   <span class="cmt">// 4 - false becomes 0</span>
+<span class="fn">console</span>.log(<span class="kw">true</span> <span class="op">*</span> <span class="kw">"12"</span>)  <span class="cmt">// 12 - both coerced to valid numbers</span></pre>
+						<div class="code-output" id="ex5-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<div class="callout warn">
+						<div class="callout-label">Coercion can hide bugs</div>
+						<p>
+							The danger of coercion is that your code does not throw an error.
+							It just produces a wrong result silently. A number being treated
+							as a string, or a string being converted to
+							<strong>NaN</strong>, can cause values to be wrong many lines
+							later with no obvious indication of where things went wrong. This
+							is why explicit conversion, which you are in control of, is safer
+							whenever types might be mixed.
+						</p>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 5. REFLECTION -->
+				<div class="section" id="s5">
+					<div class="section-label">
+						<div class="section-num question">?</div>
+						<span class="section-title-sm">Reflection</span>
+					</div>
+					<h2>Check Your Thinking</h2>
+					<div class="activity-box" style="border-color: var(--mid-blue)">
+						<div class="activity-header">
+							<span class="activity-tag reflect">Reflect</span>
+							<div class="activity-title">Truthy, Falsy, and Coercion</div>
+						</div>
+						<ol class="prompts">
+							<li>
+								Without running it, predict what
+								<strong>"3" + 4 + 5</strong> evaluates to. Explain your
+								reasoning.
+							</li>
+							<li>
+								Why does JavaScript treat the string <strong>"0"</strong> and
+								the number <strong>0</strong> differently in a boolean context?
+							</li>
+							<li>
+								Why is coercion considered dangerous even though it does not
+								throw an error?
+							</li>
+						</ol>
+						<label class="reflect-label" for="reflect1">Your thoughts</label>
+						<textarea
+							id="reflect1"
+							class="reflect-area"
+							placeholder="Write your thinking here..."
+						></textarea>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 6. EXPLICIT CONVERSION -->
+				<div class="section" id="s6">
+					<div class="section-label">
+						<div class="section-num">6</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Explicit Conversion</h2>
+
+					<p>
+						Explicit conversion means you are in charge. Instead of letting
+						JavaScript decide what to do with mismatched types, you call a
+						function that converts the value to exactly the type you need. There
+						are three built-in conversion functions we will look at.
+					</p>
+
+					<h3>Number()</h3>
+					<p>
+						<code>Number()</code> attempts to convert any value to a number.
+						Strings that contain a valid number convert cleanly. Strings that
+						contain anything else return <strong>NaN</strong>.
+						<strong>true</strong> converts to <strong>1</strong> and
+						<strong>false</strong> converts to <strong>0</strong>.
+						<strong>null</strong> converts to <strong>0</strong>.
+						<strong>undefined</strong> converts to <strong>NaN</strong>.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex6')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex6')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex6-code"
+						><span class="fn">console</span>.log(<span class="fn">Number</span>(<span class="str">"42"</span>))       <span class="cmt">// 42</span>
+<span class="fn">console</span>.log(<span class="fn">Number</span>(<span class="str">"3.14"</span>))     <span class="cmt">// 3.14</span>
+<span class="fn">console</span>.log(<span class="fn">Number</span>(<span class="str">""</span>))          <span class="cmt">// 0 - empty string becomes 0</span>
+<span class="fn">console</span>.log(<span class="fn">Number</span>(<span class="str">"hello"</span>))    <span class="cmt">// NaN - not a valid number</span>
+<span class="fn">console</span>.log(<span class="fn">Number</span>(<span class="kw">true</span>))       <span class="cmt">// 1</span>
+<span class="fn">console</span>.log(<span class="fn">Number</span>(<span class="kw">false</span>))      <span class="cmt">// 0</span>
+<span class="fn">console</span>.log(<span class="fn">Number</span>(<span class="kw">null</span>))       <span class="cmt">// 0</span>
+<span class="fn">console</span>.log(<span class="fn">Number</span>(<span class="kw">undefined</span>))  <span class="cmt">// NaN</span></pre>
+						<div class="code-output" id="ex6-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>String()</h3>
+					<p>
+						<code>String()</code> converts any value to its text representation.
+						It almost never fails. Every value has a string form, even
+						<strong>null</strong>, <strong>undefined</strong>, and
+						<strong>NaN</strong>.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex7')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex7')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex7-code"
+						><span class="fn">console</span>.log(<span class="fn">String</span>(<span class="num">42</span>))         <span class="cmt">// "42"</span>
+<span class="fn">console</span>.log(<span class="fn">String</span>(<span class="num">3.14</span>))       <span class="cmt">// "3.14"</span>
+<span class="fn">console</span>.log(<span class="fn">String</span>(<span class="kw">true</span>))       <span class="cmt">// "true"</span>
+<span class="fn">console</span>.log(<span class="fn">String</span>(<span class="kw">false</span>))      <span class="cmt">// "false"</span>
+<span class="fn">console</span>.log(<span class="fn">String</span>(<span class="kw">null</span>))       <span class="cmt">// "null"</span>
+<span class="fn">console</span>.log(<span class="fn">String</span>(<span class="kw">undefined</span>))  <span class="cmt">// "undefined"</span>
+<span class="fn">console</span>.log(<span class="fn">String</span>(<span class="kw">NaN</span>))        <span class="cmt">// "NaN"</span></pre>
+						<div class="code-output" id="ex7-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>Boolean()</h3>
+					<p>
+						<code>Boolean()</code> converts any value to
+						<strong>true</strong> or <strong>false</strong>. The six falsy
+						values return <strong>false</strong>, everything else returns
+						<strong>true</strong>. It does not matter what the value is or what
+						it means. <strong>Boolean()</strong> only asks one question for each
+						type:
+					</p>
+
+					<div class="chunks">
+						<div class="chunk">
+							<div class="chunk-title">For numbers</div>
+							<p>
+								Is it zero? Zero and negative zero are the only falsy numbers.
+								Every other number, no matter how large or small, positive or
+								negative, is truthy. <code>Boolean()</code> does not care about
+								the value itself. It only cares whether it is zero or not.
+							</p>
+						</div>
+						<div class="chunk">
+							<div class="chunk-title">For strings</div>
+							<p>
+								Is it empty? An empty string <strong>""</strong> is falsy. A
+								string with any content at all, even just a space, is truthy.
+								The string <strong>"false"</strong> is truthy because it is not
+								empty.
+							</p>
+						</div>
+						<div class="chunk">
+							<div class="chunk-title">For everything else</div>
+							<p>
+								<strong>null</strong>, <strong>undefined</strong>, and
+								<strong>NaN</strong> are always falsy. Objects, arrays, and
+								functions are always truthy, even an empty object
+								<strong>{}</strong> or empty array <strong>[]</strong>.
+							</p>
+						</div>
+					</div>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex8')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex8')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex8-code"
+						><span class="cmt">// Numbers - only zero is falsy</span>
+<span class="fn">console</span>.log(<span class="fn">Boolean</span>(<span class="num">0</span>))      <span class="cmt">// false</span>
+<span class="fn">console</span>.log(<span class="fn">Boolean</span>(<span class="num">100</span>))    <span class="cmt">// true</span>
+<span class="fn">console</span>.log(<span class="fn">Boolean</span>(<span class="op">-</span><span class="num">99</span>))    <span class="cmt">// true</span>
+<span class="fn">console</span>.log(<span class="fn">Boolean</span>(<span class="num">0.001</span>))  <span class="cmt">// true</span>
+
+<span class="cmt">// Strings - only empty is falsy</span>
+<span class="fn">console</span>.log(<span class="fn">Boolean</span>(<span class="str">""</span>))       <span class="cmt">// false</span>
+<span class="fn">console</span>.log(<span class="fn">Boolean</span>(<span class="str">"hello"</span>))  <span class="cmt">// true</span>
+<span class="fn">console</span>.log(<span class="fn">Boolean</span>(<span class="str">"0"</span>))      <span class="cmt">// true - not empty</span>
+<span class="fn">console</span>.log(<span class="fn">Boolean</span>(<span class="str">"false"</span>))  <span class="cmt">// true - not empty</span></pre>
+						<div class="code-output" id="ex8-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 7. PARSEINT AND PARSEFLOAT -->
+				<div class="section" id="s7">
+					<div class="section-label">
+						<div class="section-num">7</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>parseInt() and parseFloat()</h2>
+
+					<p>
+						<code>Number()</code> is strict. If the string contains anything
+						that is not a valid number, it returns <strong>NaN</strong>. That is
+						sometimes too strict. In the real world, strings often have numbers
+						mixed with other characters: a price like "24px", a measurement like
+						"180cm", or user input like "42 years old".
+						<code>parseInt()</code> and <code>parseFloat(</code>) are more forgiving. They
+						read from the beginning of the string and extract the number they
+						find, stopping when they hit a character that is not part of a
+						number.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex9')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex9')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex9-code"
+						><span class="cmt">// Number() is strict</span>
+<span class="fn">console</span>.log(<span class="fn">Number</span>(<span class="str">"42px"</span>))     <span class="cmt">// NaN</span>
+<span class="fn">console</span>.log(<span class="fn">Number</span>(<span class="str">"180cm"</span>))    <span class="cmt">// NaN</span>
+
+<span class="cmt">// parseInt reads the leading integer and stops</span>
+<span class="fn">console</span>.log(<span class="fn">parseInt</span>(<span class="str">"42px"</span>))   <span class="cmt">// 42</span>
+<span class="fn">console</span>.log(<span class="fn">parseInt</span>(<span class="str">"180cm"</span>))  <span class="cmt">// 180</span>
+
+<span class="cmt">// parseFloat reads the leading decimal and stops</span>
+<span class="fn">console</span>.log(<span class="fn">parseFloat</span>(<span class="str">"3.14rem"</span>))   <span class="cmt">// 3.14</span>
+<span class="fn">console</span>.log(<span class="fn">parseFloat</span>(<span class="str">"9.81m/s"</span>))   <span class="cmt">// 9.81</span></pre>
+						<div class="code-output" id="ex9-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						The key difference between the two is that <code>parseInt()</code> strips the
+						decimal part and returns a whole number.
+						<code>parseFloat()</code> keeps it. If the string does not start
+						with a number, both return <strong>NaN</strong>.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex10')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex10')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex10-code"
+						><span class="cmt">// parseInt strips decimals</span>
+<span class="fn">console</span>.log(<span class="fn">parseInt</span>(<span class="str">"3.99"</span>))    <span class="cmt">// 3 - not rounded, just truncated</span>
+<span class="fn">console</span>.log(<span class="fn">parseFloat</span>(<span class="str">"3.99"</span>))  <span class="cmt">// 3.99</span>
+
+<span class="cmt">// If the string does not start with a number, both return NaN</span>
+<span class="fn">console</span>.log(<span class="fn">parseInt</span>(<span class="str">"hello"</span>))    <span class="cmt">// NaN</span>
+<span class="fn">console</span>.log(<span class="fn">parseInt</span>(<span class="str">"px42"</span>))     <span class="cmt">// NaN - number must come first</span></pre>
+						<div class="code-output" id="ex10-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<div class="callout warn">
+						<div class="callout-label">When to use which</div>
+						<p>
+							Use <code>Number()</code> when you expect a clean numeric string
+							and want to catch anything unexpected with <strong>NaN</strong>.
+							Use <code>parseInt()</code> when you know the string contains a whole number
+							possibly followed by other characters. Use
+							<code>parseFloat()</code> when the number may have a decimal part.
+							These are not interchangeable choices. Just pick the one that
+							matches what your data actually looks like.
+						</p>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 8. KNOWLEDGE CHECK -->
+				<div class="section" id="s8">
+					<div class="section-label">
+						<div class="section-num question">?</div>
+						<span class="section-title-sm">Knowledge Check</span>
+					</div>
+					<h2>Check for Understanding</h2>
+
+					<div class="quiz-box">
+						<div class="quiz-intro">
+							<div class="quiz-intro-label">Module 4 -- 3 Questions</div>
+							<h3>Select one answer per question</h3>
+						</div>
+						<div class="quiz-questions">
+							<div class="quiz-q">
+								<div class="q-num">Question 1 of 3</div>
+								<div class="q-text">Which of these values is truthy?</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="1" data-val="a">
+										<input type="radio" name="q1" /> 0
+									</li>
+									<li class="q-option" data-q="1" data-val="b">
+										<input type="radio" name="q1" /> ""
+									</li>
+									<li class="q-option" data-q="1" data-val="c">
+										<input type="radio" name="q1" /> "false"
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb1"></div>
+							</div>
+
+							<div class="quiz-q">
+								<div class="q-num">Question 2 of 3</div>
+								<div class="q-text">
+									What does "3" + 4 + 5 evaluate to?
+								</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="2" data-val="a">
+										<input type="radio" name="q2" /> 12
+									</li>
+									<li class="q-option" data-q="2" data-val="b">
+										<input type="radio" name="q2" /> "345"
+									</li>
+									<li class="q-option" data-q="2" data-val="c">
+										<input type="radio" name="q2" /> "34"
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb2"></div>
+							</div>
+
+							<div class="quiz-q">
+								<div class="q-num">Question 3 of 3</div>
+								<div class="q-text">
+									You have the string "19.95kg". Which function
+									extracts the number 19.95 from it?
+								</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="3" data-val="a">
+										<input type="radio" name="q3" /> Number("19.95kg")
+									</li>
+									<li class="q-option" data-q="3" data-val="b">
+										<input type="radio" name="q3" /> parseInt("19.95kg")
+									</li>
+									<li class="q-option" data-q="3" data-val="c">
+										<input type="radio" name="q3" /> parseFloat("19.95kg")
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb3"></div>
+							</div>
+
+							<div class="quiz-error" id="quizError">
+								Please answer all three questions before submitting.
+							</div>
+							<button class="quiz-submit" id="submitQuiz">
+								Submit Answers
+							</button>
+							<div class="quiz-result" id="quizResult">
+								<div class="result-score" id="resultScore"></div>
+								<div class="result-msg" id="resultMsg"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 9. CODING EXERCISE -->
+				<div class="section" id="s9">
+					<div class="section-label">
+						<div class="section-num question">?</div>
+						<span class="section-title-sm">Coding Exercise</span>
+					</div>
+					<h2>Processing an Online Order</h2>
+
+					<div class="activity-box">
+						<div class="activity-header">
+							<span class="activity-tag">Coding Exercise</span>
+						</div>
+						<div class="activity-scenario">
+							<strong>Question:</strong> A customer has just placed an order on
+							a website. The form data always arrives as strings. Convert each
+							value to the correct type and print a summary of the order. Use
+							the right conversion function for each one.
+						</div>
+
+						<table class="score-table">
+							<thead>
+								<tr>
+									<th>Variable</th>
+									<th>Raw value</th>
+									<th>Correct type</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>itemName</td>
+									<td>"Running Shoes"</td>
+									<td>string (already correct)</td>
+								</tr>
+								<tr>
+									<td>priceInput</td>
+									<td>"49.99"</td>
+									<td>number</td>
+								</tr>
+								<tr>
+									<td>quantityInput</td>
+									<td>"3 pairs"</td>
+									<td>number (extract from string)</td>
+								</tr>
+								<tr>
+									<td>giftWrapInput</td>
+									<td>""</td>
+									<td>boolean</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-bottom: 10px;
+							"
+						>
+							Expected output:
+						</p>
+						<div class="code-block" style="margin-bottom: 16px">
+							<pre style="padding: 12px 18px; color: #abb2bf; font-size: 13px">
+Item: Running Shoes
+Price: 49.99
+Quantity: 3
+Total: 149.97
+Gift wrap: false</pre
+							>
+						</div>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-top: 20px;
+								margin-bottom: 8px;
+							"
+						>
+							Write your code below.
+						</p>
+						<div class="editor-wrap" id="editor1">
+							<div class="editor-header">
+								<span class="editor-label">JavaScript Editor</span>
+							</div>
+							<textarea
+								class="editor-textarea"
+								id="editor1-code"
+								spellcheck="false"
+							>
+let itemName      = "Running Shoes"
+let priceInput    = "49.99"
+let quantityInput = "3 pairs"
+let giftWrapInput = ""
+
+// Convert and print each value
+
+
+
+</textarea
+							>
+							<div class="editor-footer">
+								<button
+									class="editor-reset-btn"
+									onclick="resetEditor('editor1')"
+									title="Reset code"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg>
+									Reset
+								</button>
+								<div class="spacer"></div>
+								<button class="run-btn" onclick="runCode('editor1')">
+									Run
+								</button>
+								<button class="check-btn" onclick="checkAnswer('ex1')">
+									Check Answer
+								</button>
+							</div>
+							<div class="output-area" id="editor1-output">
+								<div class="output-label">Output</div>
+							</div>
+						</div>
+						<div class="check-result" id="checkResult1"></div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 10. SUMMARY -->
+				<div class="section" id="s10">
+					<div class="section-label">
+						<div class="section-num">10</div>
+						<span class="section-title-sm">Summary</span>
+					</div>
+					<h2>Module Summary</h2>
+					<div class="summary-box">
+						<h3>Key takeaways</h3>
+						<ul class="summary-list">
+							<li>
+								There are exactly six falsy values in JavaScript: false, 0, "",
+								null, undefined, and NaN. Everything else is truthy.
+							</li>
+							<li>
+								For numbers, only zero is falsy. For strings, only an empty
+								string is falsy. 
+							</li>
+							<li>
+								Coercion happens automatically. With <code>+</code>, a
+								string on either side triggers concatenation. With
+								any other operation, JavaScript tries
+								to convert strings to numbers.
+							</li>
+							<li>
+								<code>Number()</code> converts cleanly but returns
+								<strong>NaN</strong> for anything that does not look like a number.
+							</li>
+							<li>
+								<code>String()</code> converts any value to its text form.
+							</li>
+							<li>
+								<code>Boolean()</code> converts based on truthiness. It does not
+								care about the value itself, only whether it is one of the six
+								falsy values.
+							</li>
+							<li>
+								<code>parseInt()</code> extracts a leading whole number from a
+								string. <code>parseFloat()</code> extracts a leading decimal.
+								Both return <strong>NaN</strong> if no number is found at the start.
+							</li>
+						</ul>
+
+						<div class="ref-scroll-hint">Scroll right to see full table</div>
+						<div class="ref-table-wrap">
+							<table class="ref-table">
+								<thead>
+									<tr>
+										<th>Function</th>
+										<th>What it does</th>
+										<th>Example</th>
+										<th>Result</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><code>Number()</code></td>
+										<td>Convert to number (strict)</td>
+										<td><code>Number("42")</code></td>
+										<td>42</td>
+									</tr>
+									<tr>
+										<td><code>Number()</code></td>
+										<td>Non-numeric string</td>
+										<td><code>Number("42px")</code></td>
+										<td>NaN</td>
+									</tr>
+									<tr>
+										<td><code>String()</code></td>
+										<td>Convert to string</td>
+										<td><code>String(false)</code></td>
+										<td>"false"</td>
+									</tr>
+									<tr>
+										<td><code>Boolean()</code></td>
+										<td>Non-zero number</td>
+										<td><code>Boolean(99)</code></td>
+										<td>true</td>
+									</tr>
+									<tr>
+										<td><code>Boolean()</code></td>
+										<td>Zero</td>
+										<td><code>Boolean(0)</code></td>
+										<td>false</td>
+									</tr>
+									<tr>
+										<td><code>Boolean()</code></td>
+										<td>Non-empty string</td>
+										<td><code>Boolean("hi")</code></td>
+										<td>true</td>
+									</tr>
+									<tr>
+										<td><code>Boolean()</code></td>
+										<td>Empty string</td>
+										<td><code>Boolean("")</code></td>
+										<td>false</td>
+									</tr>
+									<tr>
+										<td><code>parseInt()</code></td>
+										<td>Extract whole number</td>
+										<td><code>parseInt("42px")</code></td>
+										<td>42</td>
+									</tr>
+									<tr>
+										<td><code>parseFloat()</code></td>
+										<td>Extract decimal number</td>
+										<td><code>parseFloat("3.14rem")</code></td>
+										<td>3.14</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="module-nav">
+						<a class="prev-module" href="module3.html">
+							<div class="prev-arrow-icon">
+								<svg
+									viewBox="0 0 24 24"
+									width="18"
+									height="18"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<line x1="19" y1="12" x2="5" y2="12"></line>
+									<polyline points="12 19 5 12 12 5"></polyline>
+								</svg>
+							</div>
+							<div class="prev-text">
+								<span class="prev-label">Back to</span>
+								<span class="prev-title">Module 3: Strings</span>
+							</div>
+						</a>
+						<a class="next-module" href="module5.html">
+							<div class="next-text">
+								<span class="next-label">Up next</span>
+								<span class="next-title">Module 5: Comparison & Logical Operators</span>
+							</div>
+							<div class="next-arrow-icon">
+								<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<line x1="5" y1="12" x2="19" y2="12"></line>
+									<polyline points="12 5 19 12 12 19"></polyline>
+								</svg>
+							</div>
+						</a>
+					</div>
+
+					<div class="designer-note">
+						<span>JavaScript Crash Course - Module 4 of 10</span>
+					</div>
+				</div>
+			</main>
+		</div>
+
+		<!-- SCRIPTS -->
+		<script>
+			window.staticBlocksHTML = {};
+			document.addEventListener("DOMContentLoaded", () => {
+				document.querySelectorAll("pre[id]").forEach((pre) => {
+					const id = pre.id.replace("-code", "");
+					window.staticBlocksHTML[id] = pre.innerHTML;
+				});
+			});
+		</script>
+		<script src="../assets/js/editor.js"></script>
+		<script>
+			window.staticBlocks = {
+				ex1: `console.log(Boolean(false))\nconsole.log(Boolean(0))\nconsole.log(Boolean(""))\nconsole.log(Boolean(null))\nconsole.log(Boolean(undefined))\nconsole.log(Boolean(NaN))`,
+				ex2: `console.log(Boolean(1))\nconsole.log(Boolean(-1))\nconsole.log(Boolean("0"))\nconsole.log(Boolean(" "))\nconsole.log(Boolean("false"))`,
+				ex3: `console.log("5" + 2)\nconsole.log(2 + "5")\nconsole.log("10" + "20")\nconsole.log(10 + 20)`,
+				ex4: `console.log("10" - 3)\nconsole.log("6" * 2)\nconsole.log("9" / 3)\nconsole.log("hello" - 1)\nconsole.log("hello" * 2)`,
+				ex5: `console.log(true + 1)\nconsole.log(false + 1)\nconsole.log(true + true)`,
+				ex6: `console.log(Number("42"))\nconsole.log(Number("3.14"))\nconsole.log(Number(""))\nconsole.log(Number("hello"))\nconsole.log(Number(true))\nconsole.log(Number(false))\nconsole.log(Number(null))\nconsole.log(Number(undefined))`,
+				ex7: `console.log(String(42))\nconsole.log(String(3.14))\nconsole.log(String(true))\nconsole.log(String(false))\nconsole.log(String(null))\nconsole.log(String(undefined))\nconsole.log(String(NaN))`,
+				ex8: `console.log(Boolean(0))\nconsole.log(Boolean(100))\nconsole.log(Boolean(-99))\nconsole.log(Boolean(0.001))\nconsole.log(Boolean(""))\nconsole.log(Boolean("hello"))\nconsole.log(Boolean("0"))\nconsole.log(Boolean("false"))`,
+				ex9: `console.log(Number("42px"))\nconsole.log(Number("180cm"))\nconsole.log(parseInt("42px"))\nconsole.log(parseInt("180cm"))\nconsole.log(parseFloat("3.14rem"))\nconsole.log(parseFloat("9.81m/s"))`,
+				ex10: `console.log(parseInt("3.99"))\nconsole.log(parseFloat("3.99"))\nconsole.log(parseInt("hello"))\nconsole.log(parseInt("px42"))`,
+			};
+
+			window.editorDefaults = {
+				editor1: `let itemName      = "Running Shoes"\nlet priceInput    = "49.99"\nlet quantityInput = "3 pairs"\nlet giftWrapInput = ""\n\n// Convert and print each value\n\n\n\n`,
+			};
+
+			window.checkConfigs = {
+				ex1: {
+					editorId: "editor1",
+					resultId: "checkResult1",
+					expected: [
+						"Item: Running Shoes",
+						"Price: 49.99",
+						"Quantity: 3",
+						"Total: 149.97",
+						"Gift wrap: false",
+					],
+					successMsg: "All five outputs are correct.",
+					failMsg:
+						"Check that you used parseFloat for price, parseInt for quantity, and Boolean for gift wrap. Multiply price by quantity for the total.",
+				},
+			};
+
+			window.quizConfig = {
+				questions: [
+					{
+						id: 1,
+						answer: "c",
+						feedback: {
+							correct:
+								'<strong>Correct.</strong> "false" is a non-empty string. JavaScript only asks one question about strings: is it empty? Since it is not, it is truthy regardless of what the text says.',
+							wrong:
+								'<strong>Not quite.</strong> 0 and "" are both in the list of six falsy values. "false" looks like it should be falsy, but it is a non-empty string, which makes it truthy. Only an empty string "" is falsy.',
+						},
+					},
+					{
+						id: 2,
+						answer: "b",
+						feedback: {
+							correct:
+								'<strong>Correct.</strong> JavaScript evaluates left to right. "3" + 4 gives "34" because + with a string concatenates. Then "34" + 5 gives "345" for the same reason.',
+							wrong:
+								'<strong>Not quite.</strong> JavaScript evaluates left to right. "3" + 4 concatenates to "34". Then "34" + 5 concatenates again to "345", not 12 or just "34".',
+						},
+					},
+					{
+						id: 3,
+						answer: "c",
+						feedback: {
+							correct:
+								'<strong>Correct.</strong> parseFloat reads from the start of the string and extracts the decimal number 19.95, stopping when it hits the non-numeric character "k".',
+							wrong:
+								'<strong>Not quite.</strong> Number("19.95kg") returns NaN because the string contains non-numeric characters. parseInt("19.95kg") returns 19, truncating the decimal. Only parseFloat reads and preserves the decimal portion, giving 19.95.',
+						},
+					},
+				],
+				messages: {
+					perfect: "Excellent. You are ready for Module 5.",
+					good: "Good. Review the missed question before moving on.",
+					retry: "Revisit sections 3 through 7, then try again.",
+				},
+			};
+		</script>
+		<script src="../assets/js/quiz.js"></script>
+		<script src="../assets/js/flashcards.js"></script>
+		<script src="../assets/js/ui.js"></script>
+	</body>
+</html>

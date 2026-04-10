@@ -1,0 +1,1030 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Module 2: Arithmetic</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="../assets/css/main.css" />
+	</head>
+	<body>
+		<nav class="top-nav">
+			<a class="top-nav-home" href="../index.html" title="Home">
+				<span class="material-icons">home</span>
+			</a>
+		</nav>
+
+		<header class="lesson-header">
+			<div class="header-inner">
+				<div class="lesson-meta">
+					<span class="badge">Module 2 of 10</span>
+				</div>
+				<h1>Arithmetic Operations</h1>
+			</div>
+			<div class="progress-bar-wrap">
+				<div class="progress-bar-fill" style="width: 20%"></div>
+			</div>
+		</header>
+
+		<div class="page-wrap">
+			<aside class="sidebar" id="sidebar">
+				<div class="sidebar-label">In this module</div>
+				<ul class="sidebar-nav">
+					<li><a href="#s1">Learning Objectives</a></li>
+					<li><a href="#s2">Arithmetic Operators</a></li>
+					<li><a href="#s3">Shortcuts</a></li>
+					<li><a href="#s4">Order of Operations</a></li>
+					<li><a href="#s5">Knowledge Check</a></li>
+					<li><a href="#s6">Coding Exercise</a></li>
+					<li><a href="#s7">Summary</a></li>
+				</ul>
+			</aside>
+
+			<button
+				class="sidebar-toggle"
+				id="sidebarToggle"
+				aria-label="Toggle menu"
+			>
+				<svg
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<line x1="3" y1="6" x2="21" y2="6" />
+					<line x1="3" y1="12" x2="21" y2="12" />
+					<line x1="3" y1="18" x2="21" y2="18" />
+				</svg>
+			</button>
+
+			<main class="lesson-body">
+				<!-- 1. LEARNING OBJECTIVE -->
+				<div class="section" id="s1">
+					<div class="section-label">
+						<div class="section-num">1</div>
+						<span class="section-title-sm">Learning Objectives</span>
+					</div>
+					<div class="objective-box">
+						<p class="obj-intro">
+							By the end of this module you will be able to:
+						</p>
+						<ul class="obj-list">
+							<li>
+								Perform calculations on numbers using arithmetic operators
+							</li>
+							<li>Update variables using shorthand assignment operators</li>
+							<li>
+								Increase or decrease a variable by 1 using increment and
+								decrement operators
+							</li>
+							<li>Apply the correct order of operations in expressions</li>
+						</ul>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 2. ARITHMETIC OPERATORS -->
+				<div class="section" id="s2">
+					<div class="section-label">
+						<div class="section-num">2</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Arithmetic Operators</h2>
+
+					<p>
+						Now that you can store values in variables, you need a way to do
+						something with them. Arithmetic operators let you perform
+						calculations on numbers. There are six in JavaScript. Each one takes
+						two values, called <strong>operands</strong>, and produces a result.
+					</p>
+
+					<h3>Addition</h3>
+					<p>Operator: <code>+</code></p>
+					<p>Adds two numbers together.</p>
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex1')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex1')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex1-code"
+						><span class="fn">console</span>.log(<span class="num">120</span> <span class="op">+</span> <span class="num">35</span>)   <span class="cmt">// 155</span>
+<span class="fn">console</span>.log(<span class="num">4.5</span> <span class="op">+</span> <span class="num">1.5</span>)  <span class="cmt">// 6</span></pre>
+						<div class="code-output" id="ex1-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>Subtraction</h3>
+					<p>Operator: <code>-</code></p>
+					<p>Subtracts the second number from the first.</p>
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex2')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex2')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex2-code"
+						><span class="fn">console</span>.log(<span class="num">200</span> <span class="op">-</span> <span class="num">45</span>)   <span class="cmt">// 155</span>
+<span class="fn">console</span>.log(<span class="num">10</span> <span class="op">-</span> <span class="num">14.5</span>)  <span class="cmt">// -4.5</span></pre>
+						<div class="code-output" id="ex2-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>Multiplication</h3>
+					<p>Operator: <code>*</code></p>
+
+					<p>Multiplies two numbers.</p>
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex3')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex3')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex3-code"
+						><span class="fn">console</span>.log(<span class="num">12</span> <span class="op">*</span> <span class="num">9</span>)    <span class="cmt">// 108</span>
+<span class="fn">console</span>.log(<span class="num">2.5</span> <span class="op">*</span> <span class="num">4</span>)  <span class="cmt">// 10</span></pre>
+						<div class="code-output" id="ex3-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>Division</h3>
+					<p>Operator: <code>/</code></p>
+
+					<p>Divides the first number by the second.</p>
+					<p>
+						Note: If you divide any number by zero, JavaScript does not throw an
+						error. It returns a special value called <strong>Infinity</strong>.
+						This is JavaScript's way of representing a number too large to
+						express. You will see it appear in real code whenever a division by
+						zero sneaks in unnoticed.
+					</p>
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex4')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex4')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex4-code"
+						><span class="fn">console</span>.log(<span class="num">99</span> <span class="op">/</span> <span class="num">3</span>)   <span class="cmt">// 33</span>
+<span class="fn">console</span>.log(<span class="num">7</span> <span class="op">/</span> <span class="num">2</span>)    <span class="cmt">// 3.5</span>
+<span class="fn">console</span>.log(<span class="num">5</span> <span class="op">/</span> <span class="num">0</span>)    <span class="cmt">// Infinity</span></pre>
+						<div class="code-output" id="ex4-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>Modulo</h3>
+					<p>Operator: <code>%</code></p>
+
+					<p>
+						Returns the remainder after dividing two numbers as evenly as
+						possible. For example, 13 divided by 5 goes in two times with 2 left
+						over, so <strong>13 % 5</strong> gives you 2. A common use is
+						checking whether a number is even i.e if dividing it by 2 leaves no
+						remainder, then it is even.
+					</p>
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex5')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex5')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex5-code"
+						><span class="fn">console</span>.log(<span class="num">10</span> <span class="op">%</span> <span class="num">3</span>)  <span class="cmt">// 1</span>
+<span class="fn">console</span>.log(<span class="num">8</span> <span class="op">%</span> <span class="num">2</span>)   <span class="cmt">// 0 -- 8 is even</span></pre>
+						<div class="code-output" id="ex5-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>Exponentiation</h3>
+					<p>Operator: <code>**</code></p>
+
+					<p>
+						Raises a number to a power. E.g <strong>4 ** 5</strong> means 4
+						multiplied by itself 5 times.
+					</p>
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex6')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex6')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex6-code"
+						><span class="fn">console</span>.log(<span class="num">2</span> <span class="op">**</span> <span class="num">8</span>)   <span class="cmt">// 256</span>
+<span class="fn">console</span>.log(<span class="num">3</span> <span class="op">**</span> <span class="num">3</span>)   <span class="cmt">// 27</span></pre>
+						<div class="code-output" id="ex6-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 3. SHORTCUTS -->
+				<div class="section" id="s3">
+					<div class="section-label">
+						<div class="section-num">3</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Shortcuts</h2>
+
+					<p>
+						A common task in programming is updating a variable by performing an
+						operation on its current value. You could write
+						<code>x = x + 5</code>, but JavaScript provides shorter ways to
+						express the same thing. These are called
+						<strong>assignment operators</strong>.
+					</p>
+
+					<h3>Shorthand Assignment Operators</h3>
+					<p>
+						The operators you have used in the previous section can be used in
+						shorthand assignment
+					</p>
+					<p><code>+=</code> → addition assignment</p>
+					<p><code>-=</code> → subtraction assignment</p>
+					<p><code>*=</code> → multiplication assignment</p>
+					<p><code>/=</code> → division assignment</p>
+					<p><code>%=</code> → modulo (remainder) assignment</p>
+					<p><code>**=</code> → exponentiation assignment</p>
+					<p>
+						Each of these combines an arithmetic operation with assignment. The
+						operator reads: take the current value, apply the operation, store
+						the result back in the same variable.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex7')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex7')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex7-code"
+						><span class="kw">let</span> points <span class="op">=</span> <span class="num">100</span>
+
+points <span class="op">+=</span> <span class="num">20</span>   <span class="cmt">// same as: points = points + 20</span>
+<span class="fn">console</span>.log(points)  <span class="cmt">// 120</span>
+
+points <span class="op">-=</span> <span class="num">15</span>   <span class="cmt">// same as: points = points - 15</span>
+<span class="fn">console</span>.log(points)  <span class="cmt">// 105</span>
+
+points <span class="op">*=</span> <span class="num">2</span>    <span class="cmt">// same as: points = points * 2</span>
+<span class="fn">console</span>.log(points)  <span class="cmt">// 210</span>
+
+points <span class="op">/=</span> <span class="num">3</span>    <span class="cmt">// same as: points = points / 3</span>
+<span class="fn">console</span>.log(points)  <span class="cmt">// 70</span>
+
+points <span class="op">%=</span> <span class="num">6</span>    <span class="cmt">// same as: points = points % 6</span>
+<span class="fn">console</span>.log(points)  <span class="cmt">// 4</span>
+
+points <span class="op">**=</span> <span class="num">2</span>   <span class="cmt">// same as: points = points ** 2</span>
+<span class="fn">console</span>.log(points)  <span class="cmt">// 16</span></pre>
+						<div class="code-output" id="ex7-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>Increment and Decrement Operators</h3>
+					<p>
+						The increment operator <code>++</code> adds 1 to a variable. The
+						decrement operator <code>--</code> subtracts 1. These are most
+						commonly used inside loops where you need to count up or down one
+						step at a time.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex8')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex8')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex8-code"
+						><span class="kw">let</span> count <span class="op">=</span> <span class="num">0</span>
+
+count<span class="op">++</span>
+<span class="fn">console</span>.log(count)  <span class="cmt">// 1</span>
+
+count<span class="op">++</span>
+<span class="fn">console</span>.log(count)  <span class="cmt">// 2</span>
+
+count<span class="op">--</span>
+<span class="fn">console</span>.log(count)  <span class="cmt">// 1</span></pre>
+						<div class="code-output" id="ex8-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 4. ORDER OF OPERATIONS -->
+				<div class="section" id="s4">
+					<div class="section-label">
+						<div class="section-num">4</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Order of Operations</h2>
+
+					<p>
+						When an expression contains more than one operator, JavaScript does
+						not simply evaluate from left to right. It follows a fixed order of
+						precedence. Knowing this order is important because getting it wrong
+						produces an incorrect result with no error message to warn you.
+					</p>
+
+					<p>
+						The order is as follows. Expressions inside
+						<strong>parentheses</strong> are evaluated first. Then
+						<strong>exponentiation</strong>. Then
+						<strong>multiplication, division, and remainder</strong>, evaluated
+						left to right. Finally <strong>addition and subtraction</strong>,
+						also left to right.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex9')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex9')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex9-code"
+						><span class="cmt">// Multiplication happens before addition</span>
+<span class="fn">console</span>.log(<span class="num">2</span> <span class="op">+</span> <span class="num">3</span> <span class="op">*</span> <span class="num">4</span>)    <span class="cmt">// 14</span>
+
+<span class="cmt">// Parentheses force a different order</span>
+<span class="fn">console</span>.log((<span class="num">2</span> <span class="op">+</span> <span class="num">3</span>) <span class="op">*</span> <span class="num">4</span>)  <span class="cmt">// 20</span>
+
+<span class="cmt">// Exponentiation before multiplication</span>
+<span class="fn">console</span>.log(<span class="num">2</span> <span class="op">*</span> <span class="num">3</span> <span class="op">**</span> <span class="num">2</span>)   <span class="cmt">// 18</span>
+
+<span class="cmt">// Parentheses to control exponentiation</span>
+<span class="fn">console</span>.log((<span class="num">2</span> <span class="op">*</span> <span class="num">3</span>) <span class="op">**</span> <span class="num">2</span>) <span class="cmt">// 36</span></pre>
+						<div class="code-output" id="ex9-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<div class="callout warn">
+						<div class="callout-label">A silent mistake</div>
+						<p>
+							Order of operations errors do not produce any error message. The
+							code runs, produces a wrong number, and moves on. When a
+							calculation gives you an unexpected result, check whether
+							parentheses are in the right place.
+						</p>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 5. KNOWLEDGE CHECK -->
+				<div class="section" id="s5">
+					<div class="section-label">
+						<div class="section-num question">?</div>
+						<span class="section-title-sm">Knowledge Check</span>
+					</div>
+					<h2>Check for Understanding</h2>
+
+					<div class="quiz-box">
+						<div class="quiz-intro">
+							<div class="quiz-intro-label">Module 2</div>
+							<h3>Select one answer per question</h3>
+						</div>
+						<div class="quiz-questions">
+							<div class="quiz-q">
+								<div class="q-num">Question 1 of 3</div>
+								<div class="q-text">What does 17 % 5 evaluate to?</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="1" data-val="a">
+										<input type="radio" name="q1" /> 3
+									</li>
+									<li class="q-option" data-q="1" data-val="b">
+										<input type="radio" name="q1" /> 2
+									</li>
+									<li class="q-option" data-q="1" data-val="c">
+										<input type="radio" name="q1" /> 3.4
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb1"></div>
+							</div>
+
+							<div class="quiz-q">
+								<div class="q-num">Question 2 of 3</div>
+								<div class="q-text">What is the result of 10 + 2 * 5?</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="2" data-val="a">
+										<input type="radio" name="q2" /> 60
+									</li>
+									<li class="q-option" data-q="2" data-val="b">
+										<input type="radio" name="q2" /> 20
+									</li>
+									<li class="q-option" data-q="2" data-val="c">
+										<input type="radio" name="q2" /> 12
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb2"></div>
+							</div>
+
+							<div class="quiz-q">
+								<div class="q-num">Question 3 of 3</div>
+								<div class="q-text">
+									You write <code>let n = 8</code> then <code>n *= 3</code>.
+									What is the value of <strong>n</strong>?
+								</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="3" data-val="a">
+										<input type="radio" name="q3" /> 11
+									</li>
+									<li class="q-option" data-q="3" data-val="b">
+										<input type="radio" name="q3" /> 24
+									</li>
+									<li class="q-option" data-q="3" data-val="c">
+										<input type="radio" name="q3" /> 3
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb3"></div>
+							</div>
+
+							<div class="quiz-error" id="quizError">
+								Please answer all three questions before submitting.
+							</div>
+							<button class="quiz-submit" id="submitQuiz">
+								Submit Answers
+							</button>
+							<div class="quiz-result" id="quizResult">
+								<div class="result-score" id="resultScore"></div>
+								<div class="result-msg" id="resultMsg"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 6. CODING EXERCISE -->
+				<div class="section" id="s6">
+					<div class="section-label">
+						<div class="section-num question">?</div>
+						<span class="section-title-sm">Coding Exercise</span>
+					</div>
+					<h2>Cinema Ticket Calculator</h2>
+
+					<div class="activity-box">
+						<div class="activity-header">
+							<span class="activity-tag">Coding Exercise</span>
+						</div>
+						<div class="activity-scenario">
+							<strong>Question:</strong> A cinema sells adult tickets for 25 and
+							child tickets for 15. A group of 4 adults and 3 children buys
+							tickets. There is also a 10% booking fee applied to the total.
+							Calculate and print the subtotal, the booking fee, and the final
+							total. Then a member of the group uses a voucher to get 20 off the
+							final total. Update the total using a shorthand operator and print
+							it.
+						</div>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-bottom: 10px;
+							"
+						>
+							Expected output:
+						</p>
+						<div class="code-block" style="margin-bottom: 16px">
+							<pre style="padding: 12px 18px; color: #abb2bf; font-size: 13px">
+Subtotal: 145
+Booking fee: 14.5
+Total: 159.5
+After voucher: 139.5</pre
+							>
+						</div>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-top: 20px;
+								margin-bottom: 8px;
+							"
+						>
+							Write your code below.
+						</p>
+						<div class="editor-wrap" id="editor1">
+							<div class="editor-header">
+								<span class="editor-label">JavaScript Editor</span>
+							</div>
+							<textarea
+								class="editor-textarea"
+								id="editor1-code"
+								spellcheck="false"
+							>
+let adultPrice = 25
+let childPrice = 15
+let adults     = 4
+let children   = 3
+
+
+
+</textarea
+							>
+							<div class="editor-footer">
+								<button
+									class="editor-reset-btn"
+									onclick="resetEditor('editor1')"
+									title="Reset code"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg>
+									Reset
+								</button>
+								<div class="spacer"></div>
+								<button class="run-btn" onclick="runCode('editor1')">
+									Run
+								</button>
+								<button class="check-btn" onclick="checkAnswer('ex1')">
+									Check Answer
+								</button>
+							</div>
+							<div class="output-area" id="editor1-output">
+								<div class="output-label">Output</div>
+							</div>
+						</div>
+						<div class="check-result" id="checkResult1"></div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 7. SUMMARY -->
+				<div class="section" id="s7">
+					<div class="section-label">
+						<div class="section-num">7</div>
+						<span class="section-title-sm">Summary</span>
+					</div>
+					<h2>Module Summary</h2>
+					<div class="summary-box">
+						<h3>Key takeaways</h3>
+						<ul class="summary-list">
+							<li>
+								JavaScript has six arithmetic operators: <code>+</code>,
+								<code>-</code>, <code>*</code>, <code>/</code>, <code>%</code>,
+								and <code>**</code>.
+							</li>
+
+							<li>
+								The remainder operator <code>%</code> returns what is left over
+								after division, not the quotient.
+							</li>
+							<li>
+								Shorthand operators like <code>+=</code> and
+								<code>/=</code> update a variable in place.
+							</li>
+							<li>
+								The increment operator<code>++</code> adds 1 to a variable. The
+								decrement operator<code>--</code> subtracts 1.
+							</li>
+							<li>
+								The order of operations affects the result. Parentheses come
+								first. Then exponentiation. Multiplication, division, and
+								remainder are evaluated before addition and subtraction.
+							</li>
+						</ul>
+
+						<div class="ref-scroll-hint">Scroll right to see full table</div>
+						<div class="ref-table-wrap">
+							<table class="ref-table">
+								<thead>
+									<tr>
+										<th>Operator</th>
+										<th>What it does</th>
+										<th>Example</th>
+										<th>Result</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><code>+</code></td>
+										<td>Addition</td>
+										<td><code>10 + 4</code></td>
+										<td>14</td>
+									</tr>
+									<tr>
+										<td><code>-</code></td>
+										<td>Subtraction</td>
+										<td><code>10 - 4</code></td>
+										<td>6</td>
+									</tr>
+									<tr>
+										<td><code>*</code></td>
+										<td>Multiplication</td>
+										<td><code>10 * 4</code></td>
+										<td>40</td>
+									</tr>
+									<tr>
+										<td><code>/</code></td>
+										<td>Division</td>
+										<td><code>10 / 4</code></td>
+										<td>2.5</td>
+									</tr>
+									<tr>
+										<td><code>%</code></td>
+										<td>Remainder</td>
+										<td><code>10 % 4</code></td>
+										<td>2</td>
+									</tr>
+									<tr>
+										<td><code>**</code></td>
+										<td>Exponentiation</td>
+										<td><code>2 ** 10</code></td>
+										<td>1024</td>
+									</tr>
+									<tr>
+										<td><code>+=</code></td>
+										<td>Add and assign</td>
+										<td><code>x += 5</code></td>
+										<td>x increased by 5</td>
+									</tr>
+									<tr>
+										<td><code>-=</code></td>
+										<td>Subtract and assign</td>
+										<td><code>x -= 5</code></td>
+										<td>x decreased by 5</td>
+									</tr>
+									<tr>
+										<td><code>*=</code></td>
+										<td>Multiply and assign</td>
+										<td><code>x *= 2</code></td>
+										<td>x doubled</td>
+									</tr>
+									<tr>
+										<td><code>/=</code></td>
+										<td>Divide and assign</td>
+										<td><code>x /= 2</code></td>
+										<td>x halved</td>
+									</tr>
+									<tr>
+										<td><code>++</code></td>
+										<td>Increment by 1</td>
+										<td><code>x++</code></td>
+										<td>x increased by 1</td>
+									</tr>
+									<tr>
+										<td><code>--</code></td>
+										<td>Decrement by 1</td>
+										<td><code>x--</code></td>
+										<td>x decreased by 1</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="module-nav">
+						<a class="prev-module" href="module1.html">
+							<div class="prev-arrow-icon">
+								<svg
+									viewBox="0 0 24 24"
+									width="18"
+									height="18"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<line x1="19" y1="12" x2="5" y2="12"></line>
+									<polyline points="12 19 5 12 12 5"></polyline>
+								</svg>
+							</div>
+							<div class="prev-text">
+								<span class="prev-label">Back to</span>
+								<span class="prev-title"
+									>Module 1: Introduction to JavaScript</span
+								>
+							</div>
+						</a>
+						<a class="next-module" href="module3.html">
+							<div class="next-text">
+								<span class="next-label">Up next</span>
+								<span class="next-title">Module 3: Strings</span>
+							</div>
+							<div class="next-arrow-icon">
+								<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<line x1="5" y1="12" x2="19" y2="12"></line>
+									<polyline points="12 5 19 12 12 19"></polyline>
+								</svg>
+							</div>
+						</a>
+					</div>
+
+					<div class="designer-note">
+						<span>JavaScript Crash Course - Module 2 of 10</span>
+					</div>
+				</div>
+			</main>
+		</div>
+
+		<!-- SCRIPTS -->
+		<script>
+			window.staticBlocksHTML = {};
+			document.addEventListener("DOMContentLoaded", () => {
+				document.querySelectorAll("pre[id]").forEach((pre) => {
+					const id = pre.id.replace("-code", "");
+					window.staticBlocksHTML[id] = pre.innerHTML;
+				});
+			});
+		</script>
+		<script src="../assets/js/editor.js"></script>
+		<script>
+			window.staticBlocks = {
+				ex1: `console.log(120 + 35)\nconsole.log(4.5 + 1.5)`,
+				ex2: `console.log(200 - 45)\nconsole.log(10 - 14.5)`,
+				ex3: `console.log(12 * 9)\nconsole.log(2.5 * 4)`,
+				ex4: `console.log(99 / 3)\nconsole.log(7 / 2)\nconsole.log(5 / 0)`,
+				ex5: `console.log(10 % 3)\nconsole.log(8 % 2)`,
+				ex6: `console.log(2 ** 8)\nconsole.log(3 ** 3)`,
+				ex7: `let points = 100\npoints += 20\nconsole.log(points)\npoints -= 15\nconsole.log(points)\npoints *= 2\nconsole.log(points)\npoints /= 3\nconsole.log(points)`,
+				ex8: `let count = 0\ncount++\nconsole.log(count)\ncount++\nconsole.log(count)\ncount--\nconsole.log(count)`,
+				ex9: `console.log(2 + 3 * 4)\nconsole.log((2 + 3) * 4)\nconsole.log(2 * 3 ** 2)\nconsole.log((2 * 3) ** 2)`,
+			};
+
+			window.editorDefaults = {
+				editor1: `let adultPrice = 25
+let childPrice = 15
+let adults     = 4
+let children   = 3
+
+
+
+`,
+			};
+
+			window.checkConfigs = {
+				ex1: {
+					editorId: "editor1",
+					resultId: "checkResult1",
+					expected: [
+						"Subtotal: 145",
+						"Booking fee: 14.5",
+						"Total: 159.5",
+						"After voucher: 139.5",
+					],
+					successMsg: "All four values are correct.",
+					failMsg:
+						"Check your subtotal calculation, the 10% fee, and that you used a shorthand operator to apply the voucher discount.",
+				},
+			};
+
+			window.quizConfig = {
+				questions: [
+					{
+						id: 1,
+						answer: "b",
+						feedback: {
+							correct:
+								"<strong>Correct.</strong> 5 goes into 17 three times (15), leaving 2 over. The remainder is 2.",
+							wrong:
+								"<strong>Not quite.</strong> The % operator does not divide. It returns what is left after the division. 5 goes into 17 three times (15), so the remainder is 17 minus 15, which is 2.",
+						},
+					},
+					{
+						id: 2,
+						answer: "b",
+						feedback: {
+							correct:
+								"<strong>Correct.</strong> Multiplication is evaluated before addition. So 2 * 5 is 10 first, then 10 + 10 gives 20.",
+							wrong:
+								"<strong>Not quite.</strong> Multiplication comes before addition. JavaScript evaluates 2 * 5 first to get 10, then adds 10 to get 20, not 60.",
+						},
+					},
+					{
+						id: 3,
+						answer: "b",
+						feedback: {
+							correct:
+								"<strong>Correct.</strong> <code>n *= 3</code> means n = n * 3, so 8 * 3 = 24.",
+							wrong:
+								"<strong>Not quite.</strong> <code>*=</code> multiplies the current value by the right-hand side. 8 multiplied by 3 is 24, not 11 or 3.",
+						},
+					},
+				],
+				messages: {
+					perfect: "Solid. You are ready for Module 3.",
+					good: "Good. Review the missed question before moving on.",
+					retry: "Revisit sections 2 through 4, then try again.",
+				},
+			};
+		</script>
+		<script src="../assets/js/quiz.js"></script>
+		<script src="../assets/js/flashcards.js"></script>
+		<script src="../assets/js/ui.js"></script>
+	</body>
+</html>

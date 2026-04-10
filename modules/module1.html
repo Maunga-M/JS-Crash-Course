@@ -1,0 +1,1559 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Module 1: Introduction to JavaScript</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://fonts.googleapis.com/icon?family=Material+Icons"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="../assets/css/main.css" />
+	</head>
+	<body>
+		<nav class="top-nav">
+			<a class="top-nav-home" href="../index.html" title="Home">
+				<span class="material-icons">home</span>
+			</a>
+		</nav>
+
+		<header class="lesson-header">
+			<div class="header-inner">
+				<div class="lesson-meta">
+					<span class="badge">Module 1 of 10</span>
+				</div>
+				<h1>Introduction to JavaScript</h1>
+			</div>
+			<div class="progress-bar-wrap">
+				<div class="progress-bar-fill" style="width: 10%"></div>
+			</div>
+		</header>
+
+		<div class="page-wrap">
+			<aside class="sidebar" id="sidebar">
+				<div class="sidebar-label">In this module</div>
+				<ul class="sidebar-nav">
+					<li><a href="#s1">Learning Objectives</a></li>
+					<li><a href="#s2">Opening Scenario</a></li>
+					<li><a href="#s3">What is JavaScript?</a></li>
+					<li><a href="#s4">Data Types</a></li>
+					<li><a href="#s5">Reflection</a></li>
+					<li><a href="#s6">console.log</a></li>
+					<li><a href="#s7">Comments</a></li>
+					<li><a href="#s8">typeof</a></li>
+					<li><a href="#s9">Coding Exercise 1</a></li>
+					<li><a href="#s10">Variables</a></li>
+					<li><a href="#s11">Naming Conventions</a></li>
+					<li><a href="#s12">Knowledge Check</a></li>
+					<li><a href="#s13">Coding Exercise 2</a></li>
+					<li><a href="#s14">Summary</a></li>
+				</ul>
+			</aside>
+
+			<button
+				class="sidebar-toggle"
+				id="sidebarToggle"
+				aria-label="Toggle menu"
+			>
+				<svg
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<line x1="3" y1="6" x2="21" y2="6" />
+					<line x1="3" y1="12" x2="21" y2="12" />
+					<line x1="3" y1="18" x2="21" y2="18" />
+				</svg>
+			</button>
+
+			<main class="lesson-body">
+				<!-- 1. LEARNING OBJECTIVE -->
+				<div class="section" id="s1">
+					<div class="section-label">
+						<div class="section-num">1</div>
+						<span class="section-title-sm">Learning Objectives</span>
+					</div>
+					<div class="objective-box">
+						<p class="obj-intro">
+							By the end of this module you will be able to:
+						</p>
+						<ul class="obj-list">
+							<li>Explain what JavaScript is and where it runs</li>
+							<li>Identify JavaScript's primitive and object data types</li>
+							<li>
+								Use <code>console.log()</code> to print values and inspect code
+							</li>
+							<li>Write single-line and multi-line comments</li>
+							<li>Use <code>typeof</code> to check a value’s type</li>
+							<li>
+								Declare and initialize variables using declaration keywords
+							</li>
+							<li>Apply proper naming conventions for variables</li>
+						</ul>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 2. OPENING SCENARIO -->
+				<div class="section" id="s2">
+					<div class="section-label">
+						<div class="section-num">2</div>
+						<span class="section-title-sm">Opening Scenario</span>
+					</div>
+					<h2>Meet Amara</h2>
+					<div class="story-box">
+						<div class="story-label">
+							A story that runs through all ten modules
+						</div>
+						<p>
+							Amara teaches mathematics at a secondary school in Accra. At the
+							end of each term, she calculates every student's final grade by
+							hand, adds up class averages, and checks who has passed. With 80
+							students across three classes, it takes her an entire weekend.
+						</p>
+						<p>
+							A colleague tells her she could automate most of it with a few
+							dozen lines of JavaScript. Amara has never written a line of code
+							in her life. She decides to try.
+						</p>
+						<p>
+							By Module 9, Amara will have a working grade calculator. We start
+							here with the building blocks she needs to get there.
+						</p>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 3. WHAT IS JAVASCRIPT -->
+				<div class="section" id="s3">
+					<div class="section-label">
+						<div class="section-num">3</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>What is JavaScript?</h2>
+
+					<p>
+						JavaScript is a high-level programming language primarily used to
+						make web pages interactive.
+					</p>
+
+					<p>
+						It was created in 1995 by Brendan Eich while working at Netscape. It
+						was originally built to add interactivity to web pages and it
+						remains the only programming language that runs natively inside
+						every web browser (which means no installation is needed to run
+						it.).
+					</p>
+
+					<p>
+						In 2009, a tool called Node.js made it possible to run JavaScript on
+						servers and computers outside the browser entirely. Today JavaScript
+						is one of the most widely used programming languages in the world
+						and is used to power interactive websites, mobile apps, server
+						backends, and automation tools. For this course, you will write and
+						run JavaScript directly in the browser.
+					</p>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 4. DATA TYPES -->
+				<div class="section" id="s4">
+					<div class="section-label">
+						<div class="section-num">4</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Data Types</h2>
+
+					<p>
+						Before Amara's script can do anything useful, it needs to hold
+						information: student names, exam scores, whether someone passed or
+						failed. JavaScript needs to know what kind of information it is
+						working with, because the rules are different for each kind. You
+						cannot add a name and a number the same way you add two numbers.
+						This is what data types are for.
+					</p>
+
+					<p>
+						Every value in JavaScript has a type. JavaScript divides its types
+						into two groups: <strong>primitive types</strong> and
+						<strong>object types</strong>.
+					</p>
+
+					<h3>Primitive types</h3>
+					<p>
+						Primitive types are the simplest building blocks. Each one holds a
+						single, straightforward value. There are seven in JavaScript. You
+						will use the first four constantly. The last three are more
+						specialised and you may rarely encounter them as a beginner.
+					</p>
+
+					<div class="type-grid">
+						<div class="type-card">
+							<div class="type-name">String</div>
+							<div class="type-desc">
+								Text of any length, wrapped in quotes. You can use single
+								quotes, double quotes, or backticks.
+							</div>
+							<div class="type-examples">
+								<span class="type-example">"Nairobi"</span>
+								<span class="type-example">'Mount Kilimanjaro'</span>
+							</div>
+						</div>
+						<div class="type-card">
+							<div class="type-name">Number</div>
+							<div class="type-desc">
+								Any numeric value, whether a whole number or a decimal. Integers
+								and decimals share one type in JavaScript.
+							</div>
+							<div class="type-examples">
+								<span class="type-example">88</span>
+								<span class="type-example">72.5</span>
+							</div>
+						</div>
+						<div class="type-card">
+							<div class="type-name">Boolean</div>
+							<div class="type-desc">
+								Exactly two possible values. Used whenever you need a yes or no
+								answer in your code.
+							</div>
+							<div class="type-examples">
+								<span class="type-example">true</span>
+								<span class="type-example">false</span>
+							</div>
+						</div>
+						<div class="type-card">
+							<div class="type-name">undefined</div>
+							<div class="type-desc">
+								The only possible value is <strong>undefined</strong>. A
+								variable that has been declared but not given a value holds this
+								automatically.
+							</div>
+							<div class="type-examples">
+								<span class="type-example">undefined</span>
+							</div>
+						</div>
+						<div class="type-card">
+							<div class="type-name">null</div>
+							<div class="type-desc">
+								The only possible value is <strong>null</strong>. Used
+								intentionally to say "there is no value here."
+							</div>
+							<div class="type-examples">
+								<span class="type-example">null</span>
+							</div>
+						</div>
+						<div class="type-card">
+							<div class="type-name">BigInt</div>
+							<div class="type-desc">
+								Integers too large for the Number type to represent accurately.
+								Note the <strong>n</strong> at the end.
+							</div>
+							<div class="type-examples">
+								<span class="type-example">9007199254740991n</span>
+							</div>
+						</div>
+						<div class="type-card">
+							<div class="type-name">Symbol</div>
+							<div class="type-desc">
+								A unique, immutable identifier. Used to avoid naming collisions
+								in advanced code.
+							</div>
+							<div class="type-examples">
+								<span class="type-example">Symbol("id")</span>
+							</div>
+						</div>
+					</div>
+
+					<h3>Object types</h3>
+					<p>
+						Object types can hold multiple pieces of data grouped together. You
+						will not work with these until Module 7 and onwards, but it is good
+						to know they exist. Everything in JavaScript that is not a primitive
+						is an object type.
+					</p>
+
+					<div class="type-grid">
+						<div class="type-card">
+							<div class="type-name">Object</div>
+							<div class="type-desc">
+								A collection of key-value pairs written inside curly braces
+								<strong>{}</strong>. The foundation of structured data in
+								JavaScript.
+							</div>
+							<div class="type-examples">
+								<span class="type-example">{ product: "laptop" }</span>
+								<span class="type-example">{ price: 49, inStock: true }</span>
+							</div>
+						</div>
+						<div class="type-card">
+							<div class="type-name">Array</div>
+							<div class="type-desc">
+								An ordered list of values written inside square brackets
+								<strong>[]</strong>. Each item is accessed by its position
+								number called an index.
+							</div>
+							<div class="type-examples">
+								<span class="type-example">[3, 7, 12, 45]</span>
+								<span class="type-example">["jazz", "soul", "afrobeats"]</span>
+							</div>
+						</div>
+						<div class="type-card">
+							<div class="type-name">Function</div>
+							<div class="type-desc">
+								A reusable block of code. In JavaScript, functions are also a
+								type of object.
+							</div>
+							<div class="type-examples">
+								<span class="type-example">function greet() {}</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="callout warn">
+						<div class="callout-label">A common mistake</div>
+						<p>
+							"88" and 88 are not the same thing. The first is a string. The
+							second is a number. JavaScript will treat them very differently
+							when you try to do arithmetic. You will see exactly what happens
+							later in this module.
+						</p>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 5. REFLECTION -->
+				<div class="section" id="s5">
+					<div class="section-label">
+						<div class="section-num question">?</div>
+						<span class="section-title-sm">Reflection</span>
+					</div>
+					<h2>Check Your Thinking</h2>
+					<div class="activity-box" style="border-color: var(--mid-blue)">
+						<div class="activity-header">
+							<span class="activity-tag reflect">Reflect</span>
+							<div class="activity-title">Data Types</div>
+						</div>
+						<ol class="prompts">
+							<li>
+								A student's exam score is stored as "74" instead of 74. What
+								type is each one, and why does the difference matter?
+							</li>
+							<li>
+								Which data type would you use to represent whether a student has
+								submitted their assignment?
+							</li>
+							<li>What is the difference between undefined and null?</li>
+						</ol>
+						<label class="reflect-label" for="reflect1">Your thoughts</label>
+						<textarea
+							id="reflect1"
+							class="reflect-area"
+							placeholder="Write your thinking here..."
+						></textarea>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 6. CONSOLE.LOG -->
+				<div class="section" id="s6">
+					<div class="section-label">
+						<div class="section-num">6</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>console.log</h2>
+
+					<p>
+						You now know that data has types. But how do you actually see what
+						your code does when it runs? That is what
+						<code>console.log()</code> is for. It prints whatever you pass
+						inside the parentheses. Every developer uses it constantly to check
+						that their code is working correctly.
+					</p>
+
+					<p>
+						In this course, the output appears in the panel directly below your
+						code. In a browser, it goes to the developer console, which you can
+						open with
+						<strong>Ctrl + Shift + I</strong> on Windows or
+						<strong>Cmd + Option + I</strong> on Mac.
+					</p>
+
+					<p>
+						Below we can pass a raw value directly into
+						<code>console.log()</code>. You can edit and print your own
+						statements to the console
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex1')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex1')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex1-code"
+						><span class="fn">console</span>.log(<span class="str">"Mount Everest"</span>)
+<span class="fn">console</span>.log(<span class="num">8849</span>)
+<span class="fn">console</span>.log(<span class="kw">false</span>)</pre>
+						<div class="code-output" id="ex1-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						You can also print multiple values at once by separating them with
+						commas. JavaScript will print them on the same line with a space
+						between each one.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex2')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex2')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex2-code"
+						><span class="fn">console</span>.log(<span class="str">"Planet:"</span>, <span class="str">"Mars"</span>)
+<span class="fn">console</span>.log(<span class="str">"Moons:"</span>, <span class="num">2</span>, <span class="str">"->"</span>, <span class="str">"Largest Moon:"</span>, <span class="str">"Phobos"</span>)
+<span class="fn">console</span>.log(<span class="str">"Has rings:"</span>, <span class="kw">false</span>)</pre>
+						<div class="code-output" id="ex2-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 7. COMMENTS -->
+				<div class="section" id="s7">
+					<div class="section-label">
+						<div class="section-num">7</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Comments</h2>
+
+					<p>
+						A comment is a line in your code that JavaScript ignores completely.
+						Comments exist for you, not for the computer. You use them to
+						explain what a section of code does, leave notes for yourself and
+						other developers, or temporarily disable a line you are testing. You
+						will now start seeing comments in the code examples throughout this
+						course.
+					</p>
+
+					<h3>Single-line comments</h3>
+					<p>
+						A single-line comment starts with <code>//</code>. Everything to the
+						right of those two slashes on the same line is ignored by
+						JavaScript.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex3')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex3')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex3-code"
+						><span class="cmt">// This entire line is a comment and will be ignored</span>
+<span class="fn">console</span>.log(<span class="str">"This will print"</span>)
+
+<span class="fn">console</span>.log(<span class="str">"This will also print"</span>) <span class="cmt">// comment at end of a line</span>
+
+<span class="cmt">// console.log("This will NOT print because the whole line is commented out")</span></pre>
+						<div class="code-output" id="ex3-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>Multi-line comments</h3>
+					<p>
+						A multi-line comment starts with <code>/*</code> and ends with
+						<code>*/</code>. Everything between those markers is ignored, no
+						matter how many lines it spans.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex4')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex4')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex4-code"
+						><span class="cmt">/*
+  This is a multi-line comment.
+  JavaScript ignores everything between the markers.
+  Useful for longer explanations.
+*/</span>
+<span class="fn">console</span>.log(<span class="str">"Only this line runs"</span>)</pre>
+						<div class="code-output" id="ex4-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 8. TYPEOF -->
+				<div class="section" id="s8">
+					<div class="section-label">
+						<div class="section-num">8</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>typeof</h2>
+
+					<p>
+						Earlier you saw that "88" and 88 are different types even though
+						they look similar.
+						<code>typeof</code> is the tool that tells you what type any value
+						actually is. It returns a string describing the type. It is one of
+						the most useful tools for debugging, especially when you are not
+						sure why your code is behaving unexpectedly.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex5')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex5')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex5-code"
+						><span class="fn">console</span>.log(<span class="kw">typeof</span> <span class="str">"Nairobi"</span>)  <span class="cmt">// string</span>
+<span class="fn">console</span>.log(<span class="kw">typeof</span> <span class="num">88</span>)         <span class="cmt">// number</span>
+<span class="fn">console</span>.log(<span class="kw">typeof</span> <span class="kw">true</span>)       <span class="cmt">// boolean</span>
+<span class="fn">console</span>.log(<span class="kw">typeof</span> <span class="str">"88"</span>)       <span class="cmt">// string, not a number!</span>
+<span class="fn">console</span>.log(<span class="kw">typeof</span> <span class="num">88</span>)         <span class="cmt">// number</span></pre>
+						<div class="code-output" id="ex5-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 9. CODING EXERCISE 1 -->
+				<div class="section" id="s9">
+					<div class="section-label">
+						<div class="section-num question">?</div>
+						<span class="section-title-sm">Coding Exercise 1</span>
+					</div>
+					<h2>Types and Output</h2>
+
+					<div class="activity-box">
+						<div class="activity-header">
+							<span class="activity-tag">Coding Exercise</span>
+						</div>
+						<div class="activity-scenario">
+							<strong>Question:</strong> Complete the code below so each line
+							prints the expected output. Do not change the existing
+							<code>console.log</code> lines. Fill in only the values where
+							indicated.
+						</div>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-bottom: 10px;
+							"
+						>
+							Expected output:
+						</p>
+						<div class="code-block" style="margin-bottom: 16px">
+							<pre style="padding: 12px 18px; color: #abb2bf; font-size: 13px">
+Mount Everest
+8849
+false
+string
+number
+boolean</pre
+							>
+						</div>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-top: 20px;
+								margin-bottom: 8px;
+							"
+						>
+							Write your code below.
+						</p>
+						<div class="editor-wrap" id="editor1">
+							<div class="editor-header">
+								<span class="editor-label">JavaScript Editor</span>
+							</div>
+							<textarea
+								class="editor-textarea"
+								id="editor1-code"
+								spellcheck="false"
+							>
+// Print each value
+console.log()
+console.log()
+console.log()
+
+// Print the type of each value -- in the same order
+console.log(typeof )
+console.log(typeof )
+console.log(typeof )
+</textarea
+							>
+							<div class="editor-footer">
+								<button
+									class="editor-reset-btn"
+									onclick="resetEditor('editor1')"
+									title="Reset code"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg>
+									Reset
+								</button>
+								<div class="spacer"></div>
+								<button class="run-btn" onclick="runCode('editor1')">
+									Run
+								</button>
+								<button class="check-btn" onclick="checkAnswer('ex1')">
+									Check Answer
+								</button>
+							</div>
+							<div class="output-area" id="editor1-output">
+								<div class="output-label">Output</div>
+							</div>
+						</div>
+						<div class="check-result" id="checkResult1"></div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 10. VARIABLES -->
+				<div class="section" id="s10">
+					<div class="section-label">
+						<div class="section-num">10</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Variables</h2>
+
+					<p>
+						So far every value has been typed directly into
+						<code>console.log()</code>. That works for a single print, but if
+						Amara needs to use a student's score in several places, like
+						calculating an average, checking if they passed, and printing a
+						report, she would have to type the same number every time. If the
+						score changes, she has to find and update every occurrence.
+						Variables solve this problem. A variable is a named container that
+						stores a value so you can reference it by name as many times as you
+						need.
+					</p>
+
+					<h3>Declaration</h3>
+					<p>
+						When we declare a variable, we create a space for it in the
+						computer's memory. We write a declaration keyword followed by a
+						variable's name. At this point the variable exists but holds no
+						value. Its type and value is automatically
+						<strong>undefined</strong>.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex6')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex6')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex6-code"
+						><span class="kw">let</span> ingredient
+<span class="fn">console</span>.log(ingredient) <span class="cmt">// undefined</span></pre>
+
+						<div class="code-output" id="ex6-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						There are three keywords you can use to declare a variable:
+						<code>let</code>, <code>const</code>, and <code>var</code>. For this
+						course, we will use <code>let</code> for everything.
+					</p>
+
+					<div class="chunks">
+						<div class="chunk">
+							<div class="chunk-title">let</div>
+							<p>
+								Use <code>let</code> for values that may change. E.g A running
+								total or a result that gets updated as the program runs.
+							</p>
+						</div>
+						<div class="chunk">
+							<div class="chunk-title">const</div>
+							<p>
+								Use <code>const</code> for values that should never change. If
+								your code accidentally tries to reassign a <code>const</code> to
+								a new value, JavaScript throws an error immediately.
+							</p>
+						</div>
+						<div class="chunk">
+							<div class="chunk-title">var</div>
+							<p>
+								<code>var</code> is the original keyword from early JavaScript
+								but try to avoid using it. It has inconsistent behaviour that
+								can cause subtle bugs. You may see it in older code but should
+								not use it yourself.
+							</p>
+						</div>
+					</div>
+
+					<div class="callout warn">
+						<div class="callout-label">Always use a keyword</div>
+						<p>
+							When you introduce a new variable, always write
+							<code>let</code> or <code>const</code> in front of it. Writing
+							<code>country = "France"</code> without a keyword does not declare
+							a variable in the normal way. It creates what is called an
+							implicit global, which can cause unexpected bugs that are very
+							hard to track down. Make it a habit to always declare explicitly.
+						</p>
+					</div>
+
+					<h3>Initialisation</h3>
+					<p>
+						Initialisation means giving a variable its first value. You do this
+						with the <code>=</code> operator, also known as the assignment
+						operator. This is not "equals" in the mathematical sense. It means
+						"store this value in this variable." The value on the right is
+						stored in the container (variable) on the left.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex7')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex7')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex7-code"
+						><span class="kw">let</span> ingredient
+ingredient <span class="op">=</span> <span class="str">"flour"</span>
+<span class="fn">console</span>.log(ingredient) <span class="cmt">// flour</span></pre>
+						<div class="code-output" id="ex7-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>Declaration and initialisation together</h3>
+					<p>
+						Most of the time you will do both on the same line. This is the most
+						common form you will see in the wild.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex8')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex8')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex8-code"
+						><span class="kw">let</span> vehicleType <span class="op">=</span> <span class="str">"bicycle"</span>
+<span class="kw">let</span> wheelCount  <span class="op">=</span> <span class="num">2</span>
+<span class="kw">let</span> isElectric  <span class="op">=</span> <span class="kw">false</span>
+
+<span class="fn">console</span>.log(vehicleType)
+<span class="fn">console</span>.log(wheelCount)
+<span class="fn">console</span>.log(isElectric)</pre>
+						<div class="code-output" id="ex8-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+				</div>
+
+				<h3>Reassigning a variable</h3>
+				<p>
+					Once a variable has been declared, you can update its value at any
+					time by assigning a new one. You do not write <code>let</code> again
+					-- that would create a new variable. You just use the variable name on
+					the left and the new value on the right.
+				</p>
+
+				<div class="code-block">
+					<div class="code-block-header">
+						<span class="code-lang">JavaScript</span>
+						<div class="code-block-btns">
+							<button
+								class="reset-btn"
+								onclick="resetStatic('ex9')"
+								title="Reset"
+							>
+								<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<polyline points="1 4 1 10 7 10"></polyline>
+									<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+								</svg></button
+							><button class="run-btn" onclick="runStatic('ex9')">Run</button>
+						</div>
+					</div>
+					<pre
+						contenteditable="true"
+						spellcheck="false"
+						id="ex9-code"
+					><span class="kw">let</span> score <span class="op">=</span> <span class="num">45</span>
+<span class="fn">console</span>.log(score)  <span class="cmt">// 45</span>
+
+score <span class="op">=</span> <span class="num">72</span>
+<span class="fn">console</span>.log(score)  <span class="cmt">// 72</span>
+
+score <span class="op">=</span> <span class="num">88</span>
+<span class="fn">console</span>.log(score)  <span class="cmt">// 88</span></pre>
+					<div class="code-output" id="ex9-output">
+						<div class="output-label">Output</div>
+					</div>
+				</div>
+
+				<div class="callout warn">
+					<div class="callout-label">No duplicate names</div>
+					<p>
+						You cannot declare two variables with the same name using
+						<code>let</code>. JavaScript will throw an error. If you want to
+						update a value, reassign it -- do not declare it again.
+					</p>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 11. NAMING CONVENTIONS -->
+				<div class="section" id="s11">
+					<div class="section-label">
+						<div class="section-num">11</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Naming Conventions</h2>
+
+					<p>
+						A variable name should tell you what it contains. A name like 'x'
+						gives you no information. A name like bookTitle tells you exactly
+						what is stored. The convention in JavaScript is
+						<strong>camelCase</strong>. The first word starts with a lowercase
+						letter and then the first letter of each word that follows is
+						capitalised e.g firstName or isLoggedIn
+					</p>
+
+					<p>
+						There are also rules that JavaScript enforces. Names must start with
+						a letter, an underscore, or a $ sign. They cannot contain spaces or
+						special characters like & or #. They also cannot be reserved
+						keywords.
+					</p>
+
+					<div class="vi-grid">
+						<div class="vi-col valid">
+							<div class="vi-header">Valid names</div>
+							<div class="vi-item">bookTitle</div>
+							<div class="vi-item">pageCount</div>
+							<div class="vi-item">isAvailable</div>
+							<div class="vi-item">_total</div>
+							<div class="vi-item">
+								x
+								<span class="vi-note" style="color: var(--green)"
+									>valid but not descriptive</span
+								>
+							</div>
+						</div>
+						<div class="vi-col invalid">
+							<div class="vi-header">Invalid names</div>
+							<div class="vi-item">
+								1stBook <span class="vi-note">starts with a number</span>
+							</div>
+							<div class="vi-item">
+								book title <span class="vi-note">contains a space</span>
+							</div>
+							<div class="vi-item">
+								return <span class="vi-note">reserved keyword</span>
+							</div>
+							<div class="vi-item">
+								book-title <span class="vi-note">hyphens not allowed</span>
+							</div>
+							<div class="vi-item">
+								book&author <span class="vi-note">&amp; is not allowed</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="callout warn">
+						<div class="callout-label">Reserved keywords</div>
+						<p>
+							JavaScript reserves certain words for its own use. Words like
+							<code>let</code>, <code>const</code>, <code>return</code>,
+							<code>if</code>, <code>function</code>, and <code>for</code> all
+							have special meanings built into the language. So you cannot use
+							them as variable names. If you try, JavaScript will throw an error
+							because it reads the word as a command and not a name.
+						</p>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 12. KNOWLEDGE CHECK -->
+				<div class="section" id="s12">
+					<div class="section-label">
+						<div class="section-num question">?</div>
+						<span class="section-title-sm">Knowledge Check</span>
+					</div>
+					<h2>Check for Understanding</h2>
+
+					<div class="quiz-box">
+						<div class="quiz-intro">
+							<div class="quiz-intro-label">Module 1 -- 3 Questions</div>
+							<h3>Select one answer per question</h3>
+						</div>
+						<div class="quiz-questions">
+							<div class="quiz-q">
+								<div class="q-num">Question 1 of 3</div>
+								<div class="q-text">
+									Which of these is a valid JavaScript variable name?
+								</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="1" data-val="a">
+										<input type="radio" name="q1" /> <code>first name</code>
+									</li>
+									<li class="q-option" data-q="1" data-val="b">
+										<input type="radio" name="q1" /> <code>3rdItem</code>
+									</li>
+									<li class="q-option" data-q="1" data-val="c">
+										<input type="radio" name="q1" /> <code>totalPrice</code>
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb1"></div>
+							</div>
+
+							<div class="quiz-q">
+								<div class="q-num">Question 2 of 3</div>
+								<div class="q-text">
+									You declare <code>const speedOfLight = 299792458</code> and on
+									the next line write <code>speedOfLight = 300000000</code>.
+									What happens?
+								</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="2" data-val="a">
+										<input type="radio" name="q2" />
+										<code>speedOfLight</code> is updated to 300000000
+									</li>
+									<li class="q-option" data-q="2" data-val="b">
+										<input type="radio" name="q2" /> JavaScript throws an error
+										because <code>const</code> cannot be reassigned
+									</li>
+									<li class="q-option" data-q="2" data-val="c">
+										<input type="radio" name="q2" /> The second line is silently
+										ignored
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb2"></div>
+							</div>
+
+							<div class="quiz-q">
+								<div class="q-num">Question 3 of 3</div>
+								<div class="q-text">
+									What does <code>typeof 42</code> return?
+								</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="3" data-val="a">
+										<input type="radio" name="q3" /> <code>"integer"</code>
+									</li>
+									<li class="q-option" data-q="3" data-val="b">
+										<input type="radio" name="q3" /> <code>"number"</code>
+									</li>
+									<li class="q-option" data-q="3" data-val="c">
+										<input type="radio" name="q3" /> <code>"string"</code>
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb3"></div>
+							</div>
+
+							<div class="quiz-error" id="quizError">
+								Please answer all three questions before submitting.
+							</div>
+							<button class="quiz-submit" id="submitQuiz">
+								Submit Answers
+							</button>
+							<div class="quiz-result" id="quizResult">
+								<div class="result-score" id="resultScore"></div>
+								<div class="result-msg" id="resultMsg"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 13. CODING EXERCISE 2 -->
+				<div class="section" id="s13">
+					<div class="section-label">
+						<div class="section-num question">?</div>
+						<span class="section-title-sm">Coding Exercise 2</span>
+					</div>
+					<h2>Amara's First Variables</h2>
+
+					<div class="activity-box">
+						<div class="activity-header">
+							<span class="activity-tag">Coding Exercise</span>
+							<span class="activity-time">12 min</span>
+						</div>
+						<div class="activity-scenario">
+							<strong>Question:</strong> Declare the four variables below using
+							the correct keyword for each. Then print each value and its type
+							using the <code>console.log</code> lines already provided.
+						</div>
+
+						<table class="score-table">
+							<thead>
+								<tr>
+									<th>Variable</th>
+									<th>Value</th>
+									<th>Changes?</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>country</td>
+									<td>"Ghana"</td>
+									<td>No</td>
+								</tr>
+								<tr>
+									<td>population</td>
+									<td>33000000</td>
+									<td>Yes</td>
+								</tr>
+								<tr>
+									<td>isCoastal</td>
+									<td>true</td>
+									<td>No</td>
+								</tr>
+								<tr>
+									<td>yearFounded</td>
+									<td>1957</td>
+									<td>No</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-bottom: 10px;
+							"
+						>
+							Expected output:
+						</p>
+						<div class="code-block" style="margin-bottom: 16px">
+							<pre style="padding: 12px 18px; color: #abb2bf; font-size: 13px">
+Ghana string
+33000000 number
+true boolean
+1957 number</pre
+							>
+						</div>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-top: 20px;
+								margin-bottom: 8px;
+							"
+						>
+							Write your code below.
+						</p>
+						<div class="editor-wrap" id="editor2">
+							<div class="editor-header">
+								<span class="editor-label">JavaScript Editor</span>
+							</div>
+							<textarea
+								class="editor-textarea"
+								id="editor2-code"
+								spellcheck="false"
+							>
+// Declare your four variables here
+
+
+
+// Print each value and its type
+console.log(country, typeof country)
+console.log(population, typeof population)
+console.log(isCoastal, typeof isCoastal)
+console.log(yearFounded, typeof yearFounded)
+</textarea
+							>
+							<div class="editor-footer">
+								<button
+									class="editor-reset-btn"
+									onclick="resetEditor('editor2')"
+									title="Reset code"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg>
+									Reset
+								</button>
+								<div class="spacer"></div>
+								<button class="run-btn" onclick="runCode('editor2')">
+									Run
+								</button>
+								<button class="check-btn" onclick="checkAnswer('ex2')">
+									Check Answer
+								</button>
+							</div>
+							<div class="output-area" id="editor2-output">
+								<div class="output-label">Output</div>
+							</div>
+						</div>
+						<div class="check-result" id="checkResult2"></div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 14. SUMMARY -->
+				<div class="section" id="s14">
+					<div class="section-label">
+						<div class="section-num">14</div>
+						<span class="section-title-sm">Summary</span>
+					</div>
+					<h2>Module Summary</h2>
+					<div class="summary-box">
+						<h3>Key takeaways</h3>
+						<ul class="summary-list">
+							<li>
+								JavaScript is an interpreted language that runs in the browser
+								and beyond.
+							</li>
+							<li>
+								Every value has a type which is either primitive or an object.
+								Primitive types include string, number, boolean, undefined,
+								null, BigInt, and Symbol. Object types include objects, arrays,
+								and functions.
+							</li>
+							<li>
+								<code>console.log()</code> prints values so you can see what
+								your code is doing.
+							</li>
+							<li>
+								Comments let you leave notes in your code. Use
+								<code>//</code> for a single line and <code>/* */</code> for
+								multiple lines.
+							</li>
+							<li>
+								<code>typeof</code> returns the type of any value as a string.
+							</li>
+							<li>
+								Variables are named containers for values. Use
+								<code>let</code> for values that change and
+								<code>const</code> for values that should not. Avoid
+								<code>var</code>.
+							</li>
+							<li>
+								Variable names must start with a letter, underscore, or $. Use
+								camelCase. Do not use reserved keywords or spaces.
+							</li>
+						</ul>
+
+						<div class="ref-scroll-hint">Scroll right to see full table</div>
+						<div class="ref-table-wrap">
+							<table class="ref-table">
+								<thead>
+									<tr>
+										<th>Concept</th>
+										<th>Syntax</th>
+										<th>Example</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Print a value</td>
+										<td><code>console.log(value)</code></td>
+										<td><code>console.log(88)</code></td>
+									</tr>
+									<tr>
+										<td>Print multiple</td>
+										<td><code>console.log(a, b)</code></td>
+										<td><code>console.log("Moons:", 2)</code></td>
+									</tr>
+									<tr>
+										<td>Single-line comment</td>
+										<td><code>// text</code></td>
+										<td><code>// this is ignored</code></td>
+									</tr>
+									<tr>
+										<td>Multi-line comment</td>
+										<td><code>/* text */</code></td>
+										<td><code>/* spans lines */</code></td>
+									</tr>
+									<tr>
+										<td>Check type</td>
+										<td><code>typeof value</code></td>
+										<td><code>typeof "88"</code> returns "string"</td>
+									</tr>
+									<tr>
+										<td>Declare (let)</td>
+										<td><code>let name = value</code></td>
+										<td><code>let count = 0</code></td>
+									</tr>
+									<tr>
+										<td>Declare (const)</td>
+										<td><code>const name = value</code></td>
+										<td><code>const pi = 3.14</code></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="module-nav">
+						<a class="prev-module" href="../index.html">
+							<div class="prev-arrow-icon">
+								<svg
+									viewBox="0 0 24 24"
+									width="18"
+									height="18"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<line x1="19" y1="12" x2="5" y2="12"></line>
+									<polyline points="12 19 5 12 12 5"></polyline>
+								</svg>
+							</div>
+							<div class="prev-text">
+								<span class="prev-label">Back to</span>
+								<span class="prev-title">Course Home</span>
+							</div>
+						</a>
+						<a class="next-module" href="module2.html">
+							<div class="next-text">
+								<span class="next-label">Up next</span>
+								<span class="next-title">Module 2: Arithmetic Operations</span>
+							</div>
+							<div class="next-arrow-icon">
+								<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<line x1="5" y1="12" x2="19" y2="12"></line>
+									<polyline points="12 5 19 12 12 19"></polyline>
+								</svg>
+							</div>
+						</a>
+					</div>
+
+					<div class="designer-note">
+						<span>JavaScript Crash Course - Module 1 of 10</span>
+					</div>
+				</div>
+			</main>
+		</div>
+
+		<!-- SCRIPTS -->
+		<script>
+			window.staticBlocksHTML = {};
+			document.addEventListener("DOMContentLoaded", () => {
+				document.querySelectorAll("pre[id]").forEach((pre) => {
+					const id = pre.id.replace("-code", "");
+					window.staticBlocksHTML[id] = pre.innerHTML;
+				});
+			});
+		</script>
+		<script src="../assets/js/editor.js"></script>
+		<script>
+			window.staticBlocks = {
+				ex1: `console.log("Mount Everest")\nconsole.log(8849)\nconsole.log(false)`,
+				ex2: `console.log("Planet:", "Mars")\nconsole.log("Moons:", 2)\nconsole.log("Has rings:", false)`,
+				ex3: `// This entire line is a comment and will be ignored\nconsole.log("This will print")\n\nconsole.log("This will also print") // comment at end of a line\n\n// console.log("This will NOT print because the whole line is commented out")`,
+				ex4: `/*\n  This is a multi-line comment.\n  JavaScript ignores everything between the markers.\n  Useful for longer explanations.\n*/\nconsole.log("Only this line runs")`,
+				ex5: `console.log(typeof "Nairobi")  // string\nconsole.log(typeof 88)         // number\nconsole.log(typeof true)       // boolean\nconsole.log(typeof "88")       // string, not a number!\nconsole.log(typeof 88)         // number`,
+				ex6: `let ingredient\nconsole.log(ingredient) // undefined`,
+				ex7: `let ingredient\ningredient = "flour"\nconsole.log(ingredient) // flour`,
+				ex8: `let vehicleType = "bicycle"\nlet wheelCount  = 2\nlet isElectric  = false\n\nconsole.log(vehicleType)\nconsole.log(wheelCount)\nconsole.log(isElectric)`,
+				ex9: `let score = 45\nconsole.log(score)\n\nscore = 72\nconsole.log(score)\n\nscore = 88\nconsole.log(score)`,
+			};
+
+			window.editorDefaults = {
+				editor1: `// Print each value\nconsole.log()\nconsole.log()\nconsole.log()\n\n// Print the type of each value -- in the same order\nconsole.log(typeof )\nconsole.log(typeof )\nconsole.log(typeof )\n`,
+				editor2: `// Declare your four variables here\n\n\n\n// Print each value and its type\nconsole.log(country, typeof country)\nconsole.log(population, typeof population)\nconsole.log(isCoastal, typeof isCoastal)\nconsole.log(yearFounded, typeof yearFounded)\n`,
+			};
+
+			window.checkConfigs = {
+				ex1: {
+					editorId: "editor1",
+					resultId: "checkResult1",
+					expected: [
+						"Mount Everest",
+						"8849",
+						"false",
+						"string",
+						"number",
+						"boolean",
+					],
+					successMsg: "All six outputs match.",
+					failMsg:
+						"Check that you are printing the values in the right order and using typeof correctly for each one.",
+				},
+				ex2: {
+					editorId: "editor2",
+					resultId: "checkResult2",
+					expected: [
+						"Ghana string",
+						"33000000 number",
+						"true boolean",
+						"1957 number",
+					],
+					successMsg: "All four variables declared correctly.",
+					failMsg:
+						"Check that each variable name matches exactly, the values match the table, and you are using let for values that change and const for those that do not.",
+				},
+			};
+
+			window.quizConfig = {
+				questions: [
+					{
+						id: 1,
+						answer: "c",
+						feedback: {
+							correct:
+								"<strong>Correct.</strong> <code>totalPrice</code> starts with a letter and uses camelCase. The other options either contain a space or start with a number, both of which are not allowed.",
+							wrong:
+								"<strong>Not quite.</strong> <code>first name</code> contains a space and <code>3rdItem</code> starts with a number. Both break the rules. <code>totalPrice</code> is the only valid option.",
+						},
+					},
+					{
+						id: 2,
+						answer: "b",
+						feedback: {
+							correct:
+								"<strong>Correct.</strong> <code>const</code> prevents reassignment. Attempting to overwrite it causes a TypeError immediately.",
+							wrong:
+								"<strong>Not quite.</strong> <code>const</code> does not allow reassignment. JavaScript throws an error if you try. The second line neither updates the value silently nor gets ignored quietly.",
+						},
+					},
+					{
+						id: 3,
+						answer: "b",
+						feedback: {
+							correct:
+								'<strong>Correct.</strong> <code>42</code> is a number, so <code>typeof 42</code> returns the string <code>"number"</code>. JavaScript does not have a separate integer type.',
+							wrong:
+								'<strong>Not quite.</strong> JavaScript has no <code>"integer"</code> type. All numeric values belong to <code>"number"</code>. And since 42 has no quotes, it is definitely not a string.',
+						},
+					},
+				],
+				messages: {
+					perfect: "Solid. You are ready for Module 2.",
+					good: "Good. Review the missed question before moving on.",
+					retry: "Revisit sections 4 through 11, then try again.",
+				},
+			};
+		</script>
+		<script src="../assets/js/quiz.js"></script>
+		<script src="../assets/js/flashcards.js"></script>
+		<script src="../assets/js/ui.js"></script>
+	</body>
+</html>

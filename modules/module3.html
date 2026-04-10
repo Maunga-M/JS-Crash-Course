@@ -1,0 +1,1566 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Module 3: Strings</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="../assets/css/main.css" />
+	</head>
+	<body>
+		<nav class="top-nav">
+			<a class="top-nav-home" href="../index.html" title="Home">
+				<span class="material-icons">home</span>
+			</a>
+		</nav>
+
+		<header class="lesson-header">
+			<div class="header-inner">
+				<div class="lesson-meta">
+					<span class="badge">Module 3 of 10</span>
+				</div>
+				<h1>Strings</h1>
+			</div>
+			<div class="progress-bar-wrap">
+				<div class="progress-bar-fill" style="width: 30%"></div>
+			</div>
+		</header>
+
+		<div class="page-wrap">
+			<aside class="sidebar" id="sidebar">
+				<div class="sidebar-label">In this module</div>
+				<ul class="sidebar-nav">
+					<li><a href="#s1">Learning Objectives</a></li>
+					<li><a href="#s2">Quote Rules</a></li>
+					<li><a href="#s3">String Operations</a></li>
+					<li><a href="#s4">Concatenation</a></li>
+					<li><a href="#s5">Template Strings</a></li>
+					<li><a href="#s6">Knowledge Check</a></li>
+					<li><a href="#s7">Indexing and Length</a></li>
+					<li><a href="#s8">String Methods</a></li>
+					<li><a href="#s9">Coding Exercise 1</a></li>
+					<li><a href="#s11">Summary</a></li>
+				</ul>
+			</aside>
+
+			<button
+				class="sidebar-toggle"
+				id="sidebarToggle"
+				aria-label="Toggle menu"
+			>
+				<svg
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<line x1="3" y1="6" x2="21" y2="6" />
+					<line x1="3" y1="12" x2="21" y2="12" />
+					<line x1="3" y1="18" x2="21" y2="18" />
+				</svg>
+			</button>
+
+			<main class="lesson-body">
+				<!-- 1. LEARNING OBJECTIVE -->
+				<div class="section" id="s1">
+					<div class="section-label">
+						<div class="section-num">1</div>
+						<span class="section-title-sm">Learning Objectives</span>
+					</div>
+					<div class="objective-box">
+						<p class="obj-intro">
+							By the end of this module you will be able to:
+						</p>
+						<ul class="obj-list">
+							<li>Create strings using single and double quotes</li>
+							<li>Concatenate strings and use template literals</li>
+							<li>
+								Access characters by index and determine a string's length
+							</li>
+							<li>Use common string methods to inspect and transform text</li>
+						</ul>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 2. QUOTE RULES -->
+				<div class="section" id="s2">
+					<div class="section-label">
+						<div class="section-num">2</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Quote Rules</h2>
+
+					<p>
+						In Module 1 you learned that a string is text wrapped in quotes.
+						This also includes:
+					</p>
+					<ul class="prose-list">
+						<li>empty quotes - ""</li>
+						<li>quotes with a single space - " "</li>
+						<li>quotes with 10 characters - 'I am happy'</li>
+						<li>quotees with special characters - '@!!!!'</li>
+					</ul>
+					<p>
+						All of these are strings. JavaScript allows you to create your
+						string using single quotes and double quotes. Both work exactly the
+						same way. The only rule is that you must open and close with the
+						same type.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex1')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex1')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex1-code"
+						><span class="fn">console</span>.log(<span class="str">"Lake Victoria"</span>)   <span class="cmt">// double quotes</span>
+<span class="fn">console</span>.log(<span class="str">'Lake Victoria'</span>)   <span class="cmt">// single quotes -- same result</span></pre>
+						<div class="code-output" id="ex1-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						The practical reason to choose one over the other is when your
+						string itself contains a quote character. If your text includes a
+						single quote, wrap the string in double quotes so JavaScript does
+						not get confused about where the string ends. The same logic applies
+						in reverse.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex2')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex2')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex2-code"
+						><span class="cmt">// String contains a single quote -- use double quotes to wrap it</span>
+<span class="fn">console</span>.log(<span class="str">"It's a sunny day"</span>)
+
+<span class="cmt">// String contains a double quote -- use single quotes to wrap it</span>
+<span class="fn">console</span>.log(<span class="str">'She said "hello"'</span>)</pre>
+						<div class="code-output" id="ex2-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						But what if you genuinely need both types of quote inside the same
+						string? For example:
+						<em>She said, "I'll be there soon."</em> Neither single nor double
+						quotes can wrap that cleanly. The solution is the
+						<strong>escape character</strong> <code>\</code>. Placing a
+						backslash before a quote inside the string tells JavaScript to treat
+						it as a literal character and not as the end of the string.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex2b')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex2b')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex2b-code"
+						><span class="cmt">// Escape the inner quotes with a backslash</span>
+<span class="fn">console</span>.log(<span class="str">"She said, \"I\'ll be there soon.\""</span>)
+
+<span class="fn">console</span>.log(<span class="str">'It\'s the \"best\" day'</span>)</pre>
+						<div class="code-output" id="ex2b-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<div class="callout warn">
+						<div class="callout-label">Mismatched quotes</div>
+						<p>
+							Opening with one type and closing with another causes a syntax
+							error. JavaScript reads the first quote as the start of the string
+							and looks for the matching closing quote. If it finds a different
+							one first, it gets confused and throws an error before your code
+							even runs.
+						</p>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 3. STRING OPERATIONS -->
+				<div class="section" id="s3">
+					<div class="section-label">
+						<div class="section-num">3</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>String Operations</h2>
+
+					<p>
+						Strings are not numbers, so most arithmetic operations does not make
+						sense on them. There is one operation that works on strings:
+						addition. When you use <code>+</code> between two strings, it joins
+						them end to end. This is called <strong>concatenation</strong>.
+					</p>
+
+					<p>
+						Every other arithmetic operator, does not work on strings. When
+						JavaScript cannot produce a meaningful number from an operation, it
+						returns a special value called <strong>NaN</strong>, which stands
+						for Not a Number. It is JavaScript's way of saying the this
+						calculation does not make sense.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex3')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex3')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex3-code"
+						><span class="fn">console</span>.log(<span class="str">"hello"</span> <span class="op">-</span> <span class="str">"world"</span>)  <span class="cmt">// NaN</span>
+<span class="fn">console</span>.log(<span class="str">"hello"</span> <span class="op">*</span> <span class="num">2</span>)       <span class="cmt">// NaN</span>
+<span class="fn">console</span>.log(<span class="str">"hello"</span> <span class="op">/</span> <span class="num">2</span>)       <span class="cmt">// NaN</span></pre>
+						<div class="code-output" id="ex3-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<div class="callout warn">
+						<div class="callout-label">NaN is still a number type</div>
+						<p>
+							Even though NaN means Not a Number,
+							<code>typeof NaN</code> returns "number". This is a well-known
+							quirk of JavaScript. Think of it as a number-shaped hole where a
+							valid result should be. You cannot do further arithmetic with it
+							either. Any operation involving NaN returns NaN.
+						</p>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 4. CONCATENATION -->
+				<div class="section" id="s4">
+					<div class="section-label">
+						<div class="section-num">4</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Concatenation</h2>
+
+					<p>
+						As defined in the previous section, concatenation means joining
+						strings together using the
+						<code>+</code> operator. The strings are glued end to end exactly as
+						written, so if you need a space between words you have to include it
+						yourself eiher.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex4')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex4')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex4-code"
+						><span class="cmt">// Without a space -- the words run together</span>
+<span class="fn">console</span>.log(<span class="str">"Indian"</span> <span class="op">+</span> <span class="str">"Ocean"</span>)
+
+<span class="cmt">// With a space included</span>
+<span class="fn">console</span>.log(<span class="str">"Indian"</span> <span class="op">+</span> <span class="str">" "</span> <span class="op">+</span> <span class="str">"Ocean"</span>)
+
+<span class="cmt">// Concatenating more than two strings</span>
+<span class="fn">console</span>.log(<span class="str">"The "</span> <span class="op">+</span><span class="str">"Pacific"</span> <span class="op">+</span> <span class="str">" "</span> <span class="op">+</span> <span class="str">"Ocean"</span> <span class="op">+</span> <span class="str">" is the largest"</span>)</pre>
+						<div class="code-output" id="ex4-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						Note how we can at the end at the start or end of the string, or as
+						its own string
+					</p>
+					<p>
+						Concatenation also works with variables. The variable is replaced by
+						its value before the strings are joined.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex5')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex5')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex5-code"
+						><span class="kw">let</span> ocean  <span class="op">=</span> <span class="str">"Atlantic"</span>
+<span class="kw">let</span> suffix <span class="op">=</span> <span class="str">"Ocean"</span>
+
+<span class="fn">console</span>.log(ocean <span class="op">+</span> <span class="str">" "</span> <span class="op">+</span> suffix)
+<span class="fn">console</span>.log(<span class="str">"The "</span> <span class="op">+</span> ocean <span class="op">+</span> <span class="str">" "</span> <span class="op">+</span> suffix <span class="op">+</span> <span class="str">" borders five continents"</span>)</pre>
+						<div class="code-output" id="ex5-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						Concatenation gets messy quickly when you have several variables. A
+						better approach is to use template strings.
+					</p>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 5. TEMPLATE STRINGS -->
+				<div class="section" id="s5">
+					<div class="section-label">
+						<div class="section-num">5</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Template Strings</h2>
+
+					<p>
+						A template string is the third way to write a string in JavaScript,
+						using <strong>backtick</strong> characters instead of quotes. The
+						backtick key sits in the top-left of most keyboards, below the
+						Escape key. Template strings have two advantages over regular
+						strings. They can span multiple lines, and they let you embed
+						variables and expressions directly inside the text using
+						<code>${}</code>.
+					</p>
+
+					<h3>Basic template string</h3>
+					<p>
+						A template string can be assigned to a variable just like any other
+						string. The multi-line version preserves the line breaks exactly as
+						you write them, which regular strings cannot do. We can even put
+						quotes inside the template string to display them.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex6')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex6')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex6-code"
+						><span class="kw">let</span> greeting <span class="op">=</span> <span class="str">`"Hey there!"`</span>
+<span class="fn">console</span>.log(greeting)
+
+<span class="kw">let</span> poem <span class="op">=</span> <span class="str">`Roses are red
+Violets are blue
+JavaScript is fun`</span>
+<span class="fn">console</span>.log(poem)</pre>
+						<div class="code-output" id="ex6-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						To see why this matters, here is what happens when you try to do the
+						same thing with a regular string. Entering the next line inside a
+						regular string causes a syntax error because JavaScript expects the
+						closing quote on the same line.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex6b')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex6b')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex6b-code"
+						><span class="cmt">// This throws a SyntaxError -- regular strings cannot span lines</span>
+<span class="kw">let</span> broken <span class="op">=</span> <span class="str">"Roses are red
+Violets are blue"</span></pre>
+						<div class="code-output" id="ex6b-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>Embedding variables and expressions</h3>
+					<p>
+						If you place a variable or any expression inside <code>${}</code>,
+						it is evaluated and inserted into the string. This is far cleaner
+						than concatenation when you have more than one value to include.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex7')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex7')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex7-code"
+						><span class="kw">let</span> mountain <span class="op">=</span> <span class="str">"Kilimanjaro"</span>
+<span class="kw">let</span> height   <span class="op">=</span> <span class="num">5895</span>
+
+<span class="cmt">// With concatenation</span>
+<span class="fn">console</span>.log(<span class="str">"Mount "</span> <span class="op">+</span> mountain <span class="op">+</span> <span class="str">" is "</span> <span class="op">+</span> height <span class="op">+</span> <span class="str">" metres tall"</span>)
+
+<span class="cmt">// With a template string. Same result but much easier to read</span>
+<span class="fn">console</span>.log(<span class="str">`Mount ${mountain} is ${height} metres tall`</span>)
+
+<span class="cmt">// You can even put expressions inside ${ }</span>
+<span class="fn">console</span>.log(<span class="str">`Height in feet: ${height <span class="op">*</span> <span class="num">3.281</span>}`</span>)</pre>
+						<div class="code-output" id="ex7-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 6. KNOWLEDGE CHECK -->
+				<div class="section" id="s6">
+					<div class="section-label">
+						<div class="section-num question">?</div>
+						<span class="section-title-sm">Knowledge Check</span>
+					</div>
+					<h2>Check for Understanding</h2>
+
+					<div class="quiz-box">
+						<div class="quiz-intro">
+							<div class="quiz-intro-label">Module 3</div>
+							<h3>Select one answer per question</h3>
+						</div>
+						<div class="quiz-questions">
+							<div class="quiz-q">
+								<div class="q-num">Question 1 of 3</div>
+								<div class="q-text">What does "10" - 5 evaluate to?</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="1" data-val="a">
+										<input type="radio" name="q1" /> 5
+									</li>
+									<li class="q-option" data-q="1" data-val="b">
+										<input type="radio" name="q1" /> "105"
+									</li>
+									<li class="q-option" data-q="1" data-val="c">
+										<input type="radio" name="q1" /> NaN
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb1"></div>
+							</div>
+
+							<div class="quiz-q">
+								<div class="q-num">Question 2 of 3</div>
+								<div class="q-text">
+									You want to print:
+									<strong>The temperature is 36 degrees</strong>. You have a
+									variable <code>let temp = 36</code>. Which line produces this
+									output correctly?
+								</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="2" data-val="a">
+										<input type="radio" name="q2" />
+										<code
+											>console.log("The temperature is " temp " degrees")</code
+										>
+									</li>
+									<li class="q-option" data-q="2" data-val="b">
+										<input type="radio" name="q2" />
+										<code
+											>console.log(`The temperature is ${temp} degrees`)</code
+										>
+									</li>
+									<li class="q-option" data-q="2" data-val="c">
+										<input type="radio" name="q2" />
+										<code
+											>console.log("The temperature is {temp} degrees")</code
+										>
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb2"></div>
+							</div>
+
+							<div class="quiz-q">
+								<div class="q-num">Question 3 of 3</div>
+								<div class="q-text">
+									What is the output of
+									<code>console.log("sea" + " " + "level")</code>?
+								</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="3" data-val="a">
+										<input type="radio" name="q3" /> sealevel
+									</li>
+									<li class="q-option" data-q="3" data-val="b">
+										<input type="radio" name="q3" /> sea level
+									</li>
+									<li class="q-option" data-q="3" data-val="c">
+										<input type="radio" name="q3" /> NaN
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb3"></div>
+							</div>
+
+							<div class="quiz-error" id="quizError">
+								Please answer all three questions before submitting.
+							</div>
+							<button class="quiz-submit" id="submitQuiz">
+								Submit Answers
+							</button>
+							<div class="quiz-result" id="quizResult">
+								<div class="result-score" id="resultScore"></div>
+								<div class="result-msg" id="resultMsg"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 7. INDEXING AND LENGTH -->
+				<div class="section" id="s7">
+					<div class="section-label">
+						<div class="section-num">7</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Indexing and Length</h2>
+
+					<p>
+						A string is a sequence of characters, and each character sits at a
+						numbered position called an <strong>index</strong>. This string
+						indexing starts at 0. The first character is at index 0, the second
+						at index 1, and so on. You access a specific character by writing
+						the string (or variable) followed by the index in square brackets.
+						Trying to access an index that is out of range will result in
+						<strong>undefined</strong>.
+					</p>
+
+					<img
+						class="module-img"
+						src="../assets/images/module3/index.svg"
+						alt="String indexing diagram"
+					/>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex8')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex8')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex8-code"
+						><span class="kw">let</span> river <span class="op">=</span> <span class="str">"Nile"</span>
+
+<span class="fn">console</span>.log(river[<span class="num">0</span>])  <span class="cmt">// N</span>
+<span class="fn">console</span>.log(river[<span class="num">1</span>])  <span class="cmt">// i</span>
+<span class="fn">console</span>.log(river[<span class="num">3</span>])  <span class="cmt">// e</span>
+<span class="fn">console</span>.log(river[<span class="num">5</span>])  <span class="cmt">// undefined - out of range!</span>
+</pre>
+						<div class="code-output" id="ex8-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>The Length Property</h3>
+					<p>
+						The <code>length</code> property tells you how many characters are
+						in a string, including spaces and punctuation. We can accessing this
+						property by putting <code>.length</code> after the string or
+						variable name. Because indexing starts at 0, the last character
+						always sits at index <code>length - 1</code>.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex9')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex9')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex9-code"
+						><span class="kw">let</span> river <span class="op">=</span> <span class="str">"Amazon"</span>
+
+<span class="fn">console</span>.log(river.length)              <span class="cmt">// 6</span>
+<span class="fn">console</span>.log(river[river.length <span class="op">-</span> <span class="num">1</span>])  <span class="cmt">// n (last character)</span></pre>
+						<div class="code-output" id="ex9-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 8. STRING METHODS -->
+				<div class="section" id="s8">
+					<div class="section-label">
+						<div class="section-num">8</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>String Methods</h2>
+
+					<p>
+						Strings come with built-in methods that let you inspect and
+						transform text. Methods are fucntions that belong to objectis. In
+						JavaScript, even though a string is a primitive type, the language
+						temporarily wraps it in a special String object behind the scenes
+						whenever you call a method on it. This mechanism is beyond the scope
+						of this scope but just know that it happens automatically. You call
+						a method by writing the variable name, a dot, and the method name
+						with parentheses. JavaScript has many string methods. Here are some
+						of them.
+					</p>
+
+					<h3>toUpperCase() and toLowerCase()</h3>
+					<p>
+						Convert all characters to upper or lower case. The original string
+						is not changed. A new string is returned.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex10')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex10')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex10-code"
+						><span class="kw">let</span> country <span class="op">=</span> <span class="str">"South Africa"</span>
+
+<span class="fn">console</span>.log(country.toUpperCase())  <span class="cmt">// SOUTH AFRICA</span>
+<span class="fn">console</span>.log(country.toLowerCase())  <span class="cmt">// south africa</span>
+<span class="fn">console</span>.log(country)  <span class="cmt">// South Africa - not changed!</span>
+
+</pre>
+						<div class="code-output" id="ex10-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>trim()</h3>
+					<p>
+						Removes whitespace from both ends of a string. Useful when handling
+						user input that may have accidental spaces before or after the text.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex11')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex11')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex11-code"
+						><span class="kw">let</span> input <span class="op">=</span> <span class="str">"  Tanzania  "</span>
+
+<span class="fn">console</span>.log(input.length) <span class="cmt">// 12 - spaces counted</span>
+<span class="fn">console</span>.log(input.trim()) <span class="cmt">// "Tanzania"</span>
+<span class="fn">console</span>.log(input.trim().length) <span class="cmt">// 8</span></pre>
+						<div class="code-output" id="ex11-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>includes()</h3>
+					<p>
+						Returns <strong>true</strong> if the string contains the specified
+						text, and <strong>false</strong> if it does not. It is
+						case-sensitive.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex12')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex12')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex12-code"
+						><span class="kw">let</span> sentence <span class="op">=</span> <span class="str">"The Congo river runs through the rainforest"</span>
+
+<span class="fn">console</span>.log(sentence.includes(<span class="str">"Congo"</span>)) <span class="cmt">// true</span>
+<span class="fn">console</span>.log(sentence.includes(<span class="str">"Nile"</span>)) <span class="cmt">// false</span>
+<span class="fn">console</span>.log(sentence.includes(<span class="str">"congo"</span>)) <span class="cmt">// false -- case-sensitive</span></pre>
+						<div class="code-output" id="ex12-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>indexOf()</h3>
+					<p>
+						Returns the index of the first occurrence of the specified text. If
+						not found, it returns <strong>-1</strong>. We can also find the last
+						occurence using the method <code>lastIndexOf()</code>
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex13')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex13')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex13-code"
+						><span class="kw">let</span> continent <span class="op">=</span> <span class="str">"South America and North America"</span>
+
+<span class="fn">console</span>.log(continent.indexOf(<span class="str">"America"</span>)) <span class="cmt">// 6</span>
+<span class="fn">console</span>.log(continent.lastIndexOf(<span class="str">"America"</span>)) <span class="cmt">// 24 - the last occurence</span>
+<span class="fn">console</span>.log(continent.indexOf(<span class="str">"Africa"</span>)) <span class="cmt">// -1</span></pre>
+						<div class="code-output" id="ex13-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>slice()</h3>
+					<p>
+						Extracts a portion of a string and returns it as a new string. It
+						takes two arguments: the index to start from, and the index to stop
+						before. The character at the stop index is not included. If there is
+						no stop index, then the extract goes all the way to the end of the
+						string
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex14')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex14')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex14-code"
+						><span class="kw">let</span> place <span class="op">=</span> <span class="str">"Sahara Desert"</span>
+
+<span class="fn">console</span>.log(place.slice(<span class="num">0</span>, <span class="num">6</span>)) <span class="cmt">// Sahara (space character at index 6 excluded)</span>
+<span class="fn">console</span>.log(place.slice(<span class="num">7</span>)) <span class="cmt">// Desert (no end index means go to the end)</span>
+<span class="fn">console</span>.log(place.slice(<span class="op">-</span><span class="num">4</span>)) <span class="cmt">// sert (negative index. No stop index)</span>
+<span class="fn">console</span>.log(place.slice(<span class="num">-9</span>, <span class="num">-1</span>)) <span class="cmt">// Sahara (Negative index. 't' character at index -1 excluded)</span>
+
+
+
+</pre>
+						<div class="code-output" id="ex14-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+					<div class="callout warn">
+						<div class="callout-label">Negative indexes</div>
+
+						<p>
+							We can use negative indices when slicing. When counting from the
+							start, the first character is at index 0. But when counting from
+							the end, the last character is at index -1, the second to last is
+							-2, and so on. The reason negative counting starts at -1 and not 0
+							is that -0 and 0 are the same number. There can only be one zero,
+							so the end starts at -1 instead.
+						</p>
+
+						<p>
+							The negative index only changes where slice
+							<strong>starts</strong>. It does not change the direction. Slice
+							always reads left to right from that starting point to the end of
+							the string. So <code>slice(-3)</code> on the string "Planet"
+							starts at the "n" which is three characters from the end, then
+							reads forward giving you "net", not "Plan".
+						</p>
+					</div>
+
+					<p>
+						⚠️In JavaScript, negative indexes only work when slicing. Using a
+						negative index without slicing results in <strong>undefined</strong>
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('exN')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('exN')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="exN-code"
+						><span class="kw">let</span> planet <span class="op">=</span> <span class="str">"Jupiter"</span>
+
+<span class="cmt">// Positive index - works</span>
+<span class="fn">console</span>.log(planet[<span class="num">0</span>])   <span class="cmt">// J</span>
+
+<span class="cmt">// Negative index - does not work on strings directly</span>
+<span class="fn">console</span>.log(planet[<span class="op">-</span><span class="num">1</span>])  <span class="cmt">// undefined</span></pre>
+						<div class="code-output" id="exN-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>endsWith()</h3>
+					<p>
+						Returns <string>true</string> if the string ends with the specified
+						text. Like <code>includes()</code>, it is case-sensitive.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex15')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex15')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex15-code"
+						><span class="kw">let</span> filename <span class="op">=</span> <span class="str">"report.pdf"</span>
+
+<span class="fn">console</span>.log(filename.endsWith(<span class="str">".pdf"</span>))   <span class="cmt">// true</span>
+<span class="fn">console</span>.log(filename.endsWith(<span class="str">".csv"</span>))   <span class="cmt">// false</span></pre>
+						<div class="code-output" id="ex15-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<div class="callout warn">
+						<div class="callout-label">These are not all the methods</div>
+						<p>
+							JavaScript has many more string methods.
+							<code>startsWith()</code>, <code>replace()</code>,
+							<code>split()</code>, <code>repeat()</code>, and others are all
+							available.
+						</p>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 9. CODING EXERCISE 1 -->
+				<div class="section" id="s9">
+					<div class="section-label">
+						<div class="section-num question">?</div>
+						<span class="section-title-sm">Coding Exercise 1</span>
+					</div>
+					<h2>Working with Strings</h2>
+
+					<div class="activity-box">
+						<div class="activity-header">
+							<span class="activity-tag">Coding Exercise</span>
+						</div>
+						<div class="activity-scenario">
+							<strong>Question:</strong> Using the variables provided, complete
+							each task using what you have learned about strings in this
+							module.
+						</div>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-bottom: 10px;
+							"
+						>
+							Expected output:
+						</p>
+						<div class="code-block" style="margin-bottom: 16px">
+							<pre style="padding: 12px 18px; color: #abb2bf; font-size: 13px">
+Serengeti National Park
+23
+S
+Park
+serengeti national park
+true
+false</pre
+							>
+						</div>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-top: 20px;
+								margin-bottom: 8px;
+							"
+						>
+							Write your code below.
+						</p>
+						<div class="editor-wrap" id="editor1">
+							<div class="editor-header">
+								<span class="editor-label">JavaScript Editor</span>
+							</div>
+							<textarea
+								class="editor-textarea"
+								id="editor1-code"
+								spellcheck="false"
+							>
+let park = "Serengeti National Park"
+
+// 1. Print the full name using a template string
+
+
+// 2. Print the length of the string
+
+
+// 3. Print the first character
+
+
+// 4. Print the last 4 characters using slice
+
+
+// 5. Print the name in all lowercase
+
+
+// 6. Check if it includes the word "National"
+
+
+// 7. Check if it ends with "Reserve"
+
+</textarea
+							>
+							<div class="editor-footer">
+								<button
+									class="editor-reset-btn"
+									onclick="resetEditor('editor1')"
+									title="Reset code"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg>
+									Reset
+								</button>
+								<div class="spacer"></div>
+								<button class="run-btn" onclick="runCode('editor1')">
+									Run
+								</button>
+								<button class="check-btn" onclick="checkAnswer('ex1')">
+									Check Answer
+								</button>
+							</div>
+							<div class="output-area" id="editor1-output">
+								<div class="output-label">Output</div>
+							</div>
+						</div>
+						<div class="check-result" id="checkResult1"></div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 11. SUMMARY -->
+				<div class="section" id="s11">
+					<div class="section-label">
+						<div class="section-num">11</div>
+						<span class="section-title-sm">Summary</span>
+					</div>
+					<h2>Module Summary</h2>
+					<div class="summary-box">
+						<h3>Key takeaways</h3>
+						<ul class="summary-list">
+							<li>
+								Strings can use single or double quotes. Choose based on whether
+								your text contains either quote character. Open and close with
+								the same type.
+							</li>
+							<li>
+								Strings support concatenation with <code>+</code>. Other
+								operations between strings return <strong>NaN</strong>.
+							</li>
+							<li>
+								<strong>NaN</strong> means Not a Number. Its type is still
+								<strong>"number"</strong>.
+							</li>
+							<li>
+								Template strings use backticks. They support multi-line text and
+								embed values with <code>${}</code>.
+							</li>
+							<li>
+								String characters are indexed from 0. Access a character with
+								<code>str[i]</code>, where i is the index. The length is given
+								by <code>str.length</code>.
+							</li>
+							<li>
+								We can useful methods like <code>slice()</code> to transform
+								strings.
+							</li>
+						</ul>
+
+						<div class="ref-scroll-hint">Scroll right to see full table</div>
+						<div class="ref-table-wrap">
+							<table class="ref-table">
+								<thead>
+									<tr>
+										<th>Concept</th>
+										<th>Syntax</th>
+										<th>Example</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Concatenation</td>
+										<td><code>str1 + str2</code></td>
+										<td><code>"hello" + " world"</code></td>
+									</tr>
+									<tr>
+										<td>Template string</td>
+										<td><code>`text ${expr}`</code></td>
+										<td><code>`Height: ${height}m`</code></td>
+									</tr>
+									<tr>
+										<td>String length</td>
+										<td><code>str.length</code></td>
+										<td><code>"Nile".length</code> returns 4</td>
+									</tr>
+									<tr>
+										<td>Character access</td>
+										<td><code>str[i]</code></td>
+										<td><code>"Nile"[0]</code> returns "N"</td>
+									</tr>
+									<tr>
+										<td>Uppercase</td>
+										<td><code>str.toUpperCase()</code></td>
+										<td><code>"ghana".toUpperCase()</code></td>
+									</tr>
+									<tr>
+										<td>Lowercase</td>
+										<td><code>str.toLowerCase()</code></td>
+										<td><code>"GHANA".toLowerCase()</code></td>
+									</tr>
+									<tr>
+										<td>Trim whitespace</td>
+										<td><code>str.trim()</code></td>
+										<td><code>" hi ".trim()</code></td>
+									</tr>
+									<tr>
+										<td>Check contains</td>
+										<td><code>str.includes(text)</code></td>
+										<td>Returns true or false</td>
+									</tr>
+									<tr>
+										<td>Find position</td>
+										<td><code>str.indexOf(text)</code></td>
+										<td>Returns index or -1</td>
+									</tr>
+									<tr>
+										<td>Extract portion</td>
+										<td><code>str.slice(start, end)</code></td>
+										<td><code>"Desert".slice(0, 3)</code></td>
+									</tr>
+									<tr>
+										<td>Check ending</td>
+										<td><code>str.endsWith(text)</code></td>
+										<td><code>"file.pdf".endsWith(".pdf")</code></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="module-nav">
+						<a class="prev-module" href="module2.html">
+							<div class="prev-arrow-icon">
+								<svg
+									viewBox="0 0 24 24"
+									width="18"
+									height="18"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<line x1="19" y1="12" x2="5" y2="12"></line>
+									<polyline points="12 19 5 12 12 5"></polyline>
+								</svg>
+							</div>
+							<div class="prev-text">
+								<span class="prev-label">Back to</span>
+								<span class="prev-title">Module 2: Arithmetic Operations</span>
+							</div>
+						</a>
+						<a class="next-module" href="module4.html">
+							<div class="next-text">
+								<span class="next-label">Up next</span>
+								<span class="next-title">Module 4: Type Conversion</span>
+							</div>
+							<div class="next-arrow-icon">
+								<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<line x1="5" y1="12" x2="19" y2="12"></line>
+									<polyline points="12 5 19 12 12 19"></polyline>
+								</svg>
+							</div>
+						</a>
+					</div>
+
+					<div class="designer-note">
+						<span>JavaScript Crash Course - Module 3 of 10</span>
+					</div>
+				</div>
+			</main>
+		</div>
+
+		<!-- SCRIPTS -->
+		<script>
+			window.staticBlocksHTML = {};
+			document.addEventListener("DOMContentLoaded", () => {
+				document.querySelectorAll("pre[id]").forEach((pre) => {
+					const id = pre.id.replace("-code", "");
+					window.staticBlocksHTML[id] = pre.innerHTML;
+				});
+			});
+		</script>
+		<script src="../assets/js/editor.js"></script>
+		<script>
+			window.staticBlocks = {
+				ex1: `console.log("Lake Victoria")\nconsole.log('Lake Victoria')`,
+				ex2b: `// Escape the inner double quotes\nconsole.log("She said, \\"I\'ll be there soon.\\"")\n\n// Or escape inside single-quoted string\nconsole.log('It\'s the \\"best\\" day')`,
+				ex2: `// String contains a single quote -- use double quotes to wrap it\nconsole.log("It's a sunny day")\n\n// String contains a double quote -- use single quotes to wrap it\nconsole.log('She said "hello"')`,
+				ex3: `console.log("hello" - "world")\nconsole.log("hello" * 2)\nconsole.log("hello" / 2)`,
+				ex4: `// Without a space\nconsole.log("Indian" + "Ocean")\n\n// With a space\nconsole.log("Indian" + " " + "Ocean")\n\n// More than two strings\nconsole.log("Pacific" + " " + "Ocean" + " is the largest")`,
+				ex5: `let ocean  = "Atlantic"\nlet suffix = "Ocean"\nconsole.log(ocean + " " + suffix)\nconsole.log("The " + ocean + " " + suffix + " borders five continents")`,
+				ex6: `let greeting = \`The sky is blue\`\nconsole.log(greeting)\n\nlet poem = \`Roses are red\nViolets are blue\nJavaScript is fun\`\nconsole.log(poem)`,
+				ex7: `let mountain = "Kilimanjaro"\nlet height   = 5895\nconsole.log("Mount " + mountain + " is " + height + " metres tall")\nconsole.log(\`Mount \${mountain} is \${height} metres tall\`)\nconsole.log(\`Height in feet: \${height * 3.281}\`)`,
+				ex8: `let river = "Nile"\nconsole.log(river[0])\nconsole.log(river[1])\nconsole.log(river[3])`,
+				ex9: `let river = "Amazon"\nconsole.log(river.length)\nconsole.log(river[river.length - 1])`,
+				ex10: `let country = "South Africa"\nconsole.log(country.toUpperCase())\nconsole.log(country.toLowerCase())`,
+				ex11: `let input = "  Tanzania  "\nconsole.log(input.length)\nconsole.log(input.trim())\nconsole.log(input.trim().length)`,
+				ex12: `let sentence = "The Congo river runs through the rainforest"\nconsole.log(sentence.includes("Congo"))\nconsole.log(sentence.includes("Nile"))\nconsole.log(sentence.includes("congo"))`,
+				ex13: `let continent = "South America"\nconsole.log(continent.indexOf("America"))\nconsole.log(continent.indexOf("Africa"))`,
+				ex14: `let place = "Sahara Desert"\nconsole.log(place.slice(0, 6))\nconsole.log(place.slice(7))\nconsole.log(place.slice(-6))`,
+				ex15: `let filename = "report.pdf"\nconsole.log(filename.endsWith(".pdf"))\nconsole.log(filename.endsWith(".csv"))`,
+			};
+
+			window.editorDefaults = {
+				editor1: `let park = "Serengeti National Park"\n\n// 1. Print the full name using a template string\n\n\n// 2. Print the length of the string\n\n\n// 3. Print the first character\n\n\n// 4. Print the last 4 characters using slice\n\n\n// 5. Print the name in all lowercase\n\n\n// 6. Check if it includes the word "National"\n\n\n// 7. Check if it ends with "Reserve"\n`,
+			};
+
+			window.checkConfigs = {
+				ex1: {
+					editorId: "editor1",
+					resultId: "checkResult1",
+					expected: [
+						"Serengeti National Park",
+						"23",
+						"S",
+						"Park",
+						"serengeti national park",
+						"true",
+						"false",
+					],
+					successMsg: "All seven outputs are correct.",
+					failMsg:
+						"Check each task in order. Make sure slice gives you the last 4 characters and that includes and endsWith return the right boolean.",
+				},
+			};
+
+			window.quizConfig = {
+				questions: [
+					{
+						id: 1,
+						answer: "c",
+						feedback: {
+							correct:
+								'<strong>Correct.</strong> Subtraction does not work on strings. JavaScript cannot subtract "5" from "10" in a meaningful way and returns NaN.',
+							wrong:
+								"<strong>Not quite.</strong> Only + works on strings (as concatenation). The - operator does not know how to handle strings, so it returns NaN, which stands for Not a Number.",
+						},
+					},
+					{
+						id: 2,
+						answer: "b",
+						feedback: {
+							correct:
+								"<strong>Correct.</strong> Template strings use backticks and embed values with <code>${}</code>. This produces the cleanest result.",
+							wrong:
+								"<strong>Not quite.</strong> Option A is missing the + operators needed for concatenation. Option C uses regular quotes, so <code>{temp}</code> is treated as literal text and the variable is not inserted. Only a template string with backticks and <code>${}</code> works here.",
+						},
+					},
+					{
+						id: 3,
+						answer: "b",
+						feedback: {
+							correct:
+								'<strong>Correct.</strong> The three strings are joined in order. The middle one is a single space, so the result is "sea level" with a space between the words.',
+							wrong:
+								'<strong>Not quite.</strong> The + operator joins strings exactly as written. Since a space string is included between "sea" and "level", the result has a space between the words.',
+						},
+					},
+				],
+				messages: {
+					perfect: "Solid. You are ready for Module 4.",
+					good: "Good. Review the missed question before moving on.",
+					retry: "Revisit sections 2 through 5, then try again.",
+				},
+			};
+		</script>
+		<script src="../assets/js/quiz.js"></script>
+		<script src="../assets/js/flashcards.js"></script>
+		<script src="../assets/js/ui.js"></script>
+	</body>
+</html>

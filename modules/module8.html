@@ -1,0 +1,1361 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Module 8: Loops</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="../assets/css/main.css" />
+	</head>
+	<body>
+		<nav class="top-nav">
+			<a class="top-nav-home" href="../index.html" title="Home">
+				<span class="material-icons">home</span>
+			</a>
+		</nav>
+
+		<header class="lesson-header">
+			<div class="header-inner">
+				<div class="lesson-meta">
+					<span class="badge">Module 8 of 10</span>
+				</div>
+				<h1>Loops</h1>
+			</div>
+			<div class="progress-bar-wrap">
+				<div class="progress-bar-fill" style="width: 80%"></div>
+			</div>
+		</header>
+
+		<div class="page-wrap">
+			<aside class="sidebar" id="sidebar">
+				<div class="sidebar-label">In this module</div>
+				<ul class="sidebar-nav">
+					<li><a href="#s1">Learning Objective</a></li>
+					<li><a href="#s2">What are Loops?</a></li>
+					<li><a href="#s3">for Loops</a></li>
+					<li><a href="#s4">while Loops</a></li>
+					<li><a href="#s5">Coding Exercise 1</a></li>
+					<li><a href="#s6">for...of</a></li>
+					<li><a href="#s7">Knowledge Check</a></li>
+					<li><a href="#s8">Arrays and Loops Together</a></li>
+					<li><a href="#s9">Coding Exercise 2</a></li>
+					<li><a href="#s10">Summary</a></li>
+				</ul>
+			</aside>
+
+			<button
+				class="sidebar-toggle"
+				id="sidebarToggle"
+				aria-label="Toggle menu"
+			>
+				<svg
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<line x1="3" y1="6" x2="21" y2="6" />
+					<line x1="3" y1="12" x2="21" y2="12" />
+					<line x1="3" y1="18" x2="21" y2="18" />
+				</svg>
+			</button>
+
+			<main class="lesson-body">
+				<!-- 1. LEARNING OBJECTIVE -->
+				<div class="section" id="s1">
+					<div class="section-label">
+						<div class="section-num">1</div>
+						<span class="section-title-sm">Learning Objectives</span>
+					</div>
+					<div class="objective-box">
+						<p class="obj-intro">
+							By the end of this module you will be able to:
+						</p>
+						<ul class="obj-list">
+							<li>Explain what a loop is and why it matters</li>
+							<li>
+								Write a <code>for</code> loop and choose it when the number of
+								iterations is known
+							</li>
+							<li>
+								Write a <code>while</code> loop and choose it when the number of
+								iterations depends on a condition
+							</li>
+							<li>
+								Use <code>for...of</code> to iterate over arrays without
+								managing an index
+							</li>
+							<li>
+								Combine arrays and loops to compute sums, filter values, and
+								find a maximum
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 2. WHAT ARE LOOPS -->
+				<div class="section" id="s2">
+					<div class="section-label">
+						<div class="section-num">2</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>What are Loops?</h2>
+
+					<p>
+						In the previous module you worked with arrays that hold multiple
+						values. But having an array of fifty scores does not help much if
+						you have to write fifty separate lines of code to process each one.
+						A loop solves this by letting you write the logic once and repeat it
+						automatically for as many iterations as you need.
+					</p>
+
+					<p>
+						A loop runs a block of code repeatedly. On each iteration it can
+						work with a different value, update a counter, check a condition, or
+						accumulate a result. When the loop finishes, all that work is done.
+						Without loops, any task that involves a collection of values would
+						require you to write the same code over and over for each element
+						element, with no way to handle collections of unknown size.
+					</p>
+
+					<p>
+						JavaScript has several ways to write loops. In this module we will
+						look at three of them. Each one is suited to a different situation,
+						and knowing which to reach for is as important as knowing how to
+						write them.
+					</p>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 3. FOR LOOPS -->
+				<div class="section" id="s3">
+					<div class="section-label">
+						<div class="section-num">3</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>for Loops</h2>
+
+					<p>
+						Use a <code>for</code> loop when you know exactly how many times you
+						need to iterate before the loop starts. It has three parts in its
+						parentheses, separated by semicolons.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex0a')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex0a')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex0a-code"
+						><span class="cmt">// for (initialization; condition; update)</span>
+<span class="kw">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="num">0</span>; i <span class="op">&lt;</span> <span class="num">5</span>; i<span class="op">++</span>) {
+  <span class="fn">console</span>.log(i)
+}</pre>
+						<div class="code-output" id="ex0a-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						<strong>Initialization</strong> - <code>let i = 0</code> creates the
+						counter and sets its starting value.
+						<br />
+						<strong>Condition</strong> - <code>i &lt; 5</code> is checked before
+						every iteration. When it becomes false the loop stops.
+						<br />
+						<strong>Update</strong> - <code>i++</code> runs after each
+						iteration, advancing the counter. In this example the loop runs five
+						times prints 0, 1, 2, 3, 4 and stops before i reaches 5.
+					</p>
+
+					<p>
+						Where the <code>for</code> loop becomes especially useful is when
+						working with arrays. Instead of a fixed number like 5, the condition
+						uses <code>arr.length</code>, so the loop runs exactly as many times
+						as there are elements, no matter how long the array is. The index
+						variable <code>i</code> then gives you access to each element in
+						turn.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex1')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex1')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex1-code"
+						><span class="kw">let</span> speeds <span class="op">=</span> [<span class="num">120</span>, <span class="num">85</span>, <span class="num">140</span>, <span class="num">95</span>, <span class="num">110</span>]
+
+<span class="cmt">// i starts at 0, runs while i is less than the array length, i increments by 1 each time</span>
+<span class="kw">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="num">0</span>; i <span class="op">&lt;</span> speeds.length; i<span class="op">++</span>) {
+  <span class="fn">console</span>.log(<span class="str">`Speed ${i + 1}: ${speeds[i]} km/h`</span>)
+}</pre>
+						<div class="code-output" id="ex1-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						The index variable gives you precise control and you can print
+						position numbers, access elements from two arrays at the same
+						position, or loop backwards. The same structure also works on
+						strings. Because strings are indexed the same way as arrays, you can
+						iterate through each character one at a time.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex2')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex2')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex2-code"
+						><span class="kw">let</span> word <span class="op">=</span> <span class="str">"LOOP"</span>
+
+<span class="kw">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="num">0</span>; i <span class="op">&lt;</span> word.length; i<span class="op">++</span>) {
+  <span class="fn">console</span>.log(<span class="str">`Index ${i}: ${word[i]}`</span>)
+}</pre>
+						<div class="code-output" id="ex2-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 4. WHILE LOOPS -->
+				<div class="section" id="s4">
+					<div class="section-label">
+						<div class="section-num">4</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>while Loops</h2>
+
+					<p>
+						Use a <code>while</code> loop when you do not know in advance how
+						many iterations you will need. The loop keeps running as long as its
+						condition is true and stops the moment it becomes false. The number
+						of iterations is determined by what happens during the loop, not
+						before it starts.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex0b')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex0b')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex0b-code"
+						><span class="cmt">// initialization (before the loop)</span>
+<span class="kw">let</span> i <span class="op">=</span> <span class="num">0</span>
+
+<span class="kw">while</span> (i <span class="op">&lt;</span> <span class="num">5</span>) {   <span class="cmt">// condition</span>
+  <span class="fn">console</span>.log(i)
+  i<span class="op">++</span>              <span class="cmt">// update -> without this the loop runs forever</span>
+}</pre>
+						<div class="code-output" id="ex0b-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						Unlike the <code>for</code> loop, the while loop separates
+						initialization, condition, and update into different places. The
+						counter is declared before the loop, the condition sits in the
+						parentheses, and the update lives inside the block. Forgetting the
+						update is one of the most common causes of infinite loops.
+					</p>
+
+					<p>
+						In the example below, the loop keeps halving a value until it drops
+						below 1.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex3')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex3')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex3-code"
+						><span class="cmt">// Keep halving a value until it drops below 1</span>
+<span class="kw">let</span> value <span class="op">=</span> <span class="num">100</span>
+<span class="kw">let</span> steps <span class="op">=</span> <span class="num">0</span>
+
+<span class="kw">while</span> (value <span class="op">&gt;=</span> <span class="num">1</span>) {
+  value <span class="op">=</span> value <span class="op">/</span> <span class="num">2</span>
+  steps<span class="op">++</span>
+}
+
+<span class="fn">console</span>.log(<span class="str">`Took ${steps} steps to drop below 1`</span>)
+<span class="fn">console</span>.log(<span class="str">`Final value: ${value.toFixed(4)}`</span>)</pre>
+						<div class="code-output" id="ex3-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						Another common use is processing a list of items until it is
+						exhausted. Look at the example below. The condition here is not a
+						counter but the state of the array itself. The loop keeps going as
+						long as there are items left, and stops the moment the array is
+						empty.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex4')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex4')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex4-code"
+						><span class="cmt">// Process items from an array until it is empty</span>
+<span class="kw">let</span> tasks <span class="op">=</span> [<span class="str">"send report"</span>, <span class="str">"update records"</span>, <span class="str">"notify team"</span>]
+
+<span class="kw">while</span> (tasks.length <span class="op">&gt;</span> <span class="num">0</span>) {
+  <span class="kw">let</span> current <span class="op">=</span> tasks.pop()
+  <span class="fn">console</span>.log(<span class="str">`Done: ${current}`</span>)
+}
+
+<span class="fn">console</span>.log(<span class="str">"All tasks complete"</span>)</pre>
+						<div class="code-output" id="ex4-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<div class="callout warn">
+						<div class="callout-label">Avoid infinite loops</div>
+						<p>
+							A while loop whose condition never becomes false will run forever
+							and freeze the browser. Always make sure something inside the loop
+							changes the condition such as a counter incrementing, a value
+							shrinking, an array being emptied, so it will eventually stop.
+						</p>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 5. CODING EXERCISE 1 -->
+				<div class="section" id="s5">
+					<div class="section-label">
+						<div class="section-num question">?</div>
+						<span class="section-title-sm">Coding Exercise 1</span>
+					</div>
+					<h2>Writing Loops</h2>
+
+					<div class="activity-box">
+						<div class="activity-header">
+							<span class="activity-tag">Coding Exercise</span>
+						</div>
+						<div class="activity-scenario">
+							<strong>Question:</strong> Complete the two tasks below. Each one
+							requires a different loop type. Choose the right one for each
+							situation.
+							<ol style="margin-top: 12px; padding-left: 18px; line-height: 2">
+								<li>
+									Using a <strong>for</strong> loop, print each planet and its
+									position number, starting from 1. Format:
+									<code>1: Mercury</code>
+								</li>
+								<li>
+									Using a <strong>while</strong> loop, keep doubling a starting
+									value of 3 until it exceeds 100. Print each value including
+									the final one that exceeds 100.
+								</li>
+							</ol>
+						</div>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-bottom: 10px;
+							"
+						>
+							Expected output:
+						</p>
+						<div class="code-block" style="margin-bottom: 16px">
+							<pre style="padding: 12px 18px; color: #abb2bf; font-size: 13px">
+1: Mercury
+2: Venus
+3: Earth
+4: Mars
+-----------
+3
+6
+12
+24
+48
+96
+192</pre
+							>
+						</div>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-top: 20px;
+								margin-bottom: 8px;
+							"
+						>
+							Write your code below.
+						</p>
+						<div class="editor-wrap" id="editor1">
+							<div class="editor-header">
+								<span class="editor-label">JavaScript Editor</span>
+							</div>
+							<textarea
+								class="editor-textarea"
+								id="editor1-code"
+								spellcheck="false"
+							>
+let planets = ["Mercury", "Venus", "Earth", "Mars"]
+
+// Task 1: for loop -> print each planet with its position number
+
+
+// Task 2: while loop -> keep doubling 3 until it exceeds 100
+console.log("-----------")
+let n = 3
+
+</textarea
+							>
+							<div class="editor-footer">
+								<button
+									class="editor-reset-btn"
+									onclick="resetEditor('editor1')"
+									title="Reset code"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg>
+									Reset
+								</button>
+								<div class="spacer"></div>
+								<button class="run-btn" onclick="runCode('editor1')">
+									Run
+								</button>
+								<button class="check-btn" onclick="checkAnswer('ex1')">
+									Check Answer
+								</button>
+							</div>
+							<div class="output-area" id="editor1-output">
+								<div class="output-label">Output</div>
+							</div>
+						</div>
+						<div class="check-result" id="checkResult1"></div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 6. FOR...OF -->
+				<div class="section" id="s6">
+					<div class="section-label">
+						<div class="section-num">6</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>for...of</h2>
+
+					<p>
+						<code>for...of</code> is a cleaner way to iterate over an array when
+						you do not need the index. Instead of managing a counter variable,
+						you declare a name for each element and JavaScript hands them to you
+						one at a time.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex5')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex5')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex5-code"
+						><span class="kw">let</span> currencies <span class="op">=</span> [<span class="str">"USD"</span>, <span class="str">"EUR"</span>, <span class="str">"GBP"</span>, <span class="str">"JPY"</span>]
+
+<span class="kw">for</span> (<span class="kw">let</span> currency <span class="kw">of</span> currencies) {
+  <span class="fn">console</span>.log(<span class="str">`Currency: ${currency}`</span>)
+}</pre>
+						<div class="code-output" id="ex5-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						Compare that with the equivalent <code>for</code> loop. Both produce
+						the same output, but <code>for...of</code> removes the need to
+						manage the index entirely.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex6')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex6')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex6-code"
+						><span class="kw">let</span> currencies <span class="op">=</span> [<span class="str">"USD"</span>, <span class="str">"EUR"</span>, <span class="str">"GBP"</span>, <span class="str">"JPY"</span>]
+
+<span class="cmt">// Equivalent for loop. More setup for the same result</span>
+<span class="kw">for</span> (<span class="kw">let</span> i <span class="op">=</span> <span class="num">0</span>; i <span class="op">&lt;</span> currencies.length; i<span class="op">++</span>) {
+  <span class="fn">console</span>.log(<span class="str">`Currency: ${currencies[i]}`</span>)
+}</pre>
+						<div class="code-output" id="ex6-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<div class="callout warn">
+						<div class="callout-label">When to use which</div>
+						<p>
+							Use <code>for...of</code> when you just need each element in turn.
+							Use a classic <code>for</code> loop when you need the index.
+						</p>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 7. KNOWLEDGE CHECK -->
+				<div class="section" id="s7">
+					<div class="section-label">
+						<div class="section-num question">?</div>
+						<span class="section-title-sm">Knowledge Check</span>
+					</div>
+					<h2>Check for Understanding</h2>
+
+					<div class="quiz-box">
+						<div class="quiz-intro">
+							<div class="quiz-intro-label">Module 8</div>
+							<h3>Select one answer per question</h3>
+						</div>
+						<div class="quiz-questions">
+							<div class="quiz-q">
+								<div class="q-num">Question 1 of 3</div>
+								<div class="q-text">
+									What does this print?
+									<pre
+										style="
+											margin-top: 8px;
+											padding: 10px 14px;
+											background: #1e2a3a;
+											border-radius: 6px;
+											font-size: 13px;
+											color: #abb2bf;
+											font-family: &quot;JetBrains Mono&quot;, monospace;
+											font-variant-ligatures: none;
+										"
+									>
+for (let i = 0; i < 3; i++) {
+  console.log(i)
+}</pre
+									>
+								</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="1" data-val="a">
+										<input type="radio" name="q1" /> 1, 2, 3
+									</li>
+									<li class="q-option" data-q="1" data-val="b">
+										<input type="radio" name="q1" /> 0, 1, 2
+									</li>
+									<li class="q-option" data-q="1" data-val="c">
+										<input type="radio" name="q1" /> 0, 1, 2, 3
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb1"></div>
+							</div>
+
+							<div class="quiz-q">
+								<div class="q-num">Question 2 of 3</div>
+								<div class="q-text">
+									You are reading sensor data that arrives one value at a time
+									and stops when a sentinel value of -1 is received. Which loop
+									is most appropriate?
+								</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="2" data-val="a">
+										<input type="radio" name="q2" /> A for loop, because it is
+										the most common loop
+									</li>
+									<li class="q-option" data-q="2" data-val="b">
+										<input type="radio" name="q2" /> A while loop, because the
+										number of readings is unknown
+									</li>
+									<li class="q-option" data-q="2" data-val="c">
+										<input type="radio" name="q2" /> A for...of loop, because it
+										handles arrays
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb2"></div>
+							</div>
+
+							<div class="quiz-q">
+								<div class="q-num">Question 3 of 3</div>
+								<div class="q-text">
+									What does this print?
+									<pre
+										style="
+											margin-top: 8px;
+											padding: 10px 14px;
+											background: #1e2a3a;
+											border-radius: 6px;
+											font-size: 13px;
+											color: #abb2bf;
+											font-family: &quot;JetBrains Mono&quot;, monospace;
+											font-variant-ligatures: none;
+										"
+									>
+let colours = ["red", "green", "blue"]
+
+for (let colour of colours) {
+  console.log(colour)
+}</pre
+									>
+								</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="3" data-val="a">
+										<input type="radio" name="q3" /> red green blue (on one
+										line)
+									</li>
+									<li class="q-option" data-q="3" data-val="b">
+										<input type="radio" name="q3" /> red, then green, then blue
+										(each on its own line)
+									</li>
+									<li class="q-option" data-q="3" data-val="c">
+										<input type="radio" name="q3" /> blue (only the last
+										element)
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb3"></div>
+							</div>
+
+							<div class="quiz-error" id="quizError">
+								Please answer all three questions before submitting.
+							</div>
+							<button class="quiz-submit" id="submitQuiz">
+								Submit Answers
+							</button>
+							<div class="quiz-result" id="quizResult">
+								<div class="result-score" id="resultScore"></div>
+								<div class="result-msg" id="resultMsg"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 8. ARRAYS AND LOOPS TOGETHER -->
+				<div class="section" id="s8">
+					<div class="section-label">
+						<div class="section-num">8</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Arrays and Loops Together</h2>
+
+					<p>
+						The real power of arrays comes when you combine them with loops.
+						Instead of writing logic for each element individually, you write it
+						once and let the loop apply it across the entire array. Three
+						patterns come up constantly in real programs.
+					</p>
+
+					<h3>Finding the sum</h3>
+					<p>
+						Declare a variable to hold the running total before the loop starts,
+						then add each element to it on every iteration. By the end of the
+						loop the variable holds the accumulated result.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex7')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex7')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex7-code"
+						><span class="kw">let</span> rainfall <span class="op">=</span> [<span class="num">12</span>, <span class="num">8</span>, <span class="num">22</span>, <span class="num">5</span>, <span class="num">18</span>, <span class="num">30</span>, <span class="num">14</span>]  <span class="cmt">// mm per day</span>
+<span class="kw">let</span> total <span class="op">=</span> <span class="num">0</span>
+
+<span class="kw">for</span> (<span class="kw">let</span> amount <span class="kw">of</span> rainfall) {
+  total <span class="op">+=</span> amount
+}
+
+<span class="fn">console</span>.log(<span class="str">`Total rainfall: ${total}mm`</span>)
+<span class="fn">console</span>.log(<span class="str">`Daily average: ${(total / rainfall.length).toFixed(1)}mm`</span>)</pre>
+						<div class="code-output" id="ex7-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>Filtering into a new array</h3>
+					<p>
+						Start with an empty array. Loop over the original and use an
+						<code>if</code> statement to decide whether each element belongs in
+						the result. If it does, push it in. The new array builds up as the
+						loop runs.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex8')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex8')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex8-code"
+						><span class="kw">let</span> temperatures <span class="op">=</span> [<span class="num">18</span>, <span class="num">34</span>, <span class="num">27</span>, <span class="num">41</span>, <span class="num">22</span>, <span class="num">38</span>, <span class="num">15</span>]
+<span class="kw">let</span> heatwaveDays  <span class="op">=</span> []
+
+<span class="kw">for</span> (<span class="kw">let</span> temp <span class="kw">of</span> temperatures) {
+  <span class="kw">if</span> (temp <span class="op">&gt;=</span> <span class="num">35</span>) {
+    heatwaveDays.push(temp)
+  }
+}
+
+<span class="fn">console</span>.log(<span class="str">`Heatwave days: ${heatwaveDays}`</span>)
+<span class="fn">console</span>.log(<span class="str">`Count: ${heatwaveDays.length}`</span>)</pre>
+						<div class="code-output" id="ex8-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>Finding the maximum</h3>
+					<p>
+						Recall from Module 1 that variables declared with
+						<code>let</code> can be reassigned. You can update the value a
+						<code>let</code> variable holds as many times as you need throughout
+						your program. This pattern is at the heart of solving a question
+						like finding the maximum in an array.
+					</p>
+
+					<p>
+						Start by assuming the first element is the largest. Then loop
+						through the rest. Each time you find a value larger than the current
+						maximum, update the variable. The key here is that you are
+						<strong>reassigning</strong> the same variable. It does not store
+						every value, only the current best candidate. By the end of the
+						loop, it holds the largest value in the array.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex9')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex9')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex9-code"
+						><span class="kw">let</span> elevations <span class="op">=</span> [<span class="num">412</span>, <span class="num">889</span>, <span class="num">234</span>, <span class="num">1205</span>, <span class="num">567</span>, <span class="num">988</span>]
+<span class="kw">let</span> highest    <span class="op">=</span> elevations[<span class="num">0</span>]  <span class="cmt">// start with the first value as the candidate</span>
+
+<span class="kw">for</span> (<span class="kw">let</span> elevation <span class="kw">of</span> elevations) {
+  <span class="kw">if</span> (elevation <span class="op">&gt;</span> highest) {
+    highest <span class="op">=</span> elevation  <span class="cmt">// replace with the new highest</span>
+  }
+}
+
+<span class="fn">console</span>.log(<span class="str">`Highest elevation: ${highest}m`</span>)</pre>
+						<div class="code-output" id="ex9-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 9. CODING EXERCISE 2 -->
+				<div class="section" id="s9">
+					<div class="section-label">
+						<div class="section-num question">?</div>
+						<span class="section-title-sm">Coding Exercise 2</span>
+					</div>
+					<h2>Amara's Class Report</h2>
+
+					<div class="activity-box">
+						<div class="activity-header">
+							<span class="activity-tag">Coding Exercise</span>
+						</div>
+						<div class="activity-scenario">
+							<strong>Question:</strong> Amara has seven student scores. Loop
+							over the array and for each score print the grade letter and
+							label. Then calculate the class average, count how many students
+							passed (grade D and above, score 40 or higher), and collect all
+							distinction scores into a separate array. Use toFixed(2) for the
+							average.
+							<ol style="margin-top: 12px; padding-left: 18px; line-height: 2">
+								<li>80 and above → A → Distinction</li>
+								<li>60 to 79 → B → Merit</li>
+								<li>50 to 59 → C → Credit</li>
+								<li>40 to 49 → D → Pass</li>
+								<li>Below 40 → F → Fail</li>
+							</ol>
+						</div>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-bottom: 10px;
+							"
+						>
+							Expected output:
+						</p>
+						<div class="code-block" style="margin-bottom: 16px">
+							<pre style="padding: 12px 18px; color: #abb2bf; font-size: 13px">
+72 -- B -- Merit
+85 -- A -- Distinction
+43 -- D -- Pass
+91 -- A -- Distinction
+58 -- C -- Credit
+34 -- F -- Fail
+67 -- B -- Merit
+Class average: 64.29
+Students passed: 6
+Distinctions: 85,91</pre
+							>
+						</div>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-top: 20px;
+								margin-bottom: 8px;
+							"
+						>
+							Write your code below.
+						</p>
+						<div class="editor-wrap" id="editor2">
+							<div class="editor-header">
+								<span class="editor-label">JavaScript Editor</span>
+							</div>
+							<textarea
+								class="editor-textarea"
+								id="editor2-code"
+								spellcheck="false"
+							>
+let scores = [72, 85, 43, 91, 58, 34, 67]
+
+// Loop and print grade for each score
+
+
+// Calculate and print the class average
+
+
+// Count and print how many passed (40 and above)
+
+
+// Collect and print all distinction scores (80 and above)
+
+</textarea
+							>
+							<div class="editor-footer">
+								<button
+									class="editor-reset-btn"
+									onclick="resetEditor('editor2')"
+									title="Reset code"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg>
+									Reset
+								</button>
+								<div class="spacer"></div>
+								<button class="run-btn" onclick="runCode('editor2')">
+									Run
+								</button>
+								<button class="check-btn" onclick="checkAnswer('ex2')">
+									Check Answer
+								</button>
+							</div>
+							<div class="output-area" id="editor2-output">
+								<div class="output-label">Output</div>
+							</div>
+						</div>
+						<div class="check-result" id="checkResult2"></div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 10. SUMMARY -->
+				<div class="section" id="s10">
+					<div class="section-label">
+						<div class="section-num">10</div>
+						<span class="section-title-sm">Summary</span>
+					</div>
+					<h2>Module Summary</h2>
+					<div class="summary-box">
+						<h3>Key takeaways</h3>
+						<ul class="summary-list">
+							<li>
+								A loop runs a block of code repeatedly, letting you write logic
+								once and apply it across a collection of values.
+							</li>
+							<li>
+								Use a <code>for</code> loop when the number of iterations is
+								known before the loop starts. It manages a counter variable
+								through three parts: start, condition, update.
+							</li>
+							<li>
+								Use a <code>while</code> loop when the number of iterations
+								depends on a condition that changes during the loop. Always make
+								sure the condition will eventually become false.
+							</li>
+							<li>
+								Use <code>for...of</code> when you need each element and do not
+								need the index. It is cleaner and less error-prone for
+								straightforward array iteration.
+							</li>
+						</ul>
+
+						<div class="ref-scroll-hint">Scroll right to see full table</div>
+						<div class="ref-table-wrap">
+							<table class="ref-table">
+								<thead>
+									<tr>
+										<th>Loop</th>
+										<th>When to use</th>
+										<th>Syntax</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><code>for</code></td>
+										<td>Known iteration count</td>
+										<td><code>for (let i = 0; i &lt; n; i++)</code></td>
+									</tr>
+									<tr>
+										<td><code>while</code></td>
+										<td>Unknown count, condition-driven</td>
+										<td><code>while (condition) {}</code></td>
+									</tr>
+									<tr>
+										<td><code>for...of</code></td>
+										<td>Each element, no index needed</td>
+										<td><code>for (let item of arr)</code></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="module-nav">
+						<a class="prev-module" href="module7.html">
+							<div class="prev-arrow-icon">
+								<svg
+									viewBox="0 0 24 24"
+									width="18"
+									height="18"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<line x1="19" y1="12" x2="5" y2="12"></line>
+									<polyline points="12 19 5 12 12 5"></polyline>
+								</svg>
+							</div>
+							<div class="prev-text">
+								<span class="prev-label">Back to</span>
+								<span class="prev-title">Module 7: Arrays</span>
+							</div>
+						</a>
+						<a class="next-module" href="module9.html">
+							<div class="next-text">
+								<span class="next-label">Up Next</span>
+								<span class="next-title">Module 9: Functions</span>
+							</div>
+							<div class="next-arrow-icon">
+								<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<line x1="5" y1="12" x2="19" y2="12"></line>
+									<polyline points="12 5 19 12 12 19"></polyline>
+								</svg>
+							</div>
+						</a>
+					</div>
+
+					<div class="designer-note">
+						<span>JavaScript Crash Course - Module 8 of 10</span>
+					</div>
+				</div>
+			</main>
+		</div>
+
+		<!-- SCRIPTS -->
+		<script>
+			window.staticBlocksHTML = {};
+			document.addEventListener("DOMContentLoaded", () => {
+				document.querySelectorAll("pre[id]").forEach((pre) => {
+					const id = pre.id.replace("-code", "");
+					window.staticBlocksHTML[id] = pre.innerHTML;
+				});
+			});
+		</script>
+		<script src="../assets/js/editor.js"></script>
+		<script>
+			window.staticBlocks = {
+				ex0a: `for (let i = 0; i < 5; i++) {\n  console.log(i)\n}`,
+				ex0b: `let i = 0\n\nwhile (i < 5) {\n  console.log(i)\n  i++\n}`,
+				ex1: `let speeds = [120, 85, 140, 95, 110]\nfor (let i = 0; i < speeds.length; i++) {\n  console.log(\`Speed \${i + 1}: \${speeds[i]} km/h\`)\n}`,
+				ex2: `let word = "LOOP"\nfor (let i = 0; i < word.length; i++) {\n  console.log(\`Index \${i}: \${word[i]}\`)\n}`,
+				ex3: `let value = 100\nlet steps = 0\nwhile (value >= 1) {\n  value = value / 2\n  steps++\n}\nconsole.log(\`Took \${steps} steps to drop below 1\`)\nconsole.log(\`Final value: \${value.toFixed(4)}\`)`,
+				ex4: `let tasks = ["send report", "update records", "notify team"]\nwhile (tasks.length > 0) {\n  let current = tasks.pop()\n  console.log(\`Done: \${current}\`)\n}\nconsole.log("All tasks complete")`,
+				ex5: `let currencies = ["USD", "EUR", "GBP", "JPY"]\nfor (let currency of currencies) {\n  console.log(\`Currency: \${currency}\`)\n}`,
+				ex6: `let currencies = ["USD", "EUR", "GBP", "JPY"]\nfor (let i = 0; i < currencies.length; i++) {\n  console.log(\`Currency: \${currencies[i]}\`)\n}`,
+				ex7: `let rainfall = [12, 8, 22, 5, 18, 30, 14]\nlet total = 0\nfor (let amount of rainfall) {\n  total += amount\n}\nconsole.log(\`Total rainfall: \${total}mm\`)\nconsole.log(\`Daily average: \${(total / rainfall.length).toFixed(1)}mm\`)`,
+				ex8: `let temperatures = [18, 34, 27, 41, 22, 38, 15]\nlet heatwaveDays  = []\nfor (let temp of temperatures) {\n  if (temp >= 35) {\n    heatwaveDays.push(temp)\n  }\n}\nconsole.log(\`Heatwave days: \${heatwaveDays}\`)\nconsole.log(\`Count: \${heatwaveDays.length}\`)`,
+				ex9: `let elevations = [412, 889, 234, 1205, 567, 988]\nlet highest    = elevations[0]\nfor (let elevation of elevations) {\n  if (elevation > highest) {\n    highest = elevation\n  }\n}\nconsole.log(\`Highest elevation: \${highest}m\`)`,
+			};
+
+			window.editorDefaults = {
+				editor1: `let planets = ["Mercury", "Venus", "Earth", "Mars"]\n\n// Task 1: for loop -- print each planet with its position number\n\n\n// Task 2: while loop -- keep doubling 3 until it exceeds 100\nconsole.log("--- Task 2 ---")\nlet n = 3\n`,
+				editor2: `let scores = [72, 85, 43, 91, 58, 34, 67]\n\n// Loop and print grade for each score\n\n\n// Calculate and print the class average\n\n\n// Count and print how many passed (40 and above)\n\n\n// Collect and print all distinction scores (80 and above)\n`,
+			};
+
+			window.checkConfigs = {
+				ex1: {
+					editorId: "editor1",
+					resultId: "checkResult1",
+					expected: [
+						"1: Mercury",
+						"2: Venus",
+						"3: Earth",
+						"4: Mars",
+						"--- Task 2 ---",
+						"3",
+						"6",
+						"12",
+						"24",
+						"48",
+						"96",
+						"192",
+					],
+					successMsg: "Both loops correct.",
+					failMsg:
+						"Check that the for loop uses i + 1 for the position number, and that the while loop prints before doubling so it includes 3 and stops after exceeding 100.",
+				},
+				ex2: {
+					editorId: "editor2",
+					resultId: "checkResult2",
+					expected: [
+						"72 -- B -- Merit",
+						"85 -- A -- Distinction",
+						"43 -- D -- Pass",
+						"91 -- A -- Distinction",
+						"58 -- C -- Credit",
+						"34 -- F -- Fail",
+						"67 -- B -- Merit",
+						"Class average: 64.29",
+						"Students passed: 6",
+						"Distinctions: 85,91",
+					],
+					successMsg: "All outputs correct. Amara's class report is complete.",
+					failMsg:
+						"Check your grading thresholds are in the right order from highest to lowest, and that your average uses toFixed(2).",
+				},
+			};
+
+			window.quizConfig = {
+				questions: [
+					{
+						id: 1,
+						answer: "b",
+						feedback: {
+							correct:
+								"<strong>Correct.</strong> The loop starts at 0 and runs while i is less than 3, so it prints 0, 1, and 2. It stops before reaching 3.",
+							wrong:
+								"<strong>Not quite.</strong> The loop starts at 0, not 1. The condition is i < 3, so it stops before i reaches 3. It prints 0, 1, and 2.",
+						},
+					},
+					{
+						id: 2,
+						answer: "b",
+						feedback: {
+							correct:
+								"<strong>Correct.</strong> When the number of iterations is unknown and depends on what happens at runtime, a while loop is the right choice. It keeps running until the condition becomes false.",
+							wrong:
+								"<strong>Not quite.</strong> A for loop is for a known iteration count. A for...of is for iterating over an existing array. When you do not know how many values will arrive and the loop ends on a condition, a while loop is appropriate.",
+						},
+					},
+					{
+						id: 3,
+						answer: "b",
+						feedback: {
+							correct:
+								"<strong>Correct.</strong> for...of iterates through the array and hands each element to the loop body one at a time. Each console.log call prints one element on its own line.",
+							wrong:
+								"<strong>Not quite.</strong> for...of goes through each element one at a time, running the loop body once per element. console.log prints each on a new line, so you get three separate lines.",
+						},
+					},
+				],
+				messages: {
+					perfect: "Excellent. You have completed all eight modules.",
+					good: "Good. Review the missed question before moving on.",
+					retry: "Revisit sections 3 through 8, then try again.",
+				},
+			};
+		</script>
+		<script src="../assets/js/quiz.js"></script>
+		<script src="../assets/js/flashcards.js"></script>
+		<script src="../assets/js/ui.js"></script>
+	</body>
+</html>

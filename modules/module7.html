@@ -1,0 +1,1711 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Module 7: Arrays</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="../assets/css/main.css" />
+	</head>
+	<body>
+		<nav class="top-nav">
+			<a class="top-nav-home" href="../index.html" title="Home">
+				<span class="material-icons">home</span>
+			</a>
+		</nav>
+
+		<header class="lesson-header">
+			<div class="header-inner">
+				<div class="lesson-meta">
+					<span class="badge">Module 7 of 10</span>
+				</div>
+				<h1>Arrays</h1>
+			</div>
+			<div class="progress-bar-wrap">
+				<div class="progress-bar-fill" style="width: 70%"></div>
+			</div>
+		</header>
+
+		<div class="page-wrap">
+			<aside class="sidebar" id="sidebar">
+				<div class="sidebar-label">In this module</div>
+				<ul class="sidebar-nav">
+					<li><a href="#s1">Learning Objectives</a></li>
+					<li><a href="#s2">What is an Array?</a></li>
+					<li><a href="#s3">Creating an Array</a></li>
+					<li><a href="#s4">Accessing Elements</a></li>
+					<li><a href="#s5">Coding Exercise 1</a></li>
+					<li><a href="#s6">Mutating an Array</a></li>
+					<li><a href="#s7">Copying an Array</a></li>
+					<li><a href="#s8">Searching an Array</a></li>
+					<li><a href="#s9">Multi-Dimensional Arrays</a></li>
+					<li><a href="#s10">Knowledge Check</a></li>
+					<li><a href="#s11">Coding Exercise 2</a></li>
+					<li><a href="#s12">Summary</a></li>
+				</ul>
+			</aside>
+
+			<button
+				class="sidebar-toggle"
+				id="sidebarToggle"
+				aria-label="Toggle menu"
+			>
+				<svg
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<line x1="3" y1="6" x2="21" y2="6" />
+					<line x1="3" y1="12" x2="21" y2="12" />
+					<line x1="3" y1="18" x2="21" y2="18" />
+				</svg>
+			</button>
+
+			<main class="lesson-body">
+				<!-- 1. LEARNING OBJECTIVE -->
+				<div class="section" id="s1">
+					<div class="section-label">
+						<div class="section-num">1</div>
+						<span class="section-title-sm">Learning Objectives</span>
+					</div>
+					<div class="objective-box">
+						<p class="obj-intro">
+							By the end of this module you will be able to:
+						</p>
+						<ul class="obj-list">
+							<li>Create arrays and access elements using their indices</li>
+							<li>
+								Modify arrays by adding, removing, and extracting elements
+							</li>
+							<li>
+								Distinguish between copying by value and copying by reference
+							</li>
+							<li>Search arrays for specific values</li>
+							<li>Create and access two-dimensional arrays</li>
+						</ul>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 2. WHAT IS AN ARRAY -->
+				<div class="section" id="s2">
+					<div class="section-label">
+						<div class="section-num">2</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>What is an Array?</h2>
+
+					<p>
+						So far every variable you have declared holds one value. That works
+						for one price or one name. But what if you need to work with a week
+						of temperature readings or a list of cities or fifty product prices?
+						Declaring a separate variable for each one is not practical. An
+						array solves this problem by letting you store multiple values in a
+						single variable, in a specific order.
+					</p>
+
+					<p>
+						An array is an <strong>ordered</strong> collection of values. Each
+						value sits at a numbered position called an index, starting from 0.
+						You can put any type of value into an array, even other arrays (more
+						on this later). The array keeps them in the order you put them and
+						lets you access any one by its position.
+					</p>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 3. CREATING AN ARRAY -->
+				<div class="section" id="s3">
+					<div class="section-label">
+						<div class="section-num">3</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Creating an Array</h2>
+
+					<p>
+						The standard way to create an array is with square brackets. If
+						elements are already present, they should be separated by commas.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex2')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex2')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex2-code"
+						><span class="cmt">// Array with values</span>
+<span class="kw">let</span> oceans <span class="op">=</span> [<span class="str">"Pacific"</span>, <span class="str">"Atlantic"</span>, <span class="str">"Indian"</span>]
+
+<span class="cmt">// Empty array -> values added later</span>
+<span class="kw">let</span> results <span class="op">=</span> []
+
+<span class="cmt">// Mixed types -> valid but not recommended</span>
+<span class="kw">let</span> mixed <span class="op">=</span> [<span class="str">"Nairobi"</span>, <span class="num">1963</span>, <span class="kw">true</span>]
+
+<span class="fn">console</span>.log(oceans)
+<span class="fn">console</span>.log(results)
+<span class="fn">console</span>.log(mixed)</pre>
+						<div class="code-output" id="ex2-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<div class="callout warn">
+						<div class="callout-label">Use descriptive names</div>
+						<p>
+							Name your array after what it contains. <strong>fruits</strong>,
+							<strong>scores</strong>, and <strong>bookings</strong> tell you
+							immediately what is in the array. Names like
+							<strong>list</strong>, <strong>arr</strong>, or
+							<strong>data</strong> do not. The more specific the name, the
+							easier your code is to read and debug.
+						</p>
+					</div>
+
+					<div class="callout warn">
+						<div class="callout-label">Keep arrays to one type</div>
+						<p>
+							JavaScript allows you to mix types in the same array, but in
+							practice you almost never should. An array of strings and an array
+							of numbers are both predictable because you know what you are
+							working with on every iteration. A mixed array forces you to check
+							the type of each element before using it, which adds complexity
+							and makes bugs harder to spot. Treat it as a strong convention:
+							one type per array.
+						</p>
+					</div>
+				</div>
+				<div class="code-block">
+					<div class="code-block-header">
+						<span class="code-lang">JavaScript</span>
+						<div class="code-block-btns">
+							<button
+								class="reset-btn"
+								onclick="resetStatic('ex1')"
+								title="Reset"
+							>
+								<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<polyline points="1 4 1 10 7 10"></polyline>
+									<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+								</svg></button
+							><button class="run-btn" onclick="runStatic('ex1')">Run</button>
+						</div>
+					</div>
+					<pre
+						contenteditable="true"
+						spellcheck="false"
+						id="ex1-code"
+					><span class="kw">let</span> planets   <span class="op">=</span> [<span class="str">"Mercury"</span>, <span class="str">"Venus"</span>, <span class="str">"Earth"</span>, <span class="str">"Mars"</span>]
+<span class="kw">let</span> distances  <span class="op">=</span> [<span class="num">77</span>, <span class="num">261</span>, <span class="num">78</span>, <span class="num">225</span>]  <span class="cmt">// millions of km from Earth</span>
+<span class="kw">let</span> inOrbit    <span class="op">=</span> [<span class="kw">true</span>, <span class="kw">true</span>, <span class="kw">false</span>, <span class="kw">true</span>]
+
+<span class="fn">console</span>.log(planets)
+<span class="fn">console</span>.log(distances)
+<span class="fn">console</span>.log(inOrbit)</pre>
+					<div class="code-output" id="ex1-output">
+						<div class="output-label">Output</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 4. ACCESSING ELEMENTS -->
+				<div class="section" id="s4">
+					<div class="section-label">
+						<div class="section-num">4</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Accessing Elements</h2>
+
+					<p>
+						You access an element by writing the array name followed by the
+						index in square brackets. Indexing starts at 0, so the first element
+						is at index 0, the second at index 1, and so on. You saw this same
+						pattern with strings in Module 3. Arrays work the same way.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex3')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex3')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex3-code"
+						><span class="kw">let</span> mountains <span class="op">=</span> [<span class="str">"Everest"</span>, <span class="str">"K2"</span>, <span class="str">"Kangchenjunga"</span>, <span class="str">"Lhotse"</span>]
+
+<span class="fn">console</span>.log(mountains[<span class="num">0</span>])   <span class="cmt">// Everest -> first element</span>
+<span class="fn">console</span>.log(mountains[<span class="num">2</span>])   <span class="cmt">// Kangchenjunga -> third element</span></pre>
+						<div class="code-output" id="ex3-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						Like strings, we can also access the <code>length</code> property to
+						know how many elements are in the array. Because indexing starts at
+						0, the last element always sits at index <code>length - 1</code>. If
+						you try to access an index that does not exist, JavaScript does not
+						throw an error. It returns <strong>undefined</strong>.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex3b')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex3b')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex3b-code"
+						><span class="kw">let</span> mountains <span class="op">=</span> [<span class="str">"Everest"</span>, <span class="str">"K2"</span>, <span class="str">"Kangchenjunga"</span>, <span class="str">"Lhotse"</span>]
+
+<span class="fn">console</span>.log(mountains.length)                  <span class="cmt">// 4</span>
+<span class="fn">console</span>.log(mountains[mountains.length <span class="op">-</span> <span class="num">1</span>])   <span class="cmt">// Lhotse -> last element</span>
+<span class="fn">console</span>.log(mountains[<span class="num">10</span>])                    <span class="cmt">// undefined -> no element at index 10</span></pre>
+						<div class="code-output" id="ex3b-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						You can also update an element by assigning a new value to its index
+						directly.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex3c')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex3c')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex3c-code"
+						><span class="kw">let</span> rivers <span class="op">=</span> [<span class="str">"Nile"</span>, <span class="str">"Amazon"</span>, <span class="str">"Congo"</span>]
+
+rivers[<span class="num">1</span>] <span class="op">=</span> <span class="str">"Yangtze"</span>
+<span class="fn">console</span>.log(rivers)  <span class="cmt">// ["Nile", "Yangtze", "Congo"]</span></pre>
+						<div class="code-output" id="ex3c-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 5. CODING EXERCISE 1 -->
+				<div class="section" id="s5">
+					<div class="section-label">
+						<div class="section-num question">?</div>
+						<span class="section-title-sm">Coding Exercise 1</span>
+					</div>
+					<h2>Reading an Array</h2>
+
+					<div class="activity-box">
+						<div class="activity-header">
+							<span class="activity-tag">Coding Exercise</span>
+						</div>
+						<div class="activity-scenario">
+							<strong>Question:</strong> Using only what you have learned about
+							accessing arrays, answer each question by printing the result. Do
+							not add, remove, or change any elements.
+							<ol style="margin-top: 12px; padding-left: 18px; line-height: 2">
+								<li>Print the first country</li>
+								<li>Print the third country</li>
+								<li>Print the total number of countries</li>
+								<li>Print the last country without hardcoding its index</li>
+								<li>
+									Print the element at index 10 and explain in a comment what
+									you expect
+								</li>
+							</ol>
+						</div>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-bottom: 10px;
+							"
+						>
+							Expected output:
+						</p>
+						<div class="code-block" style="margin-bottom: 16px">
+							<pre style="padding: 12px 18px; color: #abb2bf; font-size: 13px">
+Brazil
+Australia
+6
+South Africa
+undefined</pre
+							>
+						</div>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-top: 20px;
+								margin-bottom: 8px;
+							"
+						>
+							Write your code below.
+						</p>
+						<div class="editor-wrap" id="editor1">
+							<div class="editor-header">
+								<span class="editor-label">JavaScript Editor</span>
+							</div>
+							<textarea
+								class="editor-textarea"
+								id="editor1-code"
+								spellcheck="false"
+							>
+let countries = ["Brazil", "Japan", "Australia", "Nigeria", "Germany", "South Africa"]
+
+// 1. First country
+
+
+// 2. Third country
+
+
+// 3. Total number of countries
+
+
+// 4. Last country (no hardcoded index)
+
+
+// 5. Element at index 10
+
+</textarea
+							>
+							<div class="editor-footer">
+								<button
+									class="editor-reset-btn"
+									onclick="resetEditor('editor1')"
+									title="Reset code"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg>
+									Reset
+								</button>
+								<div class="spacer"></div>
+								<button class="run-btn" onclick="runCode('editor1')">
+									Run
+								</button>
+								<button class="check-btn" onclick="checkAnswer('ex1')">
+									Check Answer
+								</button>
+							</div>
+							<div class="output-area" id="editor1-output">
+								<div class="output-label">Output</div>
+							</div>
+						</div>
+						<div class="check-result" id="checkResult1"></div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 6. MUTATING AN ARRAY -->
+				<div class="section" id="s6">
+					<div class="section-label">
+						<div class="section-num">6</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Mutating an Array</h2>
+
+					<p>
+						We can use in-built methods to help us make changes to an array or
+						extract elements from it. JavaScript has many array methods. Here
+						are a few you should know.
+					</p>
+
+					<h3>push()</h3>
+					<p>
+						Adds one or more elements to the end of the array. Returns the new
+						length.
+					</p>
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex4a')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex4a')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex4a-code"
+						><span class="kw">let</span> queue <span class="op">=</span> [<span class="str">"Alice"</span>, <span class="str">"Bob"</span>]
+queue.push(<span class="str">"Carol"</span>)
+<span class="fn">console</span>.log(queue)  <span class="cmt">// ["Alice", "Bob", "Carol"]</span>
+
+<span class="cmt">// You can push more than one element at a time</span>
+queue.push(<span class="str">"Dave"</span>, <span class="str">"Eve"</span>)
+<span class="fn">console</span>.log(queue)  <span class="cmt">// ["Alice", "Bob", "Carol", "Dave", "Eve"]</span></pre>
+						<div class="code-output" id="ex4a-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>pop()</h3>
+					<p>
+						Removes the last element from the array and returns it. The original
+						array is shortened by one.
+					</p>
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex4b')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex4b')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex4b-code"
+						><span class="kw">let</span> queue <span class="op">=</span> [<span class="str">"Alice"</span>, <span class="str">"Bob"</span>, <span class="str">"Carol"</span>]
+<span class="kw">let</span> removed <span class="op">=</span> queue.pop()
+<span class="fn">console</span>.log(removed)  <span class="cmt">// Carol</span>
+<span class="fn">console</span>.log(queue)    <span class="cmt">// ["Alice", "Bob"]</span></pre>
+						<div class="code-output" id="ex4b-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>unshift()</h3>
+					<p>
+						Adds one or more elements to the beginning of the array. All
+						existing elements shift right to make room.
+					</p>
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex4c')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex4c')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex4c-code"
+						><span class="kw">let</span> playlist <span class="op">=</span> [<span class="str">"Song B"</span>, <span class="str">"Song C"</span>]
+playlist.unshift(<span class="str">"Song A"</span>)
+<span class="fn">console</span>.log(playlist)  <span class="cmt">// ["Song A", "Song B", "Song C"]</span></pre>
+						<div class="code-output" id="ex4c-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>shift()</h3>
+					<p>
+						Removes the first element from the array and returns it. All
+						remaining elements shift left by one position.
+					</p>
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex4d')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex4d')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex4d-code"
+						><span class="kw">let</span> playlist <span class="op">=</span> [<span class="str">"Song A"</span>, <span class="str">"Song B"</span>, <span class="str">"Song C"</span>]
+<span class="kw">let</span> first <span class="op">=</span> playlist.shift()
+<span class="fn">console</span>.log(first)     <span class="cmt">// Song A</span>
+<span class="fn">console</span>.log(playlist)  <span class="cmt">// ["Song B", "Song C"]</span></pre>
+						<div class="code-output" id="ex4d-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>slice()</h3>
+					<p>
+						Extracts a portion of the array and returns it as a new array. It
+						does not change the original. It takes a start index and an optional
+						end index which is not included in the extraction. If an end index
+						is not given, elements after the start index are extracted. You saw
+						the same method on strings in Module 3.
+					</p>
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex4e')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex4e')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex4e-code"
+						><span class="kw">let</span> medals <span class="op">=</span> [<span class="str">"Gold"</span>, <span class="str">"Silver"</span>, <span class="str">"Bronze"</span>, <span class="str">"Finalist"</span>, <span class="str">"Participant"</span>]
+
+<span class="fn">console</span>.log(medals.slice(<span class="num">0</span>, <span class="num">3</span>))   <span class="cmt">// ["Gold", "Silver", "Bronze"]</span>
+<span class="fn">console</span>.log(medals.slice(<span class="num">2</span>))       <span class="cmt">// ["Bronze", "Finalist", "Participant"]</span>
+<span class="fn">console</span>.log(medals)                 <span class="cmt">// original unchanged</span></pre>
+						<div class="code-output" id="ex4e-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<div class="callout warn">
+						<div class="callout-label">There are many more methods</div>
+						<p>
+							JavaScript arrays have dozens of built-in methods such as splice,
+							find, filter, map, reduce, sort etc. The ones covered
+							here are the foundations. You will encounter the rest as you build
+							more complex programs.
+						</p>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 7. COPYING AN ARRAY -->
+				<div class="section" id="s7">
+					<div class="section-label">
+						<div class="section-num">7</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Copying an Array</h2>
+
+					<p>
+						Recall from Module 1 that JavaScript has two groups of types:
+						primitives (strings, numbers, booleans) and objects (arrays,
+						objects, functions). This distinction matters when copying a value
+						into another variable. If you assign a primitive to a new variable
+						and then change the original, the copy is unaffected because each
+						variable holds its own value in the computer's memory.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex5a')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex5a')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex5a-code"
+						><span class="cmt">// Strings are copied by value -> each variable is independent</span>
+<span class="kw">let</span> city  <span class="op">=</span> <span class="str">"Lagos"</span>
+<span class="kw">let</span> city2 <span class="op">=</span> city
+city2 <span class="op">=</span> <span class="str">"Accra"</span>
+
+<span class="fn">console</span>.log(city)   <span class="cmt">// Lagos -> unchanged</span>
+<span class="fn">console</span>.log(city2)  <span class="cmt">// Accra</span></pre>
+						<div class="code-output" id="ex5a-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						Arrays behave differently. When you assign an array to a new
+						variable, both variables point to the same array in memory. This is
+						called copying by reference. There is no second array. Just two
+						variable names pointing to the same array. If you change the array
+						through either variable, the other one reflects the change
+						immediately.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex5b')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex5b')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex5b-code"
+						><span class="cmt">// Arrays are copied by reference and both variables point to the same array</span>
+<span class="kw">let</span> original <span class="op">=</span> [<span class="num">10</span>, <span class="num">20</span>, <span class="num">30</span>]
+<span class="kw">let</span> copy     <span class="op">=</span> original
+
+copy.push(<span class="num">40</span>)
+
+<span class="fn">console</span>.log(original)  <span class="cmt">// [10, 20, 30, 40] -> also changed</span>
+<span class="fn">console</span>.log(copy)      <span class="cmt">// [10, 20, 30, 40]</span></pre>
+						<div class="code-output" id="ex5b-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>Making a true copy</h3>
+					<p>
+						To create an independent copy of an array, you need to explicitly
+						produce a new one. One reliable way is to call
+						<code>slice()</code> with no arguments. This returns a new array
+						containing all the same elements, completely separate from the
+						original.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex5c')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex5c')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex5c-code"
+						><span class="kw">let</span> original <span class="op">=</span> [<span class="num">10</span>, <span class="num">20</span>, <span class="num">30</span>]
+<span class="kw">let</span> copy <span class="op">=</span> original.slice()
+
+copy.push(<span class="num">40</span>)
+
+<span class="fn">console</span>.log(original)  <span class="cmt">// [10, 20, 30] -> untouched</span>
+<span class="fn">console</span>.log(copy)      <span class="cmt">// [10, 20, 30, 40]</span></pre>
+						<div class="code-output" id="ex5c-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 8. SEARCHING AN ARRAY -->
+				<div class="section" id="s8">
+					<div class="section-label">
+						<div class="section-num">8</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Searching an Array</h2>
+					<p>
+						There are a few methods we can use to find a specific element or
+						it's index
+					</p>
+					<h3>includes()</h3>
+					<p>
+						Returns true if the value is found in the array, false if it is not.
+						Use this when you only need to know whether an element exists in the
+						array.
+					</p>
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex6a')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex6a')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex6a-code"
+						><span class="kw">let</span> languages <span class="op">=</span> [<span class="str">"Python"</span>, <span class="str">"JavaScript"</span>, <span class="str">"Rust"</span>]
+
+<span class="fn">console</span>.log(languages.includes(<span class="str">"JavaScript"</span>))  <span class="cmt">// true</span>
+<span class="fn">console</span>.log(languages.includes(<span class="str">"Go"</span>))           <span class="cmt">// false</span></pre>
+						<div class="code-output" id="ex6a-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>indexOf()</h3>
+					<p>
+						Returns the index of the first occurrence of the value. If the value
+						is not found, it returns -1. Use this when you need to know where in
+						the array something is, not just whether it exists.
+					</p>
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex6b')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex6b')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex6b-code"
+						><span class="kw">let</span> languages <span class="op">=</span> [<span class="str">"Python"</span>, <span class="str">"JavaScript"</span>, <span class="str">"Rust"</span>]
+
+<span class="fn">console</span>.log(languages.indexOf(<span class="str">"Python"</span>))      <span class="cmt">// 0</span>
+<span class="fn">console</span>.log(languages.indexOf(<span class="str">"JavaScript"</span>))  <span class="cmt">// 1</span>
+<span class="fn">console</span>.log(languages.indexOf(<span class="str">"Go"</span>))          <span class="cmt">// -1 -> not found</span></pre>
+						<div class="code-output" id="ex6b-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						There is a trap with indexOf that you must watch out life. Because
+						indexOf returns 0 when the item is at the first position, and 0 is
+						falsy, using indexOf directly inside an
+						<code>if</code> condition produces the wrong result for the first
+						element. The code below shows the problem and two ways to fix it.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex6c')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex6c')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex6c-code"
+						><span class="kw">let</span> fruits <span class="op">=</span> [<span class="str">"apple"</span>, <span class="str">"banana"</span>, <span class="str">"mango"</span>]
+
+<span class="cmt">// WRONG -> indexOf("apple") returns 0, which is falsy</span>
+<span class="cmt">// This block will NOT run even though "apple" is in the array</span>
+<span class="kw">if</span> (fruits.indexOf(<span class="str">"apple"</span>)) {
+  <span class="fn">console</span>.log(<span class="str">"This will not run"</span>)  <span class="cmt">// never runs</span>
+}
+
+<span class="cmt">// CORRECT -> compare against -1 explicitly</span>
+<span class="kw">if</span> (fruits.indexOf(<span class="str">"apple"</span>) <span class="op">!==</span> <span class="op">-</span><span class="num">1</span>) {
+  <span class="fn">console</span>.log(<span class="str">"This will run"</span>)
+}
+
+<span class="cmt">// SIMPLEST -> use includes() when you only need to know if it exists</span>
+<span class="kw">if</span> (fruits.includes(<span class="str">"apple"</span>)) {
+  <span class="fn">console</span>.log(<span class="str">"This will also run"</span>)
+}</pre>
+						<div class="code-output" id="ex6c-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<div class="callout warn">
+						<div class="callout-label">Use includes() for existence checks</div>
+						<p>
+							If you only need to know whether something is in the array, use
+							<code>includes()</code>. Reserve <code>indexOf()</code> for when you actually need the
+							position. This avoids the trap entirely.
+						</p>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 9. MULTI-DIMENSIONAL ARRAYS -->
+				<div class="section" id="s9">
+					<div class="section-label">
+						<div class="section-num">10</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Multi-Dimensional Arrays</h2>
+
+					<p>
+						An array can contain other arrays as its elements. When each element
+						is itself an array, the result is called a two-dimensional array.
+						This is useful for representing data that has rows and columns such as a
+						table of records, a grid, or any structure where each entry has
+						multiple fields.
+					</p>
+
+					<p>
+						To access an element inside a nested array, you chain two sets of
+						square brackets. The first bracket selects which inner array you
+						want. This gives you an entire row. The second bracket selects a
+						specific element within that inner array which then gives you the value
+						at that column. So <strong>fruits[1][2]</strong> means: go to the element
+						at index 1 of the outer array, then within that inner array, go to
+						the element at index 2.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex7')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex7')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex7-code"
+						><span class="cmt">// Each inner array is one country's data: [country, capital, population]</span>
+<span class="kw">let</span> countries <span class="op">=</span> [
+  [<span class="str">"Nigeria"</span>,   <span class="str">"Abuja"</span>,       <span class="num">220000000</span>],
+  [<span class="str">"Kenya"</span>,     <span class="str">"Nairobi"</span>,     <span class="num">55000000</span>],
+  [<span class="str">"Ethiopia"</span>,  <span class="str">"Addis Ababa"</span>, <span class="num">128000000</span>]
+]
+
+<span class="cmt">// countries[1] → the Kenya row → ["Kenya", "Nairobi", 55000000]</span>
+<span class="cmt">// countries[1][1] → index 1 within that row → "Nairobi"</span>
+<span class="fn">console</span>.log(countries[<span class="num">1</span>][<span class="num">1</span>])   <span class="cmt">// Nairobi</span>
+
+<span class="cmt">// countries[2] → the Ethiopia row</span>
+<span class="cmt">// countries[2][2] → index 2 within that row → 128000000</span>
+<span class="fn">console</span>.log(countries[<span class="num">2</span>][<span class="num">2</span>])   <span class="cmt">// 128000000</span>
+
+<span class="cmt">// You can also grab an entire row</span>
+<span class="fn">console</span>.log(countries[<span class="num">0</span>])       <span class="cmt">// ["Nigeria", "Abuja", 220000000]</span></pre>
+						<div class="code-output" id="ex7-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 10. KNOWLEDGE CHECK -->
+				<div class="section" id="s10">
+					<div class="section-label">
+						<div class="section-num question">?</div>
+						<span class="section-title-sm">Knowledge Check</span>
+					</div>
+					<h2>Check for Understanding</h2>
+
+					<div class="quiz-box">
+						<div class="quiz-intro">
+							<div class="quiz-intro-label">Module 7</div>
+							<h3>Select one answer per question</h3>
+						</div>
+						<div class="quiz-questions">
+							<div class="quiz-q">
+								<div class="q-num">Question 1 of 3</div>
+								<div class="q-text">
+									What does this print?
+									<pre
+										style="
+											margin-top: 8px;
+											padding: 10px 14px;
+											background: #1e2a3a;
+											border-radius: 6px;
+											font-size: 13px;
+											color: #abb2bf;
+											font-family: &quot;JetBrains Mono&quot;, monospace;
+											font-variant-ligatures: none;
+										"
+									>
+let items = ["pen", "ruler", "eraser"]
+
+if (items.indexOf("pen")) {
+  console.log("Found")
+} else {
+  console.log("Not found")
+}</pre
+									>
+								</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="1" data-val="a">
+										<input type="radio" name="q1" /> Found
+									</li>
+									<li class="q-option" data-q="1" data-val="b">
+										<input type="radio" name="q1" /> Not found
+									</li>
+									<li class="q-option" data-q="1" data-val="c">
+										<input type="radio" name="q1" /> undefined
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb1"></div>
+							</div>
+
+							<div class="quiz-q">
+								<div class="q-num">Question 2 of 3</div>
+								<div class="q-text">
+									What does this code print?
+									<pre
+										style="
+											margin-top: 8px;
+											padding: 10px 14px;
+											background: #1e2a3a;
+											border-radius: 6px;
+											font-size: 13px;
+											color: #abb2bf;
+											font-family: &quot;JetBrains Mono&quot;, monospace;
+											font-variant-ligatures: none;
+										"
+									>
+let a = [1, 2, 3]
+let b = a
+
+b.push(4)
+
+console.log(a)</pre
+									>
+								</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="2" data-val="a">
+										<input type="radio" name="q2" /> [1, 2, 3]
+									</li>
+									<li class="q-option" data-q="2" data-val="b">
+										<input type="radio" name="q2" /> [1, 2, 3, 4]
+									</li>
+									<li class="q-option" data-q="2" data-val="c">
+										<input type="radio" name="q2" /> undefined
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb2"></div>
+							</div>
+
+							<div class="quiz-q">
+								<div class="q-num">Question 3 of 3</div>
+								<div class="q-text">
+									What does this print?
+									<pre
+										style="
+											margin-top: 8px;
+											padding: 10px 14px;
+											background: #1e2a3a;
+											border-radius: 6px;
+											font-size: 13px;
+											color: #abb2bf;
+											font-family: &quot;JetBrains Mono&quot;, monospace;
+											font-variant-ligatures: none;
+										"
+									>
+let grid = [[1, 2, 3], [4, 5, 6]]
+
+console.log(grid[1][0])</pre
+									>
+								</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="3" data-val="a">
+										<input type="radio" name="q3" /> 1
+									</li>
+									<li class="q-option" data-q="3" data-val="b">
+										<input type="radio" name="q3" /> 4
+									</li>
+									<li class="q-option" data-q="3" data-val="c">
+										<input type="radio" name="q3" /> 2
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb3"></div>
+							</div>
+
+							<div class="quiz-error" id="quizError">
+								Please answer all three questions before submitting.
+							</div>
+							<button class="quiz-submit" id="submitQuiz">
+								Submit Answers
+							</button>
+							<div class="quiz-result" id="quizResult">
+								<div class="result-score" id="resultScore"></div>
+								<div class="result-msg" id="resultMsg"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 11. CODING EXERCISE 2 -->
+				<div class="section" id="s11">
+					<div class="section-label">
+						<div class="section-num question">?</div>
+						<span class="section-title-sm">Coding Exercise 2</span>
+					</div>
+					<h2>Working with Arrays</h2>
+
+					<div class="activity-box">
+						<div class="activity-header">
+							<span class="activity-tag">Coding Exercise</span>
+						</div>
+						<div class="activity-scenario">
+							<strong>Question:</strong> Using the array of booking references
+							provided, complete each task using what you have learned in this
+							module.
+							<ol style="margin-top: 12px; padding-left: 18px; line-height: 2">
+								<li>Add "BK-006" to the end of the array</li>
+								<li>
+									Remove the first booking reference and print what was removed
+								</li>
+								<li>
+									Check whether "BK-004" is still in the array and print the
+									result
+								</li>
+								<li>
+									Extract and print only the first three remaining bookings
+									using slice
+								</li>
+								<li>Print the final length of the array</li>
+							</ol>
+						</div>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-bottom: 10px;
+							"
+						>
+							Expected output:
+						</p>
+						<div class="code-block" style="margin-bottom: 16px">
+							<pre style="padding: 12px 18px; color: #abb2bf; font-size: 13px">
+BK-001
+true
+["BK-002", "BK-003", "BK-004"]
+5</pre
+							>
+						</div>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-top: 20px;
+								margin-bottom: 8px;
+							"
+						>
+							Write your code below.
+						</p>
+						<div class="editor-wrap" id="editor2">
+							<div class="editor-header">
+								<span class="editor-label">JavaScript Editor</span>
+							</div>
+							<textarea
+								class="editor-textarea"
+								id="editor2-code"
+								spellcheck="false"
+							>
+let bookings = ["BK-001", "BK-002", "BK-003", "BK-004", "BK-005"]
+
+// 1. Add "BK-006"
+
+
+// 2. Remove and print the first
+
+
+// 3. Check for "BK-004"
+
+
+// 4. First three remaining bookings
+
+
+// 5. Final length
+
+</textarea
+							>
+							<div class="editor-footer">
+								<button
+									class="editor-reset-btn"
+									onclick="resetEditor('editor2')"
+									title="Reset code"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg>
+									Reset
+								</button>
+								<div class="spacer"></div>
+								<button class="run-btn" onclick="runCode('editor2')">
+									Run
+								</button>
+								<button class="check-btn" onclick="checkAnswer('ex2')">
+									Check Answer
+								</button>
+							</div>
+							<div class="output-area" id="editor2-output">
+								<div class="output-label">Output</div>
+							</div>
+						</div>
+						<div class="check-result" id="checkResult2"></div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 12. SUMMARY -->
+				<div class="section" id="s12">
+					<div class="section-label">
+						<div class="section-num">12</div>
+						<span class="section-title-sm">Summary</span>
+					</div>
+					<h2>Module Summary</h2>
+					<div class="summary-box">
+						<h3>Key takeaways</h3>
+						<ul class="summary-list">
+							<li>
+								An array stores multiple values in order. Index starts at 0.
+								Access with <code>arr[i]</code>. Out-of-range access returns
+								<code>undefined</code>.
+							</li>
+							<li>
+								Keep arrays to one type as a best practice. Mixed-type arrays
+								are valid but harder to work with reliably.
+							</li>
+							<li>
+								<code>push()</code> and <code>pop()</code> add and remove from the
+								end. <code>unshift()</code> and <code>shift()</code> add and remove
+								from the beginning. <code>slice()</code> extracts without changing
+								the original.
+							</li>
+							<li>
+								Assigning an array to a new variable does not create a copy because
+								both point to the same array. Use <code>slice()</code> to make an
+								independent copy.
+							</li>
+							<li>
+								<code>includes()</code> returns true or false.
+								<code>indexOf()</code> returns a position or -1. 
+							</li>
+							<li>
+								A 2D array is an array of arrays.
+								<code>arr[row][col]</code> first selects the inner array at that
+								row, then selects the element at that column within it.
+							</li>
+						</ul>
+
+						<div class="ref-scroll-hint">Scroll right to see full table</div>
+						<div class="ref-table-wrap">
+							<table class="ref-table">
+								<thead>
+									<tr>
+										<th>Concept</th>
+										<th>Syntax</th>
+										<th>Notes</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Create array</td>
+										<td><code>[a, b, c]</code></td>
+										<td>Square brackets, comma-separated</td>
+									</tr>
+									<tr>
+										<td>Access element</td>
+										<td><code>arr[i]</code></td>
+										<td>Index starts at 0</td>
+									</tr>
+									<tr>
+										<td>Last element</td>
+										<td><code>arr[arr.length - 1]</code></td>
+										<td>Works for any length</td>
+									</tr>
+									<tr>
+										<td>Out of range</td>
+										<td><code>arr[99]</code></td>
+										<td>Returns undefined, no error</td>
+									</tr>
+									<tr>
+										<td>Add to end</td>
+										<td><code>arr.push(val)</code></td>
+										<td>Modifies original</td>
+									</tr>
+									<tr>
+										<td>Remove from end</td>
+										<td><code>arr.pop()</code></td>
+										<td>Returns removed element</td>
+									</tr>
+									<tr>
+										<td>Add to start</td>
+										<td><code>arr.unshift(val)</code></td>
+										<td>Modifies original</td>
+									</tr>
+									<tr>
+										<td>Remove from start</td>
+										<td><code>arr.shift()</code></td>
+										<td>Returns removed element</td>
+									</tr>
+									<tr>
+										<td>Extract portion</td>
+										<td><code>arr.slice(start, end)</code></td>
+										<td>Does not modify original</td>
+									</tr>
+									<tr>
+										<td>True copy</td>
+										<td><code>arr.slice()</code></td>
+										<td>Independent from original</td>
+									</tr>
+									<tr>
+										<td>Check existence</td>
+										<td><code>arr.includes(val)</code></td>
+										<td>Returns true or false</td>
+									</tr>
+									<tr>
+										<td>Find position</td>
+										<td><code>arr.indexOf(val)</code></td>
+										<td>Returns index or -1</td>
+									</tr>
+									<tr>
+										<td>2D access</td>
+										<td><code>arr[row][col]</code></td>
+										<td>First bracket selects row, second selects column</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="module-nav">
+						<a class="prev-module" href="module6.html">
+							<div class="prev-arrow-icon">
+								<svg
+									viewBox="0 0 24 24"
+									width="18"
+									height="18"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<line x1="19" y1="12" x2="5" y2="12"></line>
+									<polyline points="12 19 5 12 12 5"></polyline>
+								</svg>
+							</div>
+							<div class="prev-text">
+								<span class="prev-label">Back to</span>
+								<span class="prev-title">Module 6: Conditionals</span>
+							</div>
+						</a>
+						<a class="next-module" href="module8.html">
+							<div class="next-text">
+								<span class="next-label">Up next</span>
+								<span class="next-title">Module 8: Loops</span>
+							</div>
+							<div class="next-arrow-icon">
+								<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<line x1="5" y1="12" x2="19" y2="12"></line>
+									<polyline points="12 5 19 12 12 19"></polyline>
+								</svg>
+							</div>
+						</a>
+					</div>
+
+					<div class="designer-note">
+						<span>JavaScript Crash Course - Module 7 of 10</span>
+					</div>
+				</div>
+			</main>
+		</div>
+
+		<!-- SCRIPTS -->
+		<script>
+			window.staticBlocksHTML = {};
+			document.addEventListener("DOMContentLoaded", () => {
+				document.querySelectorAll("pre[id]").forEach((pre) => {
+					const id = pre.id.replace("-code", "");
+					window.staticBlocksHTML[id] = pre.innerHTML;
+				});
+			});
+		</script>
+		<script src="../assets/js/editor.js"></script>
+		<script>
+			window.staticBlocks = {
+				ex1: `let planets   = ["Mercury", "Venus", "Earth", "Mars"]\nlet distances = [77, 261, 78, 225]\nlet inOrbit   = [true, true, false, true]\nconsole.log(planets)\nconsole.log(distances)\nconsole.log(inOrbit)`,
+				ex2: `let oceans  = ["Pacific", "Atlantic", "Indian"]\nlet results = []\nlet mixed   = ["Nairobi", 1963, true]\nconsole.log(oceans)\nconsole.log(results)\nconsole.log(mixed)`,
+				ex3: `let mountains = ["Everest", "K2", "Kangchenjunga", "Lhotse"]\nconsole.log(mountains[0])\nconsole.log(mountains[2])`,
+				ex3b: `let mountains = ["Everest", "K2", "Kangchenjunga", "Lhotse"]\nconsole.log(mountains.length)\nconsole.log(mountains[mountains.length - 1])\nconsole.log(mountains[10])`,
+				ex3c: `let rivers = ["Nile", "Amazon", "Congo"]\nrivers[1] = "Yangtze"\nconsole.log(rivers)`,
+				ex4a: `let queue = ["Alice", "Bob"]\nqueue.push("Carol")\nconsole.log(queue)\n\nqueue.push("Dave", "Eve")\nconsole.log(queue)`,
+				ex4b: `let queue = ["Alice", "Bob", "Carol"]\nlet removed = queue.pop()\nconsole.log(removed)\nconsole.log(queue)`,
+				ex4c: `let playlist = ["Song B", "Song C"]\nplaylist.unshift("Song A")\nconsole.log(playlist)`,
+				ex4d: `let playlist = ["Song A", "Song B", "Song C"]\nlet first = playlist.shift()\nconsole.log(first)\nconsole.log(playlist)`,
+				ex4e: `let medals = ["Gold", "Silver", "Bronze", "Finalist", "Participant"]\nconsole.log(medals.slice(0, 3))\nconsole.log(medals.slice(2))\nconsole.log(medals)`,
+				ex5a: `let city  = "Lagos"\nlet city2 = city\ncity2 = "Accra"\nconsole.log(city)\nconsole.log(city2)`,
+				ex5b: `let original = [10, 20, 30]\nlet copy     = original\ncopy.push(40)\nconsole.log(original)\nconsole.log(copy)`,
+				ex5c: `let original = [10, 20, 30]\nlet copy     = original.slice()\ncopy.push(40)\nconsole.log(original)\nconsole.log(copy)`,
+				ex6a: `let languages = ["Python", "JavaScript", "Rust"]\nconsole.log(languages.includes("JavaScript"))\nconsole.log(languages.includes("Go"))`,
+				ex6b: `let languages = ["Python", "JavaScript", "Rust"]\nconsole.log(languages.indexOf("Python"))\nconsole.log(languages.indexOf("JavaScript"))\nconsole.log(languages.indexOf("Go"))`,
+				ex6c: `let fruits = ["apple", "banana", "mango"]\n\nif (fruits.indexOf("apple")) {\n  console.log("Found apple")\n}\n\nif (fruits.indexOf("apple") !== -1) {\n  console.log("Found apple")\n}\n\nif (fruits.includes("apple")) {\n  console.log("Found apple")\n}`,
+				ex7: `let countries = [\n  ["Nigeria",  "Abuja",       220000000],\n  ["Kenya",    "Nairobi",     55000000],\n  ["Ethiopia", "Addis Ababa", 128000000]\n]\nconsole.log(countries[1][1])\nconsole.log(countries[2][2])\nconsole.log(countries[0])`,
+			};
+
+			window.editorDefaults = {
+				editor1: `let countries = ["Brazil", "Japan", "Australia", "Nigeria", "Germany", "South Africa"]\n\n// 1. First country\n\n\n// 2. Third country\n\n\n// 3. Total number of countries\n\n\n// 4. Last country (no hardcoded index)\n\n\n// 5. Element at index 10\n`,
+				editor2: `let bookings = ["BK-001", "BK-002", "BK-003", "BK-004", "BK-005"]\n\n// 1. Add "BK-006"\n\n\n// 2. Remove and print the first\n\n\n// 3. Check for "BK-004"\n\n\n// 4. First three remaining bookings\n\n\n// 5. Final length\n`,
+			};
+
+			window.checkConfigs = {
+				ex1: {
+					editorId: "editor1",
+					resultId: "checkResult1",
+					expected: ["Brazil", "Australia", "6", "South Africa", "undefined"],
+					successMsg: "All five outputs correct.",
+					failMsg:
+						"Check your index for the third country (index 2), and make sure you are using length - 1 for the last element.",
+				},
+				ex2: {
+					editorId: "editor2",
+					resultId: "checkResult2",
+					expected: ["BK-001", "true", "BK-002,BK-003,BK-004", "5"],
+					successMsg: "All outputs correct.",
+					failMsg:
+						"Check the order of operations. Push first, then shift to remove the first. Remember slice returns a new array -- print it directly.",
+				},
+			};
+
+			window.quizConfig = {
+				questions: [
+					{
+						id: 1,
+						answer: "b",
+						feedback: {
+							correct:
+								'<strong>Correct.</strong> indexOf("pen") returns 0 because "pen" is at index 0. Since 0 is falsy, the if condition fails and the else branch runs. This is the indexOf trap.',
+							wrong:
+								'<strong>Not quite.</strong> "pen" is in the array at index 0. But indexOf returns 0, and 0 is falsy. The if condition fails, so "Not found" prints. Always compare indexOf against -1 explicitly, or use includes() instead.',
+						},
+					},
+					{
+						id: 2,
+						answer: "b",
+						feedback: {
+							correct:
+								"<strong>Correct.</strong> b is not a copy of a -- both variables point to the same array. Pushing through b changes the array that a also points to.",
+							wrong:
+								"<strong>Not quite.</strong> Assigning an array to a new variable does not create a copy. Both a and b point to the same array in memory. Changing one changes both.",
+						},
+					},
+					{
+						id: 3,
+						answer: "b",
+						feedback: {
+							correct:
+								"<strong>Correct.</strong> grid[1] selects the second inner array [4, 5, 6]. Then [0] selects the first element of that array, which is 4.",
+							wrong:
+								"<strong>Not quite.</strong> grid[1] gives you the second row [4, 5, 6]. Then [0] gives you the first element of that row, which is 4, not 1 or 2.",
+						},
+					},
+				],
+				messages: {
+					perfect: "Solid. You are ready for Module 8.",
+					good: "Good. Review the missed question before moving on.",
+					retry: "Revisit sections 4 through 10, then try again.",
+				},
+			};
+		</script>
+		<script src="../assets/js/quiz.js"></script>
+		<script src="../assets/js/flashcards.js"></script>
+		<script src="../assets/js/ui.js"></script>
+	</body>
+</html>

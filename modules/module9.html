@@ -1,0 +1,1811 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Module 9: Functions</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="../assets/css/main.css" />
+	</head>
+	<body>
+		<nav class="top-nav">
+			<a class="top-nav-home" href="../index.html" title="Home">
+				<span class="material-icons">home</span>
+			</a>
+		</nav>
+
+		<header class="lesson-header">
+			<div class="header-inner">
+				<div class="lesson-meta">
+					<span class="badge">Module 9 of 10</span>
+				</div>
+				<h1>Functions</h1>
+			</div>
+			<div class="progress-bar-wrap">
+				<div class="progress-bar-fill" style="width: 90%"></div>
+			</div>
+		</header>
+
+		<div class="page-wrap">
+			<aside class="sidebar" id="sidebar">
+				<div class="sidebar-label">In this module</div>
+				<ul class="sidebar-nav">
+					<li><a href="#s1">Learning Objectives</a></li>
+					<li><a href="#s2">What is a Function?</a></li>
+					<li><a href="#s3">Defining a Function</a></li>
+					<li><a href="#s4">Calling a Function</a></li>
+					<li><a href="#s5">Coding Exercise 1</a></li>
+					<li><a href="#s6">Parameters and Arguments</a></li>
+					<li><a href="#s7">Coding Exercise 2</a></li>
+					<li><a href="#s8">Knowledge Check 1</a></li>
+					<li><a href="#s9">Return Values</a></li>
+					<li><a href="#s10">Scope</a></li>
+					<li><a href="#s11">Function Expressions</a></li>
+					<li><a href="#s12">Knowledge Check 2</a></li>
+					<li><a href="#s13">Coding Exercise 3</a></li>
+					<li><a href="#s14">Summary</a></li>
+				</ul>
+			</aside>
+
+			<button
+				class="sidebar-toggle"
+				id="sidebarToggle"
+				aria-label="Toggle menu"
+			>
+				<svg
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<line x1="3" y1="6" x2="21" y2="6" />
+					<line x1="3" y1="12" x2="21" y2="12" />
+					<line x1="3" y1="18" x2="21" y2="18" />
+				</svg>
+			</button>
+
+			<main class="lesson-body">
+				<!-- 1. LEARNING OBJECTIVE -->
+				<div class="section" id="s1">
+					<div class="section-label">
+						<div class="section-num">1</div>
+						<span class="section-title-sm">Learning Objectives</span>
+					</div>
+					<div class="objective-box">
+						<p class="obj-intro">
+							By the end of this module you will be able to:
+						</p>
+						<ul class="obj-list">
+							<li>
+								Define and call a function using the function keyword and using
+								a function expressions
+							</li>
+							<li>
+								Pass values into a function using parameters and arguments in
+								the correct order
+							</li>
+							<li>Return a value from a function and use it in your code</li>
+							<li>
+								Explain what scope means and why variables declared inside a
+								function are not accessible outside it
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 2. WHAT IS A FUNCTION -->
+				<div class="section" id="s2">
+					<div class="section-label">
+						<div class="section-num">2</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>What is a Function?</h2>
+
+					<p>
+						As your programs grow, you will find yourself writing the same logic
+						in multiple places. Without functions, every change to that logic
+						requires you to find and update every copy. One missed update means
+						a bug.
+					</p>
+
+					<p>
+						A function is a named, reusable block of code. You write the logic
+						once, give it a name, and run it by calling that name wherever you
+						need it. If the logic changes, you update it in one place and every
+						call benefits automatically.
+					</p>
+
+					<p>
+						Functions are one of the most important building blocks in
+						programming. Everything you have learned so far becomes more
+						powerful when wrapped in functions that can be called and reused.
+					</p>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 3. DEFINING A FUNCTION -->
+				<div class="section" id="s3">
+					<div class="section-label">
+						<div class="section-num">3</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Defining a Function</h2>
+
+					<p>
+						You define a function using the <code>function</code> keyword,
+						followed by a name, parentheses, and a block of code in curly
+						braces. Ideally, the name should describe what the function does.
+						The code inside the braces is called the
+						<strong>function body</strong>. It does not run when you define the
+						function but only runs when you call it.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex1')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex1')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex1-code"
+						><span class="kw">function</span> <span class="fn">showWelcome</span>() {
+  <span class="fn">console</span>.log(<span class="str">"Welcome to the app"</span>)
+  <span class="fn">console</span>.log(<span class="str">"You are now logged in"</span>)
+}
+
+<span class="cmt">// Nothing prints. The function is defined but not yet called</span></pre>
+						<div class="code-output" id="ex1-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						Run the code above. Nothing will be printed to the output. Defining
+						a function stores the body but only executes when you call it by
+						name.
+					</p>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 4. CALLING A FUNCTION -->
+				<div class="section" id="s4">
+					<div class="section-label">
+						<div class="section-num">4</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Calling a Function</h2>
+
+					<p>
+						To run a function, write its name followed by parentheses. This is
+						called a <strong>function call</strong>. Every time you call it, the
+						entire function body runs from top to bottom.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex2')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex2')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex2-code"
+						><span class="kw">function</span> <span class="fn">showWelcome</span>() {
+  <span class="fn">console</span>.log(<span class="str">"Welcome to the app"</span>)
+  <span class="fn">console</span>.log(<span class="str">"You are now logged in"</span>)
+}
+
+<span class="fn">showWelcome</span>()  <span class="cmt">// first call</span>
+<span class="fn">showWelcome</span>()  <span class="cmt">// second call -> same body runs again</span></pre>
+						<div class="code-output" id="ex2-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						One of the main benefits of functions is that the same logic runs on
+						every call without repeating the code. If you needed to call it
+						fifty times, you would still write the body only once.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex3')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex3')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex3-code"
+						><span class="kw">function</span> <span class="fn">printDivider</span>() {
+  <span class="fn">console</span>.log(<span class="str">"--------------------"</span>)
+}
+
+<span class="fn">console</span>.log(<span class="str">"Monday"</span>)
+<span class="fn">printDivider</span>()
+<span class="fn">console</span>.log(<span class="str">"Tuesday"</span>)
+<span class="fn">printDivider</span>()
+<span class="fn">console</span>.log(<span class="str">"Wednesday"</span>)
+<span class="fn">printDivider</span>()</pre>
+						<div class="code-output" id="ex3-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 5. CODING EXERCISE 1 -->
+				<div class="section" id="s5">
+					<div class="section-label">
+						<div class="section-num question">?</div>
+						<span class="section-title-sm">Coding Exercise 1</span>
+					</div>
+					<h2>Writing and Calling Functions</h2>
+
+					<div class="activity-box">
+						<div class="activity-header">
+							<span class="activity-tag">Coding Exercise</span>
+						</div>
+						<div class="activity-scenario">
+							<strong>Question:</strong> Write two functions and call each one.
+							<ol style="margin-top: 12px; padding-left: 18px; line-height: 2">
+								<li>
+									Write a function called <strong>introduce</strong> that
+									prints:
+									<code>She is 21 years old and I lives in Switzerland</code>
+								</li>
+								<li>
+									Write a function called <strong>showStatus</strong> that
+									prints: <code>Connection: Online</code>
+								</li>
+								<li>
+									Call <strong>introduce</strong> once and
+									<strong>showStatus</strong> twice
+								</li>
+							</ol>
+						</div>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-bottom: 10px;
+							"
+						>
+							Expected output:
+						</p>
+						<div class="code-block" style="margin-bottom: 16px">
+							<pre style="padding: 12px 18px; color: #abb2bf; font-size: 13px">
+I am 28 years old and I live in Lusaka
+Connection: Online
+Connection: Online</pre
+							>
+						</div>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-top: 20px;
+								margin-bottom: 8px;
+							"
+						>
+							Write your code below.
+						</p>
+						<div class="editor-wrap" id="editor1">
+							<div class="editor-header">
+								<span class="editor-label">JavaScript Editor</span>
+							</div>
+							<textarea
+								class="editor-textarea"
+								id="editor1-code"
+								spellcheck="false"
+							>
+// 1. introduce function
+
+
+// 2. showStatus function
+
+
+// 3. Calls
+
+</textarea
+							>
+							<div class="editor-footer">
+								<button
+									class="editor-reset-btn"
+									onclick="resetEditor('editor1')"
+									title="Reset code"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg>
+									Reset
+								</button>
+								<div class="spacer"></div>
+								<button class="run-btn" onclick="runCode('editor1')">
+									Run
+								</button>
+								<button class="check-btn" onclick="checkAnswer('ex1')">
+									Check Answer
+								</button>
+							</div>
+							<div class="output-area" id="editor1-output">
+								<div class="output-label">Output</div>
+							</div>
+						</div>
+						<div class="check-result" id="checkResult1"></div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 6. PARAMETERS AND ARGUMENTS -->
+				<div class="section" id="s6">
+					<div class="section-label">
+						<div class="section-num">6</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Parameters and Arguments</h2>
+
+					<p>
+						The functions so far do the same thing every time. To make a
+						function flexible, you give it <strong>parameters</strong> which are
+						named placeholders defined in the parentheses when you write the
+						function. When you call that function, you pass in
+						<strong>arguments</strong> which are the actual values that fill
+						those placeholders for that call.
+					</p>
+
+					<p>
+						Parameters are the names in the definition. Arguments are the values
+						you pass at the call site.
+					</p>
+
+					<p>
+						In the example below, <strong>track</strong> and
+						<strong>duration</strong> are the parameters and are defined in the
+						function signature and act as placeholders. When you call the
+						function, the values you provide, which are "Midnight Rain" and 214,
+						are the arguments. They fill those parameters for that specific
+						call. Each new call in the code below passes different arguments and
+						gets a different result.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex4')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex4')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex4-code"
+						><span class="cmt">// "track" and "duration" are parameters</span>
+<span class="kw">function</span> <span class="fn">playTrack</span>(track, duration) {
+  <span class="fn">console</span>.log(<span class="str">`Now playing: ${track} (${duration}s)`</span>)
+}
+
+<span class="cmt">// "Midnight Rain" and 214 are arguments</span>
+<span class="fn">playTrack</span>(<span class="str">"Midnight Rain"</span>, <span class="num">214</span>)
+<span class="fn">playTrack</span>(<span class="str">"Golden Hour"</span>, <span class="num">187</span>)
+<span class="fn">playTrack</span>(<span class="str">"Blinding Lights"</span>, <span class="num">200</span>)</pre>
+						<div class="code-output" id="ex4-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>Order matters</h3>
+					<p>
+						Arguments are assigned to parameters in the order they are listed.
+						The first argument goes to the first parameter, the second to the
+						second, and so on. If you pass them in the wrong order, the function
+						receives the wrong values and produces a wrong result without
+						raising an error.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex5')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex5')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex5-code"
+						><span class="kw">function</span> <span class="fn">describePlace</span>(country, capital) {
+  <span class="fn">console</span>.log(<span class="str">`The capital city of ${country} is ${capital}`</span>)
+}
+
+<span class="fn">describePlace</span>(<span class="str">"Kenya"</span>, <span class="str">"Nairobi"</span>)   <span class="cmt">// correct</span>
+<span class="fn">describePlace</span>(<span class="str">"Nairobi"</span>, <span class="str">"Kenya"</span>)   <span class="cmt">// swapped -> reads nonsensically with no error</span></pre>
+						<div class="code-output" id="ex5-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>Missing arguments</h3>
+					<p>
+						If you call a function with fewer arguments than it has parameters,
+						the missing ones receive the value <strong>undefined</strong>.
+						Printing the parameters directly is the clearest way to see this.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex6')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex6')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex6-code"
+						><span class="kw">function</span> <span class="fn">resizeImage</span>(width, height) {
+  <span class="fn">console</span>.log(<span class="str">`width: ${width}`</span>)
+  <span class="fn">console</span>.log(<span class="str">`height: ${height}`</span>)
+}
+
+<span class="fn">resizeImage</span>(<span class="num">1920</span>, <span class="num">1080</span>)   <span class="cmt">// both provided</span>
+<span class="fn">console</span>.log(<span class="str">"---"</span>)
+<span class="fn">resizeImage</span>(<span class="num">1920</span>)          <span class="cmt">// height is missing -> will print undefined</span></pre>
+						<div class="code-output" id="ex6-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 7. CODING EXERCISE 2 -->
+				<div class="section" id="s7">
+					<div class="section-label">
+						<div class="section-num question">?</div>
+						<span class="section-title-sm">Coding Exercise 2</span>
+					</div>
+					<h2>Functions with Parameters</h2>
+
+					<div class="activity-box">
+						<div class="activity-header">
+							<span class="activity-tag">Coding Exercise</span>
+						</div>
+						<div class="activity-scenario">
+							<strong>Question:</strong> Write a function called
+							<strong>printReceipt</strong> that takes three parameters:
+							<strong>item</strong>, <strong>quantity</strong>, and
+							<strong>pricePerUnit</strong>. It should print the item name, the
+							quantity, and the total cost (quantity × pricePerUnit). Then call
+							it three times using these arguments:
+							<ul style="margin-top: 10px; padding-left: 18px; line-height: 2">
+								<li>
+									<strong>"Coffee"</strong>, quantity <strong>3</strong>, price
+									per unit <strong>4.25</strong>
+								</li>
+								<li>
+									<strong>"Notebook"</strong>, quantity <strong>2</strong>,
+									price per unit <strong>4.75</strong>
+								</li>
+								<li>
+									<strong>"Pen"</strong>, quantity <strong>5</strong>, price per
+									unit <strong>1.25</strong>
+								</li>
+							</ul>
+						</div>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-bottom: 10px;
+							"
+						>
+							Expected output:
+						</p>
+						<div class="code-block" style="margin-bottom: 16px">
+							<pre style="padding: 12px 18px; color: #abb2bf; font-size: 13px">
+Item: Coffee
+Quantity: 3
+Total: 12.75
+---
+Item: Notebook
+Quantity: 2
+Total: 9.50
+---
+Item: Pen
+Quantity: 5
+Total: 6.25</pre
+							>
+						</div>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-top: 20px;
+								margin-bottom: 8px;
+							"
+						>
+							Write your code below.
+						</p>
+						<div class="editor-wrap" id="editor2">
+							<div class="editor-header">
+								<span class="editor-label">JavaScript Editor</span>
+							</div>
+							<textarea
+								class="editor-textarea"
+								id="editor2-code"
+								spellcheck="false"
+							>
+// printReceipt function
+
+
+// Three calls
+
+</textarea
+							>
+							<div class="editor-footer">
+								<button
+									class="editor-reset-btn"
+									onclick="resetEditor('editor2')"
+									title="Reset code"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg>
+									Reset
+								</button>
+								<div class="spacer"></div>
+								<button class="run-btn" onclick="runCode('editor2')">
+									Run
+								</button>
+								<button class="check-btn" onclick="checkAnswer('ex2')">
+									Check Answer
+								</button>
+							</div>
+							<div class="output-area" id="editor2-output">
+								<div class="output-label">Output</div>
+							</div>
+						</div>
+						<div class="check-result" id="checkResult2"></div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 8. KNOWLEDGE CHECK 1 -->
+				<div class="section" id="s8">
+					<div class="section-label">
+						<div class="section-num question">?</div>
+						<span class="section-title-sm">Knowledge Check 1</span>
+					</div>
+					<h2>Check for Understanding</h2>
+
+					<div class="quiz-box">
+						<div class="quiz-intro">
+							<div class="quiz-intro-label">Module 9 - Part 1</div>
+							<h3>Select one answer per question</h3>
+						</div>
+						<div class="quiz-questions">
+							<div class="quiz-q">
+								<div class="q-num">Question 1 of 3</div>
+								<div class="q-text">
+									What does this print?
+									<pre
+										style="
+											margin-top: 8px;
+											padding: 10px 14px;
+											background: #1e2a3a;
+											border-radius: 6px;
+											font-size: 13px;
+											color: #abb2bf;
+											font-family: &quot;JetBrains Mono&quot;, monospace;
+											font-variant-ligatures: none;
+										"
+									>
+function announce() {
+  console.log("Ready")
+}</pre
+									>
+								</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="1" data-val="a">
+										<input type="radio" name="q1" /> Ready
+									</li>
+									<li class="q-option" data-q="1" data-val="b">
+										<input type="radio" name="q1" /> Nothing -- the function is
+										defined but never called
+									</li>
+									<li class="q-option" data-q="1" data-val="c">
+										<input type="radio" name="q1" /> An error, because the
+										function has no parameters
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb1"></div>
+							</div>
+
+							<div class="quiz-q">
+								<div class="q-num">Question 2 of 3</div>
+								<div class="q-text">
+									In this code, what are the parameters and what are the
+									arguments?
+									<pre
+										style="
+											margin-top: 8px;
+											padding: 10px 14px;
+											background: #1e2a3a;
+											border-radius: 6px;
+											font-size: 13px;
+											color: #abb2bf;
+											font-family: &quot;JetBrains Mono&quot;, monospace;
+											font-variant-ligatures: none;
+										"
+									>
+function multiply(a, b) {
+  console.log(a * b)
+}
+
+multiply(4, 7)</pre
+									>
+								</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="2" data-val="a">
+										<input type="radio" name="q2" /> Parameters: 4 and 7.
+										Arguments: a and b
+									</li>
+									<li class="q-option" data-q="2" data-val="b">
+										<input type="radio" name="q2" /> Parameters: a and b.
+										Arguments: 4 and 7
+									</li>
+									<li class="q-option" data-q="2" data-val="c">
+										<input type="radio" name="q2" /> Parameters and arguments
+										are the same thing
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb2"></div>
+							</div>
+
+							<div class="quiz-q">
+								<div class="q-num">Question 3 of 3</div>
+								<div class="q-text">
+									What does this print?
+									<pre
+										style="
+											margin-top: 8px;
+											padding: 10px 14px;
+											background: #1e2a3a;
+											border-radius: 6px;
+											font-size: 13px;
+											color: #abb2bf;
+											font-family: &quot;JetBrains Mono&quot;, monospace;
+											font-variant-ligatures: none;
+										"
+									>
+function tag(label, value) {
+  console.log(`${label}: ${value}`)
+}
+
+tag("Battery", 84)
+tag(84, "Battery")</pre
+									>
+								</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="3" data-val="a">
+										<input type="radio" name="q3" /> Battery: 84, then Battery:
+										84
+									</li>
+									<li class="q-option" data-q="3" data-val="b">
+										<input type="radio" name="q3" /> Battery: 84, then 84:
+										Battery
+									</li>
+									<li class="q-option" data-q="3" data-val="c">
+										<input type="radio" name="q3" /> An error on the second call
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb3"></div>
+							</div>
+
+							<div class="quiz-error" id="quizError">
+								Please answer all three questions before submitting.
+							</div>
+							<button class="quiz-submit" id="submitQuiz">
+								Submit Answers
+							</button>
+							<div class="quiz-result" id="quizResult">
+								<div class="result-score" id="resultScore"></div>
+								<div class="result-msg" id="resultMsg"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 9. RETURN VALUES -->
+				<div class="section" id="s9">
+					<div class="section-label">
+						<div class="section-num">9</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Return Values</h2>
+
+					<p>
+						So far every function has printed directly to the console. But
+						printing is not always the goal. Often you need a function to
+						<strong>calculate</strong> something and hand the result back so you
+						can use it elsewhere. This includes storing it in a variable or
+						passing it to another function. That is what the
+						<code>return</code> keyword does.
+					</p>
+
+					<p>
+						When a function hits a <code>return</code> statement, it immediately
+						stops and sends the value back to wherever it was called from. Any
+						code after <code>return</code> in the function body does not run.
+					</p>
+
+					<p>
+						One important thing to note: a returned value is not automatically
+						printed. To see it, you still need to pass the function call or it's
+						result to
+						<code>console.log</code>.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex7')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex7')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex7-code"
+						><span class="kw">function</span> <span class="fn">add</span>(a, b) {
+  <span class="kw">return</span> a <span class="op">+</span> b
+}
+
+<span class="cmt">// The returned value can be stored in a variable</span>
+<span class="kw">let</span> result <span class="op">=</span> <span class="fn">add</span>(<span class="num">3</span>, <span class="num">4</span>)
+<span class="fn">console</span>.log(result)  <span class="cmt">// 7</span>
+
+<span class="cmt">// Or used directly in an expression</span>
+<span class="fn">console</span>.log(<span class="fn">add</span>(<span class="num">3</span>, <span class="num">4</span>) <span class="op">*</span> <span class="num">2</span>)  <span class="cmt">// 14</span>
+
+<span class="cmt">// Or embedded in a template string</span>
+<span class="fn">console</span>.log(<span class="str">`The sum is ${add(3, 4)}`</span>)  <span class="cmt">// The sum is 7</span></pre>
+						<div class="code-output" id="ex7-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						Here is another complete example. The function below checks stock
+						levels and returns a status string. Notice two things. First, each
+						<code>return</code> exits the function immediately so there is no
+						need for <code>else if</code>. Once a condition matches and a value
+						is returned, the function stops and the remaining
+						<code>if</code> statements are never reached. This is called an
+						<strong>early return</strong>. If all the <code>if</code> statements
+						are false, then the last <code>return</code> statement will run.
+					</p>
+					<p>
+						Second, the <code>if</code> statements have no curly braces. When a
+						condition and its result fit on one line, the braces are optional.
+						It is a style choice here to keep the pattern compact and readable.
+						The logic is simple enough that the braces would add noise rather
+						than clarity. You don’t have to write your code this way. At this
+						stage, it’s perfectly fine (and often better) to stick with curly
+						braces. Just be aware that this alternative style exists, and you’ll
+						come across it in real-world code.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex8')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex8')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex8-code"
+						><span class="kw">function</span> <span class="fn">stockStatus</span>(units) {
+  <span class="kw">if</span> (units <span class="op">===</span> <span class="num">0</span>)  <span class="kw">return</span> <span class="str">"Out of stock"</span>
+  <span class="kw">if</span> (units <span class="op">&lt;</span> <span class="num">10</span>)  <span class="kw">return</span> <span class="str">"Low stock"</span>
+  <span class="kw">if</span> (units <span class="op">&lt;</span> <span class="num">50</span>)  <span class="kw">return</span> <span class="str">"In stock"</span>
+  <span class="kw">return</span> <span class="str">"Well stocked"</span>
+}
+
+<span class="fn">console</span>.log(<span class="fn">stockStatus</span>(<span class="num">0</span>))    <span class="cmt">// Out of stock</span>
+<span class="fn">console</span>.log(<span class="fn">stockStatus</span>(<span class="num">5</span>))    <span class="cmt">// Low stock</span>
+<span class="fn">console</span>.log(<span class="fn">stockStatus</span>(<span class="num">30</span>))   <span class="cmt">// In stock</span>
+<span class="fn">console</span>.log(<span class="fn">stockStatus</span>(<span class="num">200</span>))  <span class="cmt">// Well stocked</span></pre>
+						<div class="code-output" id="ex8-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 10. SCOPE -->
+				<div class="section" id="s10">
+					<div class="section-label">
+						<div class="section-num">10</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Scope</h2>
+
+					<p>
+						<strong>Scope</strong> refers to where a variable is accessible in
+						your code. A variable declared with <code>let</code> inside a
+						function only exists within that function. It is created when the
+						function runs and becomes inaccessible when it finishes executing.
+						Code outside the function cannot see it. This is called
+						<strong>function scope</strong>.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex9')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex9')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex9-code"
+						><span class="kw">function</span> <span class="fn">processOrder</span>() {
+  <span class="kw">let</span> fee <span class="op">=</span> <span class="num">4.99</span>  <span class="cmt">// local variable -> only exists inside processOrder function</span>
+  <span class="fn">console</span>.log(<span class="str">`Processing fee: ${fee}`</span>)
+}
+
+<span class="fn">processOrder</span>()
+
+<span class="cmt">// This throws a ReferenceError because fee does not exist out here</span>
+<span class="fn">console</span>.log(fee)</pre>
+						<div class="code-output" id="ex9-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						The fix is to <code>return</code> the value instead of trying to
+						reach inside the function from outside. That is the designed way to
+						get data out of a function.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex10')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex10')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex10-code"
+						><span class="kw">function</span> <span class="fn">processOrder</span>() {
+  <span class="kw">let</span> fee <span class="op">=</span> <span class="num">4.99</span>
+  <span class="kw">return</span> fee  <span class="cmt">// send the value out</span>
+}
+
+<span class="kw">let</span> orderFee <span class="op">=</span> <span class="fn">processOrder</span>()  <span class="cmt">// catch it here</span>
+<span class="fn">console</span>.log(<span class="str">`Fee: ${orderFee}`</span>)</pre>
+						<div class="code-output" id="ex10-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						JavaScript actually has three types of scope:
+						<strong>function scope</strong> (what we covered above),
+						<strong>block scope</strong> (variables declared inside an
+						<code>if</code> block or loop are not accessible outside that
+						block), and <strong>global scope</strong> (variables declared
+						outside any function or block are accessible everywhere). The
+						behaviour of <code>let</code>, <code>const</code>, and
+						<code>var</code> differs across these, but that is beyond this
+						course. For now, if you need a value that a function uses, simply
+						return it.
+					</p>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 11. FUNCTION EXPRESSIONS -->
+				<div class="section" id="s11">
+					<div class="section-label">
+						<div class="section-num">11</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Function Expressions</h2>
+
+					<p>
+						There is a second way to create a function. Instead of starting a
+						statement with the <code>function</code> keyword, you assign the
+						function to a variable. This is called a
+						<strong>function expression</strong>. You call the function the same
+						way by the writing variable name followed by parentheses.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex11')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex11')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex11-code"
+						><span class="cmt">// Function declaration</span>
+<span class="kw">function</span> <span class="fn">square</span>(n) {
+  <span class="kw">return</span> n <span class="op">*</span> n
+}
+
+<span class="cmt">// Function expression -> same behaviour, different syntax</span>
+<span class="kw">let</span> square2 <span class="op">=</span> <span class="kw">function</span>(n) {
+  <span class="kw">return</span> n <span class="op">*</span> n
+}
+
+<span class="fn">console</span>.log(<span class="fn">square</span>(<span class="num">5</span>))   <span class="cmt">// 25</span>
+<span class="fn">console</span>.log(square2(<span class="num">5</span>))  <span class="cmt">// 25</span></pre>
+						<div class="code-output" id="ex11-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 12. KNOWLEDGE CHECK 2 -->
+				<div class="section" id="s12">
+					<div class="section-label">
+						<div class="section-num question">?</div>
+						<span class="section-title-sm">Knowledge Check 2</span>
+					</div>
+					<h2>Return Values and Function Expressions</h2>
+
+					<div class="quiz-box">
+						<div class="quiz-intro">
+							<div class="quiz-intro-label">
+								Module 9 - Part 2
+							</div>
+							<h3>Select one answer per question</h3>
+						</div>
+						<div class="quiz-questions">
+							<div class="quiz-q">
+								<div class="q-num">Question 1 of 3</div>
+								<div class="q-text">
+									What does this print?
+									<pre
+										style="
+											margin-top: 8px;
+											padding: 10px 14px;
+											background: #1e2a3a;
+											border-radius: 6px;
+											font-size: 13px;
+											color: #abb2bf;
+											font-family: &quot;JetBrains Mono&quot;, monospace;
+											font-variant-ligatures: none;
+										"
+									>
+function getRating(score) {
+  if (score >= 8) return "Great"
+  if (score >= 5) return "Average"
+  return "Poor"
+}
+
+console.log(getRating(6))</pre
+									>
+								</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="1" data-val="a">
+										<input type="radio" name="q1" /> Great
+									</li>
+									<li class="q-option" data-q="1" data-val="b">
+										<input type="radio" name="q1" /> Average
+									</li>
+									<li class="q-option" data-q="1" data-val="c">
+										<input type="radio" name="q1" /> Poor
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb1"></div>
+							</div>
+
+							<div class="quiz-q">
+								<div class="q-num">Question 2 of 3</div>
+								<div class="q-text">
+									What does this print?
+									<pre
+										style="
+											margin-top: 8px;
+											padding: 10px 14px;
+											background: #1e2a3a;
+											border-radius: 6px;
+											font-size: 13px;
+											color: #abb2bf;
+											font-family: &quot;JetBrains Mono&quot;, monospace;
+											font-variant-ligatures: none;
+										"
+									>
+function getMax(a, b) {
+  return a > b ? a : b
+}
+
+let result = getMax(12, 7)
+console.log(result)</pre
+									>
+								</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="2" data-val="a">
+										<input type="radio" name="q2" /> 7
+									</li>
+									<li class="q-option" data-q="2" data-val="b">
+										<input type="radio" name="q2" /> 12
+									</li>
+									<li class="q-option" data-q="2" data-val="c">
+										<input type="radio" name="q2" /> true
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb2"></div>
+							</div>
+
+							<div class="quiz-q">
+								<div class="q-num">Question 3 of 3</div>
+								<div class="q-text">
+									Which of these is a valid function expression?
+								</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="3" data-val="a">
+										<input type="radio" name="q3" />
+										<code>function greet = function() { }</code>
+									</li>
+									<li class="q-option" data-q="3" data-val="b">
+										<input type="radio" name="q3" />
+										<code>let greet = function() { }</code>
+									</li>
+									<li class="q-option" data-q="3" data-val="c">
+										<input type="radio" name="q3" />
+										<code>let function greet() { }</code>
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb3"></div>
+							</div>
+
+							<div class="quiz-error" id="quizError2">
+								Please answer all three questions before submitting.
+							</div>
+							<button class="quiz-submit" id="submitQuiz2">
+								Submit Answers
+							</button>
+							<div class="quiz-result" id="quizResult2">
+								<div class="result-score" id="resultScore2"></div>
+								<div class="result-msg" id="resultMsg2"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 13. CODING EXERCISE 3 -->
+				<div class="section" id="s13">
+					<div class="section-label">
+						<div class="section-num question">?</div>
+						<span class="section-title-sm">Coding Exercise 3</span>
+					</div>
+					<h2>Amara's Grade Function</h2>
+
+					<div class="activity-box">
+						<div class="activity-header">
+							<span class="activity-tag">Coding Exercise</span>
+						</div>
+						<div class="activity-scenario">
+							<strong>Question:</strong> Help Amara write a function called
+							<strong>getGrade</strong> that takes a score and returns the grade
+							label as a string. Then call it five times with different scores
+							and print each result. Use the grading scale below.
+							<ol style="margin-top: 12px; padding-left: 18px; line-height: 2">
+								<li>80 and above → A -- Distinction</li>
+								<li>60 to 79 → B -- Merit</li>
+								<li>50 to 59 → C -- Credit</li>
+								<li>40 to 49 → D -- Pass</li>
+								<li>Below 40 → F -- Fail</li>
+							</ol>
+						</div>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-bottom: 10px;
+							"
+						>
+							Expected output:
+						</p>
+						<div class="code-block" style="margin-bottom: 16px">
+							<pre style="padding: 12px 18px; color: #abb2bf; font-size: 13px">
+91: A -- Distinction
+67: B -- Merit
+54: C -- Credit
+43: D -- Pass
+28: F -- Fail</pre
+							>
+						</div>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-top: 20px;
+								margin-bottom: 8px;
+							"
+						>
+							Write your code below.
+						</p>
+						<div class="editor-wrap" id="editor3">
+							<div class="editor-header">
+								<span class="editor-label">JavaScript Editor</span>
+							</div>
+							<textarea
+								class="editor-textarea"
+								id="editor3-code"
+								spellcheck="false"
+							>
+// getGrade function
+
+
+// Five calls - print each score, its grade and classification
+
+</textarea
+							>
+							<div class="editor-footer">
+								<button
+									class="editor-reset-btn"
+									onclick="resetEditor('editor3')"
+									title="Reset code"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg>
+									Reset
+								</button>
+								<div class="spacer"></div>
+								<button class="run-btn" onclick="runCode('editor3')">
+									Run
+								</button>
+								<button class="check-btn" onclick="checkAnswer('ex3')">
+									Check Answer
+								</button>
+							</div>
+							<div class="output-area" id="editor3-output">
+								<div class="output-label">Output</div>
+							</div>
+						</div>
+						<div class="check-result" id="checkResult3"></div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 14. SUMMARY -->
+				<div class="section" id="s14">
+					<div class="section-label">
+						<div class="section-num">14</div>
+						<span class="section-title-sm">Summary</span>
+					</div>
+					<h2>Module Summary</h2>
+					<div class="summary-box">
+						<h3>Key takeaways</h3>
+						<ul class="summary-list">
+							<li>
+								A function is a named, reusable block of code. Define it once
+								with the <code>function</code> keyword. Call it by name with
+								parentheses whenever you need to run it.
+							</li>
+							<li>
+								Parameters are the placeholder names in the function definition.
+								Arguments are the actual values passed when calling. Order
+								matters. Arguments are assigned to parameters left to right.
+							</li>
+							<li>
+								If you call a function with fewer arguments than parameters, the
+								missing ones are <strong>undefined</strong>.
+							</li>
+							<li>
+								The <code>return</code> keyword sends a value back to the caller
+								and stops the function. All code after <code>return</code> does not
+								run. 
+							</li>
+							<li>
+								The early return pattern uses multiple
+								<code>return</code> statements to exit as soon as a condition
+								matches, avoiding unnecessary <code>else if</code> chains.
+							</li>
+							<li>
+								Variables declared with <code>let</code> inside a function are
+								local. They only exist inside that function. Use
+								<code>return</code> to pass values out.
+							</li>
+							<li>
+								A function expression assigns a function to a variable. You call
+								it the same way by writing the variable name followed by parentheses.
+							</li>
+						</ul>
+
+						<div class="ref-scroll-hint">Scroll right to see full table</div>
+						<div class="ref-table-wrap">
+							<table class="ref-table">
+								<thead>
+									<tr>
+										<th>Concept</th>
+										<th>Syntax</th>
+										<th>Notes</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Define a function</td>
+										<td><code>function name() {}</code></td>
+										<td>Body does not run until called</td>
+									</tr>
+									<tr>
+										<td>Call a function</td>
+										<td><code>name()</code></td>
+										<td>Runs the body every time</td>
+									</tr>
+									<tr>
+										<td>With parameters</td>
+										<td><code>function name(a, b) {}</code></td>
+										<td>Order of arguments must match</td>
+									</tr>
+									<tr>
+										<td>Return a value</td>
+										<td><code>return value</code></td>
+										<td>Stops the function, sends value back</td>
+									</tr>
+									<tr>
+										<td>Early return</td>
+										<td>Multiple <code>return</code> statements</td>
+										<td>Exits at first matching condition</td>
+									</tr>
+									<tr>
+										<td>Local scope</td>
+										<td><code>let x</code> inside a function</td>
+										<td>Not accessible outside</td>
+									</tr>
+									<tr>
+										<td>Function expression</td>
+										<td><code>let f = function() {}</code></td>
+										<td>Assigned to a variable</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="module-nav">
+						<a class="prev-module" href="module8.html">
+							<div class="prev-arrow-icon">
+								<svg
+									viewBox="0 0 24 24"
+									width="18"
+									height="18"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<line x1="19" y1="12" x2="5" y2="12"></line>
+									<polyline points="12 19 5 12 12 5"></polyline>
+								</svg>
+							</div>
+							<div class="prev-text">
+								<span class="prev-label">Back to</span>
+								<span class="prev-title">Module 8: Loops</span>
+							</div>
+						</a>
+						<a class="next-module" href="module10.html">
+							<div class="next-text">
+								<span class="next-label">Up Next</span>
+								<span class="next-title">Module 10: Objects</span>
+							</div>
+							<div class="next-arrow-icon">
+								<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<line x1="5" y1="12" x2="19" y2="12"></line>
+									<polyline points="12 5 19 12 12 19"></polyline>
+								</svg>
+							</div>
+						</a>
+					</div>
+
+					<div class="designer-note">
+						<span>JavaScript Crash Course - Module 9 of 10</span>
+					</div>
+				</div>
+			</main>
+		</div>
+
+		<!-- SCRIPTS -->
+		<script>
+			window.staticBlocksHTML = {};
+			document.addEventListener("DOMContentLoaded", () => {
+				document.querySelectorAll("pre[id]").forEach((pre) => {
+					const id = pre.id.replace("-code", "");
+					window.staticBlocksHTML[id] = pre.innerHTML;
+				});
+			});
+		</script>
+		<script src="../assets/js/editor.js"></script>
+		<script>
+			window.staticBlocks = {
+				ex1: `function showWelcome() {\n  console.log("Welcome to the app")\n  console.log("You are now logged in")\n}\n\n// Nothing prints -- the function is defined but not yet called`,
+				ex2: `function showWelcome() {\n  console.log("Welcome to the app")\n  console.log("You are now logged in")\n}\n\nshowWelcome()  // first call\nshowWelcome()  // second call -- same body runs again`,
+				ex3: `function printDivider() {\n  console.log("--------------------")\n}\n\nconsole.log("Monday")\nprintDivider()\nconsole.log("Tuesday")\nprintDivider()\nconsole.log("Wednesday")\nprintDivider()`,
+				ex4: `function playTrack(track, duration) {\n  console.log(\`Now playing: \${track} (\${duration}s)\`)\n}\n\nplayTrack("Midnight Rain", 214)\nplayTrack("Golden Hour", 187)\nplayTrack("Blinding Lights", 200)`,
+				ex5: `function divide(numerator, denominator) {\n  console.log(\`\${numerator} / \${denominator} = \${numerator / denominator}\`)\n}\n\ndivide(10, 2)\ndivide(2, 10)`,
+				ex6: `function resizeImage(width, height) {\n  console.log(\`width: \${width}\`)\n  console.log(\`height: \${height}\`)\n}\n\nresizeImage(1920, 1080)\nconsole.log("---")\nresizeImage(1920)`,
+				ex7: `function add(a, b) {\n  return a + b\n}\n\nlet result = add(3, 4)\nconsole.log(result)\n\nconsole.log(add(3, 4) * 2)\n\nconsole.log(\`The sum is \${add(3, 4)}\`)`,
+				ex8: `function stockStatus(units) {\n  if (units === 0)  return "Out of stock"\n  if (units < 10)   return "Low stock"\n  if (units < 50)   return "In stock"\n  return "Well stocked"\n}\n\nconsole.log(stockStatus(0))\nconsole.log(stockStatus(5))\nconsole.log(stockStatus(30))\nconsole.log(stockStatus(200))`,
+				ex9: `function processOrder() {\n  let fee = 4.99\n  console.log(\`Processing fee: \${fee}\`)\n}\n\nprocessOrder()\n\nconsole.log(fee)`,
+				ex10: `function processOrder() {\n  let fee = 4.99\n  return fee\n}\n\nlet orderFee = processOrder()\nconsole.log(\`Fee: \${orderFee}\`)`,
+				ex11: `function square(n) {\n  return n * n\n}\n\nlet square2 = function(n) {\n  return n * n\n}\n\nconsole.log(square(5))\nconsole.log(square2(5))`,
+				ex12: `let double = function(n) {\n  return n * 2\n}\n\nlet double2 = (n) => {\n  return n * 2\n}\n\nlet double3 = (n) => n * 2\n\nconsole.log(double(7))\nconsole.log(double2(7))\nconsole.log(double3(7))`,
+			};
+
+			window.editorDefaults = {
+				editor1: `// 1. introduce function\n\n\n// 2. showStatus function\n\n\n// 3. Calls\n`,
+				editor2: `// printReceipt function\n\n\n// Three calls\n`,
+				editor3: `// getGrade function\n\n\n// Five calls -- print each score and its grade\n`,
+			};
+
+			window.checkConfigs = {
+				ex1: {
+					editorId: "editor1",
+					resultId: "checkResult1",
+					expected: [
+						"I am 28 years old and I live in Lusaka",
+						"Connection: Online",
+						"Connection: Online",
+					],
+					successMsg:
+						"Correct. Both functions defined and called the right number of times.",
+					failMsg:
+						"Check that introduce is called once and showStatus is called twice, and that the output matches exactly.",
+				},
+				ex2: {
+					editorId: "editor2",
+					resultId: "checkResult2",
+					expected: [
+						"Item: Coffee",
+						"Quantity: 3",
+						"Total: 12.75",
+						"---",
+						"Item: Notebook",
+						"Quantity: 2",
+						"Total: 9.50",
+						"---",
+						"Item: Pen",
+						"Quantity: 5",
+						"Total: 6.25",
+					],
+					successMsg: "All outputs correct.",
+					failMsg:
+						"Check your multiplication for the total and make sure you print the --- divider between calls.",
+				},
+				ex3: {
+					editorId: "editor3",
+					resultId: "checkResult3",
+					expected: [
+						"91: A -- Distinction",
+						"67: B -- Merit",
+						"54: C -- Credit",
+						"43: D -- Pass",
+						"28: F -- Fail",
+					],
+					successMsg: "All five grades correct.",
+					failMsg:
+						"Check your thresholds are in order from highest to lowest, and that the function returns a string rather than printing inside.",
+				},
+			};
+
+			window.quizConfig = {
+				questions: [
+					{
+						id: 1,
+						answer: "b",
+						feedback: {
+							correct:
+								"<strong>Correct.</strong> Defining a function stores the body but does not run it. Nothing prints until you call the function.",
+							wrong:
+								"<strong>Not quite.</strong> The function is defined here but never called. The body only runs when you write announce(). Since that line is missing, nothing prints.",
+						},
+					},
+					{
+						id: 2,
+						answer: "b",
+						feedback: {
+							correct:
+								"<strong>Correct.</strong> Parameters (a and b) are the placeholder names in the definition. Arguments (4 and 7) are the actual values passed at the call.",
+							wrong:
+								"<strong>Not quite.</strong> Parameters live in the function definition -- they are the named placeholders. Arguments are what you pass when calling. So a and b are parameters, 4 and 7 are arguments.",
+						},
+					},
+					{
+						id: 3,
+						answer: "b",
+						feedback: {
+							correct:
+								'<strong>Correct.</strong> Arguments are assigned left to right. The first call passes "Battery" to label and 84 to value. The second swaps them, so label gets 84 and value gets "Battery".',
+							wrong:
+								'<strong>Not quite.</strong> Arguments are matched to parameters in order. The second call passes 84 as the first argument, so label = 84 and value = "Battery", printing "84: Battery".',
+						},
+					},
+				],
+				messages: {
+					perfect: "Solid. Move on to return values.",
+					good: "Good. Review the missed question before moving on.",
+					retry: "Revisit sections 3 through 6, then try again.",
+				},
+			};
+
+			window.quizConfig2 = {
+				questions: [
+					{
+						id: 1,
+						answer: "b",
+						feedback: {
+							correct:
+								'<strong>Correct.</strong> 6 is not >= 8, so the first return is skipped. 6 is >= 5, so "Average" is returned and the function stops.',
+							wrong:
+								'<strong>Not quite.</strong> The function checks conditions top to bottom and returns at the first match. 6 fails the >= 8 check but passes >= 5, so "Average" is returned.',
+						},
+					},
+					{
+						id: 2,
+						answer: "b",
+						feedback: {
+							correct:
+								"<strong>Correct.</strong> The ternary checks whether 12 > 7. It is, so the function returns 12. That value is stored in result and printed.",
+							wrong:
+								"<strong>Not quite.</strong> The ternary evaluates a > b. 12 > 7 is true, so the function returns a, which is 12. The result variable holds 12, and that is what prints.",
+						},
+					},
+					{
+						id: 3,
+						answer: "b",
+						feedback: {
+							correct:
+								"<strong>Correct.</strong> A function expression assigns a function to a variable using let. The syntax is: let name = function() {}.",
+							wrong:
+								"<strong>Not quite.</strong> Option A mixes declaration and expression syntax incorrectly. Option C uses both let and function as if they combine -- they do not. Only option B correctly assigns a function to a variable.",
+						},
+					},
+				],
+				messages: {
+					perfect: "Excellent. You are ready for the coding exercise.",
+					good: "Good. Review the missed question before moving on.",
+					retry: "Revisit sections 9 through 11, then try again.",
+				},
+			};
+		</script>
+		<script src="../assets/js/quiz.js"></script>
+		<script>
+			// Second quiz initialisation
+			document.addEventListener("DOMContentLoaded", () => {
+				const btn2 = document.getElementById("submitQuiz2");
+				if (!btn2) return;
+				btn2.addEventListener("click", () => {
+					const qs = [1, 2, 3];
+					const answers = {};
+					let allAnswered = true;
+					qs.forEach((n) => {
+						const sel =
+							document.querySelector(`input[name="q${n + 3}"]:checked`) ||
+							document.querySelector(
+								`.quiz-questions .quiz-q:nth-child(${n}) input:checked`,
+							);
+						const opt =
+							document.querySelector(
+								`[data-q="${n}"][data-val]:has(input:checked)`,
+							) ||
+							(() => {
+								const opts = document.querySelectorAll(`[data-q="${n}"]`);
+								return Array.from(opts).find((o) =>
+									o.querySelector("input:checked"),
+								);
+							})();
+						if (!opt) {
+							allAnswered = false;
+						} else {
+							answers[n] = opt.dataset.val;
+						}
+					});
+
+					const err = document.getElementById("quizError2");
+					if (!allAnswered) {
+						if (err) err.style.display = "block";
+						return;
+					}
+					if (err) err.style.display = "none";
+
+					let correct = 0;
+					const cfg = window.quizConfig2;
+					cfg.questions.forEach((q) => {
+						const fb =
+							document.getElementById(`fb${q.id + 3}`) ||
+							document.querySelectorAll(".q-feedback")[q.id + 2];
+						const userAns = answers[q.id];
+						const isCorrect = userAns === q.answer;
+						if (isCorrect) correct++;
+						if (fb) {
+							fb.className = `q-feedback show ${isCorrect ? "correct-fb" : "incorrect-fb"}`;
+							fb.innerHTML = isCorrect ? q.feedback.correct : q.feedback.wrong;
+						}
+						document.querySelectorAll(`[data-q="${q.id}"]`).forEach((opt) => {
+							if (opt.dataset.val === q.answer) opt.classList.add("correct");
+							else if (opt.dataset.val === userAns && !isCorrect)
+								opt.classList.add("incorrect");
+						});
+					});
+
+					const res = document.getElementById("quizResult2");
+					const score = document.getElementById("resultScore2");
+					const msg = document.getElementById("resultMsg2");
+					if (res) res.style.display = "block";
+					if (score) score.textContent = `${correct} / 3`;
+					if (msg)
+						msg.textContent =
+							correct === 3
+								? cfg.messages.perfect
+								: correct >= 2
+									? cfg.messages.good
+									: cfg.messages.retry;
+				});
+			});
+		</script>
+		<script src="../assets/js/flashcards.js"></script>
+		<script src="../assets/js/ui.js"></script>
+	</body>
+</html>

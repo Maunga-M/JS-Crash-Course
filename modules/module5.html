@@ -1,0 +1,1554 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Module 5: Comparison and Logical Operators</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="../assets/css/main.css" />
+	</head>
+	<body>
+		<nav class="top-nav">
+			<a class="top-nav-home" href="../index.html" title="Home">
+				<span class="material-icons">home</span>
+			</a>
+		</nav>
+
+		<header class="lesson-header">
+			<div class="header-inner">
+				<div class="lesson-meta">
+					<span class="badge">Module 5 of 10</span>
+				</div>
+				<h1>Comparison & Logical Operators</h1>
+			</div>
+			<div class="progress-bar-wrap">
+				<div class="progress-bar-fill" style="width: 50%"></div>
+			</div>
+		</header>
+
+		<div class="page-wrap">
+			<aside class="sidebar" id="sidebar">
+				<div class="sidebar-label">In this module</div>
+				<ul class="sidebar-nav">
+					<li><a href="#s1">Learning Objectives</a></li>
+					<li><a href="#s2">Comparison Operators</a></li>
+					<li><a href="#s3">Coding Exercise 1</a></li>
+					<li><a href="#s4">Logical Operators</a></li>
+					<li><a href="#s5">Operators in Action</a></li>
+					<li><a href="#s6">Non-Boolean Results</a></li>
+					<li><a href="#s7">Operator Precedence</a></li>
+					<li><a href="#s9">Knowledge Check</a></li>
+					<li><a href="#s10">Coding Exercise 2</a></li>
+					<li><a href="#s11">Summary</a></li>
+				</ul>
+			</aside>
+
+			<button
+				class="sidebar-toggle"
+				id="sidebarToggle"
+				aria-label="Toggle menu"
+			>
+				<svg
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<line x1="3" y1="6" x2="21" y2="6" />
+					<line x1="3" y1="12" x2="21" y2="12" />
+					<line x1="3" y1="18" x2="21" y2="18" />
+				</svg>
+			</button>
+
+			<main class="lesson-body">
+				<!-- 1. LEARNING OBJECTIVE -->
+				<div class="section" id="s1">
+					<div class="section-label">
+						<div class="section-num">1</div>
+						<span class="section-title-sm">Learning Objectives</span>
+					</div>
+					<div class="objective-box">
+						<p class="obj-intro">
+							By the end of this module you will be able to:
+						</p>
+						<ul class="obj-list">
+							<li>Use all comparison operators to compare values</li>
+							<li>Distinguish between loose and strict equality</li>
+							<li>Evaluate expressions using logical operators</li>
+							<li>
+								Understand how operator precedence affects logical expressions
+							</li>
+							<li>Use short-circuit evaluation to control program flow</li>
+						</ul>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 2. COMPARISON OPERATORS -->
+				<div class="section" id="s2">
+					<div class="section-label">
+						<div class="section-num">2</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Comparison Operators</h2>
+
+					<p>
+						Comparison operators are used to make decisions in your code by
+						checking how two values relate to each other. A comparison operator
+						takes two values, compares them, and produces a boolean result.
+						There are eight comparison operators in JavaScript. Click each card
+						to see what it does.
+					</p>
+
+					<div class="flashcard-grid">
+						<div class="flashcard">
+							<div class="flashcard-inner">
+								<div class="flashcard-front">
+									<div class="fc-term">&gt;</div>
+									<div class="fc-hint">click to reveal</div>
+								</div>
+								<div class="flashcard-back">
+									<div class="fc-def">
+										Greater than. Returns true if the left value is larger than
+										the right.
+									</div>
+									<div class="fc-example">10 > 3 &nbsp; true</div>
+								</div>
+							</div>
+						</div>
+						<div class="flashcard">
+							<div class="flashcard-inner">
+								<div class="flashcard-front">
+									<div class="fc-term">&lt;</div>
+									<div class="fc-hint">click to reveal</div>
+								</div>
+								<div class="flashcard-back">
+									<div class="fc-def">
+										Less than. Returns true if the left value is smaller than
+										the right.
+									</div>
+									<div class="fc-example">3 &lt; 10 &nbsp; true</div>
+								</div>
+							</div>
+						</div>
+						<div class="flashcard">
+							<div class="flashcard-inner">
+								<div class="flashcard-front">
+									<div class="fc-term">&gt;=</div>
+									<div class="fc-hint">click to reveal</div>
+								</div>
+								<div class="flashcard-back">
+									<div class="fc-def">
+										Greater than or equal to. Returns true if the left value is
+										larger than or the same as the right.
+									</div>
+									<div class="fc-example">10 >= 10 &nbsp; true</div>
+								</div>
+							</div>
+						</div>
+						<div class="flashcard">
+							<div class="flashcard-inner">
+								<div class="flashcard-front">
+									<div class="fc-term">&lt;=</div>
+									<div class="fc-hint">click to reveal</div>
+								</div>
+								<div class="flashcard-back">
+									<div class="fc-def">
+										Less than or equal to. Returns true if the left value is
+										smaller than or the same as the right.
+									</div>
+									<div class="fc-example">3 &lt;= 10 &nbsp; true</div>
+								</div>
+							</div>
+						</div>
+						<div class="flashcard">
+							<div class="flashcard-inner">
+								<div class="flashcard-front">
+									<div class="fc-term">==</div>
+									<div class="fc-hint">click to reveal</div>
+								</div>
+								<div class="flashcard-back">
+									<div class="fc-def">
+										Loose equality. Checks if values are equal after type
+										coercion. "5" and 5 are considered equal.
+									</div>
+									<div class="fc-example">"5" == 5 &nbsp; true</div>
+								</div>
+							</div>
+						</div>
+						<div class="flashcard">
+							<div class="flashcard-inner">
+								<div class="flashcard-front">
+									<div class="fc-term">===</div>
+									<div class="fc-hint">click to reveal</div>
+								</div>
+								<div class="flashcard-back">
+									<div class="fc-def">
+										Strict equality. Checks value AND type. No coercion. "5" and
+										5 are not equal.
+									</div>
+									<div class="fc-example">"5" === 5 &nbsp; false</div>
+								</div>
+							</div>
+						</div>
+						<div class="flashcard">
+							<div class="flashcard-inner">
+								<div class="flashcard-front">
+									<div class="fc-term">!=</div>
+									<div class="fc-hint">click to reveal</div>
+								</div>
+								<div class="flashcard-back">
+									<div class="fc-def">
+										Loose inequality. Returns true if values are not equal,
+										after coercion.
+									</div>
+									<div class="fc-example">"5" != 6 &nbsp; true</div>
+								</div>
+							</div>
+						</div>
+						<div class="flashcard">
+							<div class="flashcard-inner">
+								<div class="flashcard-front">
+									<div class="fc-term">!==</div>
+									<div class="fc-hint">click to reveal</div>
+								</div>
+								<div class="flashcard-back">
+									<div class="fc-def">
+										Strict inequality. Returns true if value OR type differs. No
+										coercion.
+									</div>
+									<div class="fc-example">"5" !== 5 &nbsp; true</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<h3>Comparing numbers</h3>
+					<p>
+						You may recognise the first four operators from your early math
+						classes in school and in JavaScript they work exactly as you would
+						expect with numbers.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex1')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex1')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex1-code"
+						><span class="fn">console</span>.log(<span class="num">10</span> <span class="op">&gt;</span> <span class="num">3</span>)   <span class="cmt">// true</span>
+<span class="fn">console</span>.log(<span class="num">3</span> <span class="op">&lt;</span> <span class="num">1</span>)     <span class="cmt">// false</span>
+<span class="fn">console</span>.log(<span class="num">10</span> <span class="op">&gt;=</span> <span class="num">10</span>)  <span class="cmt">// true</span>
+<span class="fn">console</span>.log(<span class="num">12</span> <span class="op">&lt;=</span> <span class="num">10</span>)  <span class="cmt">// false</span>
+<span class="fn">console</span>.log(<span class="num">5</span> <span class="op">&gt;</span> <span class="num">10</span>)   <span class="cmt">// false</span></pre>
+						<div class="code-output" id="ex1-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>Comparing strings</h3>
+					<p>
+						Comparison of strings are a not so obvious. JavaScript compares
+						strings <strong>lexicographically</strong>, which means character by
+						character, using each character's Unicode value. This is similar to
+						alphabetical order, but with one important difference: uppercase
+						letters come before lowercase ones in Unicode. So "B" is considered
+						less than "a".
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex2')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex2')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex2-code"
+						><span class="fn">console</span>.log(<span class="str">"apple"</span> <span class="op">&lt;</span> <span class="str">"banana"</span>)  <span class="cmt">// true - "a" comes before "b"</span>
+<span class="fn">console</span>.log(<span class="str">"cat"</span> <span class="op">&gt;</span> <span class="str">"car"</span>)       <span class="cmt">// true - "t" comes after "r"</span>
+<span class="fn">console</span>.log(<span class="str">"apple"</span> <span class="op">&lt;</span> <span class="str">"Zebra"</span>)   <span class="cmt">// false - all uppercase come before any lowercase</span>
+<span class="fn">console</span>.log(<span class="str">"DOG"</span> <span class="op">&gt;</span> <span class="str">"ELEPHANT"</span>)   <span class="cmt">// false - 'D' comes before 'E'</span>
+
+</pre>
+						<div class="code-output" id="ex2-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>The string number trap</h3>
+					<p>
+						When comparing two strings that look like numbers, JavaScript does
+						not convert them to numbers first. It compares them as text,
+						character by character. This leads to a result that surprises almost
+						every beginner.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex3')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex3')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex3-code"
+						><span class="cmt">// Comparing numbers: 10 is greater than 2</span>
+<span class="fn">console</span>.log(<span class="num">10</span> <span class="op">&gt;</span> <span class="num">2</span>)      <span class="cmt">// true</span>
+
+<span class="cmt">// Comparing strings: "1" comes before "2" in Unicode, so "10" < "2"</span>
+<span class="fn">console</span>.log(<span class="str">"10"</span> <span class="op">&gt;</span> <span class="str">"2"</span>)  <span class="cmt">// false</span>
+<span class="fn">console</span>.log(<span class="str">"2"</span> <span class="op">&gt;</span> <span class="str">"10"</span>)  <span class="cmt">// true</span></pre>
+						<div class="code-output" id="ex3-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<div class="callout warn">
+						<div class="callout-label">Why this happens</div>
+						<p>
+							JavaScript looks at the first character of each string. E.g "1"
+							versus "2". Since "1" comes before "2" in Unicode, "10" is
+							considered less than "2", no matter how many digits follow. If you
+							need to compare numeric strings correctly, convert them to numbers
+							first using <code>Number()</code> or <code>parseInt()</code>.
+						</p>
+					</div>
+
+					<h3>Loose and Strict Equality</h3>
+					<p>
+						Loose equality <code>==</code> performs type coercion before
+						comparing. Strict equality <code>===</code> does not. It checks
+						value and data type simultaneously. In practice, always use strict
+						<code>===</code>. Loose equality produces results that are difficult
+						to predict.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex4')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex4')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex4-code"
+						><span class="fn">console</span>.log(<span class="str">"5"</span> <span class="op">==</span> <span class="num">5</span>)   <span class="cmt">// true - coercion converts "5" to 5</span>
+<span class="fn">console</span>.log(<span class="str">"5"</span> <span class="op">===</span> <span class="num">5</span>)  <span class="cmt">// false - different types</span>
+<span class="fn">console</span>.log(<span class="num">0</span> <span class="op">==</span> <span class="kw">false</span>)   <span class="cmt">// true - 0 converts to false, false stays false</span>
+<span class="fn">console</span>.log(<span class="num">0</span> <span class="op">===</span> <span class="kw">false</span>)  <span class="cmt">// false - number vs boolean</span>
+<span class="fn">console</span>.log(<span class="str">""</span> <span class="op">==</span> <span class="kw">false</span>) <span class="cmt">// true - "" converts to 0, false converts to 0</span>
+<span class="fn">console</span>.log(<span class="str">""</span> <span class="op">===</span> <span class="kw">false</span>) <span class="cmt">// false - different types</span></pre>
+						<div class="code-output" id="ex4-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>Loose and Strict Inequality</h3>
+					<p>
+						The same distinction applies for inequality. Loose
+						<code>!=</code> coerces the data types and then comapres values.
+						Strict <code>!==</code> does not. It checks both data type and
+						value. Prefer <code>!==</code> for the same reasons.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex5')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex5')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex5-code"
+						><span class="fn">console</span>.log(<span class="str">"5"</span> <span class="op">!=</span> <span class="num">5</span>)  <span class="cmt">// false - coercion makes them equal</span>
+<span class="fn">console</span>.log(<span class="str">"5"</span> <span class="op">!==</span> <span class="num">5</span>)  <span class="cmt">// true - different types</span>
+<span class="fn">console</span>.log(<span class="num">1</span> <span class="op">!=</span> <span class="num">2</span>)    <span class="cmt">// true - different values</span>
+<span class="fn">console</span>.log(<span class="num">1</span> <span class="op">!==</span> <span class="num">2</span>)   <span class="cmt">// true - different values, same type</span></pre>
+						<div class="code-output" id="ex5-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 3. CODING EXERCISE 1 -->
+				<div class="section" id="s3">
+					<div class="section-label">
+						<div class="section-num question">?</div>
+						<span class="section-title-sm">Coding Exercise 1</span>
+					</div>
+					<h2>Predicting Comparisons</h2>
+
+					<div class="activity-box">
+						<div class="activity-header">
+							<span class="activity-tag">Coding Exercise</span>
+						</div>
+						<div class="activity-scenario">
+							<strong>Question:</strong> Before running the code, predict
+							whether each expression evaluates to true or false and write your
+							prediction as a comment. Then run the code to check.
+						</div>
+
+						<p
+							style="font-size: 13.5px; color: var(--muted); margin-bottom: 8px"
+						>
+							Write your predictions as comments, then run to check.
+						</p>
+						<div class="editor-wrap" id="editor1">
+							<div class="editor-header">
+								<span class="editor-label">JavaScript Editor</span>
+							</div>
+							<textarea
+								class="editor-textarea"
+								id="editor1-code"
+								spellcheck="false"
+							>
+// Predict each result, then run to check
+console.log(100 >= 100)
+console.log("grape" > "mango")
+console.log("20" > "9")
+console.log(0 === false)
+console.log(0 == false)
+console.log("apple" !== "Apple")
+</textarea
+							>
+							<div class="editor-footer">
+								<button
+									class="editor-reset-btn"
+									onclick="resetEditor('editor1')"
+									title="Reset code"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg>
+									Reset
+								</button>
+								<div class="spacer"></div>
+								<button class="run-btn" onclick="runCode('editor1')">
+									Run
+								</button>
+								<button class="check-btn" onclick="checkAnswer('ex1')">
+									Check Answer
+								</button>
+							</div>
+							<div class="output-area" id="editor1-output">
+								<div class="output-label">Output</div>
+							</div>
+						</div>
+						<div class="check-result" id="checkResult1"></div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 4. LOGICAL OPERATORS -->
+				<div class="section" id="s4">
+					<div class="section-label">
+						<div class="section-num">4</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Logical Operators</h2>
+
+					<p>
+						Comparison operators evaluate one condition. Logical operators let
+						you combine or invert conditions so you can make more complex
+						decisions in your code. They evaluate expressions and return a
+						result based on how those conditions relate to each other. We have
+						three logical operators.
+					</p>
+
+					<div class="type-grid">
+						<div class="type-card">
+							<div class="type-name">&amp;&amp; &nbsp; AND</div>
+							<div class="type-desc">
+								Evaluates two conditions. Returns a truthy result only if
+								<strong>both</strong> sides are truthy.
+							</div>
+							<div class="type-examples">
+								<span class="type-example">age > 18 &amp;&amp; hasLicence</span>
+							</div>
+						</div>
+						<div class="type-card">
+							<div class="type-name">|| &nbsp; OR</div>
+							<div class="type-desc">
+								Evaluates two conditions. Returns a truthy result if
+								<strong>at least one</strong> side is truthy.
+							</div>
+							<div class="type-examples">
+								<span class="type-example">isStudent || isStaff</span>
+							</div>
+						</div>
+						<div class="type-card">
+							<div class="type-name">! &nbsp; NOT</div>
+							<div class="type-desc">
+								Inverts a boolean value. Turns true into false and false into
+								true.
+							</div>
+							<div class="type-examples">
+								<span class="type-example">!isExpired</span>
+							</div>
+						</div>
+					</div>
+
+					<p>
+						The truth table below shows the result of every possible combination
+						of inputs for each operator.
+					</p>
+
+					<div class="ops-table-wrap">
+						<table class="ops-table">
+							<thead>
+								<tr>
+									<th>A</th>
+									<th>B</th>
+									<th>A &amp;&amp; B</th>
+									<th>A || B</th>
+									<th>!A</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>true</td>
+									<td>true</td>
+									<td>true</td>
+									<td>true</td>
+									<td>false</td>
+								</tr>
+								<tr>
+									<td>true</td>
+									<td>false</td>
+									<td>false</td>
+									<td>true</td>
+									<td>false</td>
+								</tr>
+								<tr>
+									<td>false</td>
+									<td>true</td>
+									<td>false</td>
+									<td>true</td>
+									<td>true</td>
+								</tr>
+								<tr>
+									<td>false</td>
+									<td>false</td>
+									<td>false</td>
+									<td>false</td>
+									<td>true</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 5. CODE EXAMPLES -->
+				<div class="section" id="s5">
+					<div class="section-label">
+						<div class="section-num">5</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Operators in Action</h2>
+
+					<p>
+						In code, A and B in the truth table are usually comparison
+						expressions <br />
+						e.g <code>(isAdmin === false) && (age === 19)</code>. <br />
+						The logical operator evaluates each side and combines their results.
+						All the results below are booleans because the operands (A and B)
+						are comparisons and boolean variables. <br />
+						Note: An operand is a value that an operator acts on.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex6')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex6')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex6-code"
+						><span class="kw">let</span> age = <span class="num">22</span>
+<span class="kw">let</span> hasLicence = <span class="kw">true</span>
+<span class="kw">let</span> isStudent = <span class="kw">false</span>
+
+<span class="fn">console</span>.log(age <span class="op">&gt;</span> <span class="num">18</span> <span class="op">&amp;&amp;</span> hasLicence)  <span class="cmt">// true -> both truthy</span>
+<span class="fn">console</span>.log(age <span class="op">&gt;</span> <span class="num">18</span> <span class="op">&amp;&amp;</span> isStudent)   <span class="cmt">// false -> isStudent is false</span>
+<span class="fn">console</span>.log(age <span class="op">&gt;</span> <span class="num">18</span> <span class="op">||</span> isStudent)   <span class="cmt">// true -> age > 18 is truthy</span>
+<span class="fn">console</span>.log(<span class="op">!</span>hasLicence)              <span class="cmt">// false - inverts true</span>
+<span class="fn">console</span>.log(<span class="op">!</span>isStudent)               <span class="cmt">// true - inverts false</span></pre>
+						<div class="code-output" id="ex6-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 6. NON-BOOLEAN RESULTS -->
+				<div class="section" id="s6">
+					<div class="section-label">
+						<div class="section-num">6</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Non-Boolean Results</h2>
+
+					<p>
+						You might expect <code>&&</code> and <code>||</code> to always
+						return <strong>true</strong> or <strong>false</strong>. They do not.
+						They return one of the actual values you gave them, depending on
+						which one determined the outcome.
+					</p>
+
+					<p>
+						With <code>&&</code>, JavaScript evaluates left to right and returns
+						the first falsy value it finds because as soon as one side is falsy,
+						the whole expression cannot be true. If every value is truthy, there
+						is nothing to fail on, so it returns the last value.
+					</p>
+
+					<p>
+						With <code>||</code>, JavaScript evaluates left to right returns the
+						first truthy value it finds because as soon as one side is truthy,
+						the whole expression is satisfied. If every value is falsy, there is
+						nothing to return as a success, so it returns the last value.
+					</p>
+
+					<p>
+						In both cases, JavaScript stops the moment it has enough information
+						to decide. This is called short-circuiting. The returned value is
+						whatever caused JavaScript to stop.
+					</p>
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex7')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex7')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex7-code"
+						><span class="cmt">// && returns the first falsy value, or the last value if all are truthy</span>
+<span class="fn">console</span>.log(<span class="kw">true</span> <span class="op">&amp;&amp;</span> <span class="str">"hello"</span>)  <span class="cmt">// "hello" -> left is truthy, returns right</span>
+<span class="fn">console</span>.log(<span class="kw">false</span> <span class="op">&amp;&amp;</span> <span class="str">"hello"</span>) <span class="cmt">// false -> left is falsy, returns left</span>
+<span class="fn">console</span>.log(<span class="num">0</span> <span class="op">&amp;&amp;</span> <span class="str">"hello"</span>)     <span class="cmt">// 0 -> 0 is falsy, returns left</span>
+
+<span class="cmt">// || returns the first truthy value, or the last value if all are falsy</span>
+<span class="fn">console</span>.log(<span class="kw">false</span> <span class="op">||</span> <span class="str">"hello"</span>) <span class="cmt">// "hello" -> left is falsy, returns right</span>
+<span class="fn">console</span>.log(<span class="str">"hi"</span> <span class="op">||</span> <span class="str">"hello"</span>)   <span class="cmt">// "hi" -> left is truthy, returns left</span>
+<span class="fn">console</span>.log(<span class="num">0</span> <span class="op">||</span> <span class="num">42</span>)           <span class="cmt">// 42 -> left is falsy, returns right</span></pre>
+						<div class="code-output" id="ex7-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>Here is another example to help you understand this behaviour</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex9')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex9')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex9-code"
+						><span class="kw">let</span> count <span class="op">=</span> <span class="num">0</span>
+
+<span class="cmt">// Left is false, so right side never runs</span>
+<span class="kw">false</span> <span class="op">&amp;&amp;</span> (count <span class="op">+=</span> <span class="num">1</span>)
+<span class="fn">console</span>.log(count)  <span class="cmt">// 0 -> right side was skipped</span>
+
+<span class="cmt">// Left is true, so right side never runs</span>
+<span class="kw">true</span> <span class="op">||</span> (count <span class="op">+=</span> <span class="num">1</span>)
+<span class="fn">console</span>.log(count)  <span class="cmt">// 0 -> right side was skipped again</span>
+
+<span class="cmt">// Left is false, so right side DOES run</span>
+<span class="kw">false</span> <span class="op">||</span> (count <span class="op">+=</span> <span class="num">1</span>)
+<span class="fn">console</span>.log(count)  <span class="cmt">// 1 -> right side ran this time</span></pre>
+						<div class="code-output" id="ex9-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+					<div class="callout warn">
+						<div class="callout-label">This is not a bug</div>
+						<p>
+							This behaviour is intentional and used constantly in JavaScript.
+							Short-circuiting is also used as a concise way to provide a
+							fallback value when a variable might be empty or undefined. See
+							the example below.
+						</p>
+					</div>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex10')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex10')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex10-code"
+						><span class="kw">let</span> username <span class="op">=</span> <span class="str">""</span>
+<span class="kw">let</span> display <span class="op">=</span> username <span class="op">||</span> <span class="str">"Guest"</span>
+<span class="fn">console</span>.log(display)  <span class="cmt">// "Guest" -> username is falsy so || returns right side</span>
+
+<span class="kw">let</span> loggedIn <span class="op">=</span> <span class="str">"Priya"</span>
+<span class="kw">let</span> display2 <span class="op">=</span> loggedIn <span class="op">||</span> <span class="str">"Guest"</span>
+<span class="fn">console</span>.log(display2)  <span class="cmt">// "Priya" -> loggedIn is truthy so || returns left side</span></pre>
+						<div class="code-output" id="ex10-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 8. OPERATOR PRECEDENCE -->
+				<div class="section" id="s7">
+					<div class="section-label">
+						<div class="section-num">7</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Operator Precedence</h2>
+
+					<p>
+						When multiple operators appear in the same expression, JavaScript
+						evaluates them in a fixed order. Comparison operators are evaluated
+						before logical operators. Among the logical operators,
+						<code>!</code> is evaluated first, then <code>&&</code>, then
+						<code>||</code>. Parentheses override everything.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex8a')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex8a')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex8a-code"
+						><span class="fn">console</span>.log(<span class="num">5</span> <span class="op">&gt;</span> <span class="num">3</span> <span class="op">||</span> <span class="num">10</span> <span class="op">&lt;</span> <span class="num">2</span> <span class="op">&amp;&amp;</span> <span class="num">4</span> <span class="op">===</span> <span class="num">4</span>)
+<span class="cmt">// Comparisons run first, then &&, then ||</span>
+<span class="cmt">// 5 > 3 || 10 < 2 && 4 === 4</span>
+<span class="cmt">// true || false && true -> && is evaluated first</span> 
+<span class="cmt">// true || false</span>
+<span class="cmt">// true</span></pre>
+						<div class="code-output" id="ex8a-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex8b')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex8b')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex8b-code"
+						><span class="fn">console</span>.log((<span class="num">5</span> <span class="op">&gt;</span> <span class="num">3</span> <span class="op">||</span> <span class="num">10</span> <span class="op">&lt;</span> <span class="num">2</span>) <span class="op">&amp;&amp;</span> <span class="num">4</span> <span class="op">===</span> <span class="num">4</span>)
+<span class="cmt">// Parentheses force a different grouping</span>
+<span class="cmt">// (5 > 3 || 10 < 2) && 4 === 4</span>
+<span class="cmt">// (true || false) && true -> parentheses are evaluated first</span>
+<span class="cmt">// true && true</span>
+<span class="cmt">// true</span></pre>
+						<div class="code-output" id="ex8b-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex8c')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex8c')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex8c-code"
+						><span class="cmt">// ! only flips the value immediately to its right</span>
+<span class="fn">console</span>.log(<span class="op">!</span><span class="kw">true</span> <span class="op">&amp;&amp;</span> <span class="kw">false</span>)   <span class="cmt">// false -> (!true) is false, false && false is false</span>
+
+<span class="cmt">// Parentheses change what ! operates on</span>
+<span class="fn">console</span>.log(<span class="op">!</span>(<span class="kw">true</span> <span class="op">&amp;&amp;</span> <span class="kw">false</span>))  <span class="cmt">// true -> (true && false) is false, !false is true</span>
+
+<span class="cmt">// Without parentheses, ! runs first before && or ||</span>
+<span class="fn">console</span>.log(<span class="op">!</span><span class="kw">true</span> <span class="op">||</span> <span class="kw">true</span>)    <span class="cmt">// true -> (!true) is false, false || true is true</span></pre>
+						<div class="code-output" id="ex8c-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<div class="callout warn">
+						<div class="callout-label">When in doubt, use parentheses</div>
+						<p>
+							Relying on precedence rules in complex expressions makes code
+							harder to read. If you have more than two conditions combined,
+							group them explicitly with parentheses. It makes your intention
+							clear and removes any ambiguity.
+						</p>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 9. KNOWLEDGE CHECK -->
+				<div class="section" id="s9">
+					<div class="section-label">
+						<div class="section-num question">?</div>
+						<span class="section-title-sm">Knowledge Check</span>
+					</div>
+					<h2>Check for Understanding</h2>
+
+					<div class="quiz-box">
+						<div class="quiz-intro">
+							<div class="quiz-intro-label">Module 5</div>
+							<h3>Select one answer per question</h3>
+						</div>
+						<div class="quiz-questions">
+							<div class="quiz-q">
+								<div class="q-num">Question 1 of 3</div>
+								<div class="q-text">What does "20" > "9" evaluate to?</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="1" data-val="a">
+										<input type="radio" name="q1" /> true, because 20 is greater
+										than 9
+									</li>
+									<li class="q-option" data-q="1" data-val="b">
+										<input type="radio" name="q1" /> false, because "2" comes
+										before "9" in Unicode
+									</li>
+									<li class="q-option" data-q="1" data-val="c">
+										<input type="radio" name="q1" /> NaN, because you cannot
+										compare strings with numbers
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb1"></div>
+							</div>
+
+							<div class="quiz-q">
+								<div class="q-num">Question 2 of 3</div>
+								<div class="q-text">What does null || "fallback" return?</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="2" data-val="a">
+										<input type="radio" name="q2" /> null
+									</li>
+									<li class="q-option" data-q="2" data-val="b">
+										<input type="radio" name="q2" /> true
+									</li>
+									<li class="q-option" data-q="2" data-val="c">
+										<input type="radio" name="q2" /> "fallback"
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb2"></div>
+							</div>
+
+							<div class="quiz-q">
+								<div class="q-num">Question 3 of 3</div>
+								<div class="q-text">
+									In the expression <code>a > 0 || b > 0 && c > 0</code>, which
+									part evaluates first?
+								</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="3" data-val="a">
+										<input type="radio" name="q3" /> The || evaluates first
+										because it appears first left to right
+									</li>
+									<li class="q-option" data-q="3" data-val="b">
+										<input type="radio" name="q3" /> The comparisons evaluate
+										first, then &&, then ||
+									</li>
+									<li class="q-option" data-q="3" data-val="c">
+										<input type="radio" name="q3" /> All parts evaluate
+										simultaneously
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb3"></div>
+							</div>
+
+							<div class="quiz-error" id="quizError">
+								Please answer all three questions before submitting.
+							</div>
+							<button class="quiz-submit" id="submitQuiz">
+								Submit Answers
+							</button>
+							<div class="quiz-result" id="quizResult">
+								<div class="result-score" id="resultScore"></div>
+								<div class="result-msg" id="resultMsg"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 10. CODING EXERCISE 2 -->
+				<div class="section" id="s10">
+					<div class="section-label">
+						<div class="section-num question">?</div>
+						<span class="section-title-sm">Coding Exercise 2</span>
+					</div>
+					<h2>Membership Checker</h2>
+
+					<div class="activity-box">
+						<div class="activity-header">
+							<span class="activity-tag">Coding Exercise</span>
+						</div>
+						<div class="activity-scenario">
+							<strong>Question:</strong> A sports club uses criteria to
+							determine member privileges. Using the variables provided,
+							complete each console.log using only logical and comparison
+							operators inside the template string expressions.
+							<ol style="margin-top: 12px; padding-left: 18px; line-height: 2">
+								<li>Is adult: age is 18 or over</li>
+								<li>
+									Can vote: age is 18 or over and has been a member for at least
+									2 years
+								</li>
+								<li>
+									Has seniority: has been a member for more than 2 years or is a
+									premium member
+								</li>
+								<li>
+									Discount eligible: age is under 18 or is a premium member
+								</li>
+								<li>Full member: is premium and has seniority</li>
+							</ol>
+						</div>
+
+						<table class="score-table">
+							<thead>
+								<tr>
+									<th>Variable</th>
+									<th>Value</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>age</td>
+									<td>17</td>
+								</tr>
+								<tr>
+									<td>membershipYears</td>
+									<td>3</td>
+								</tr>
+								<tr>
+									<td>isPremium</td>
+									<td>false</td>
+								</tr>
+								<tr>
+									<td>clubName</td>
+									<td>"Eagles"</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-bottom: 10px;
+							"
+						>
+							Expected output:
+						</p>
+						<div class="code-block" style="margin-bottom: 16px">
+							<pre style="padding: 12px 18px; color: #abb2bf; font-size: 13px">
+Is adult: false
+Can vote: false
+Has seniority: true
+Discount eligible: true
+Full member: false</pre
+							>
+						</div>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-top: 20px;
+								margin-bottom: 8px;
+							"
+						>
+							Write your code below.
+						</p>
+						<div class="editor-wrap" id="editor2">
+							<div class="editor-header">
+								<span class="editor-label">JavaScript Editor</span>
+							</div>
+							<textarea
+								class="editor-textarea"
+								id="editor2-code"
+								spellcheck="false"
+							>
+let age             = 17
+let membershipYears = 3
+let isPremium       = false
+let clubName        = "Eagles"
+
+console.log(`Is adult: ${}`)
+console.log(`Can vote: ${}`)
+console.log(`Has seniority: ${}`)
+console.log(`Discount eligible: ${}`)
+console.log(`Full member: ${}`)
+</textarea
+							>
+							<div class="editor-footer">
+								<button
+									class="editor-reset-btn"
+									onclick="resetEditor('editor2')"
+									title="Reset code"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg>
+									Reset
+								</button>
+								<div class="spacer"></div>
+								<button class="run-btn" onclick="runCode('editor2')">
+									Run
+								</button>
+								<button class="check-btn" onclick="checkAnswer('ex2')">
+									Check Answer
+								</button>
+							</div>
+							<div class="output-area" id="editor2-output">
+								<div class="output-label">Output</div>
+							</div>
+						</div>
+						<div class="check-result" id="checkResult2"></div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 11. SUMMARY -->
+				<div class="section" id="s11">
+					<div class="section-label">
+						<div class="section-num">11</div>
+						<span class="section-title-sm">Summary</span>
+					</div>
+					<h2>Module Summary</h2>
+					<div class="summary-box">
+						<h3>Key takeaways</h3>
+						<ul class="summary-list">
+							<li>
+								There are eight comparison operators. Always prefer
+								<code>===</code> and <code>!==</code> over <code>==</code> and
+								<code>!=</code> to avoid coercion surprises.
+							</li>
+							<li>
+								Strings are compared lexicographically, character by character.
+								"2" is greater than "10" because "2" comes after "1" in Unicode.
+							</li>
+							<li>
+								<code>&&</code> requires both sides to be truthy.
+								<code>||</code> requires at least one. <code>!</code> inverts a
+								boolean.
+							</li>
+							<li>
+								<code>&&</code> returns the first falsy value, or the last value
+								if all are truthy. <code>||</code> returns the first truthy
+								value, or the last value if all are falsy.
+							</li>
+							<li>
+								Evaluation order: comparisons first, then <code>!</code>, then
+								<code>&&</code>, then <code>||</code>. Use parentheses to make
+								complex expressions explicit.
+							</li>
+							<li>
+								Short-circuiting means JavaScript stops evaluating as soon as
+								the result is determined.
+							</li>
+						</ul>
+
+						<div class="ref-scroll-hint">Scroll right to see full table</div>
+						<div class="ref-table-wrap">
+							<table class="ref-table">
+								<thead>
+									<tr>
+										<th>Operator</th>
+										<th>Name</th>
+										<th>Example</th>
+										<th>Result</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><code>&gt;</code></td>
+										<td>Greater than</td>
+										<td><code>10 &gt; 3</code></td>
+										<td>true</td>
+									</tr>
+									<tr>
+										<td><code>&lt;</code></td>
+										<td>Less than</td>
+										<td><code>3 &lt; 10</code></td>
+										<td>true</td>
+									</tr>
+									<tr>
+										<td><code>&gt;=</code></td>
+										<td>Greater or equal</td>
+										<td><code>10 &gt;= 10</code></td>
+										<td>true</td>
+									</tr>
+									<tr>
+										<td><code>&lt;=</code></td>
+										<td>Less or equal</td>
+										<td><code>9 &lt;= 10</code></td>
+										<td>true</td>
+									</tr>
+									<tr>
+										<td><code>===</code></td>
+										<td>Strict equal</td>
+										<td><code>5 === 5</code></td>
+										<td>true</td>
+									</tr>
+									<tr>
+										<td><code>!==</code></td>
+										<td>Strict not equal</td>
+										<td><code>"5" !== 5</code></td>
+										<td>true</td>
+									</tr>
+									<tr>
+										<td><code>==</code></td>
+										<td>Loose equal</td>
+										<td><code>"5" == 5</code></td>
+										<td>true</td>
+									</tr>
+									<tr>
+										<td><code>!=</code></td>
+										<td>Loose not equal</td>
+										<td><code>"5" != 6</code></td>
+										<td>true</td>
+									</tr>
+									<tr>
+										<td><code>&amp;&amp;</code></td>
+										<td>AND</td>
+										<td><code>true &amp;&amp; false</code></td>
+										<td>false</td>
+									</tr>
+									<tr>
+										<td><code>||</code></td>
+										<td>OR</td>
+										<td><code>false || true</code></td>
+										<td>true</td>
+									</tr>
+									<tr>
+										<td><code>!</code></td>
+										<td>NOT</td>
+										<td><code>!true</code></td>
+										<td>false</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="module-nav">
+						<a class="prev-module" href="module4.html">
+							<div class="prev-arrow-icon">
+								<svg
+									viewBox="0 0 24 24"
+									width="18"
+									height="18"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<line x1="19" y1="12" x2="5" y2="12"></line>
+									<polyline points="12 19 5 12 12 5"></polyline>
+								</svg>
+							</div>
+							<div class="prev-text">
+								<span class="prev-label">Back to</span>
+								<span class="prev-title">Module 4: Type Conversion</span>
+							</div>
+						</a>
+						<a class="next-module" href="module6.html">
+							<div class="next-text">
+								<span class="next-label">Up Next</span>
+								<span class="next-title">Module 6: Conditionals</span>
+							</div>
+							<div class="next-arrow-icon">
+								<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<line x1="5" y1="12" x2="19" y2="12"></line>
+									<polyline points="12 5 19 12 12 19"></polyline>
+								</svg>
+							</div>
+						</a>
+					</div>
+
+					<div class="designer-note">
+						<span>JavaScript Crash Course - Module 5 of 10</span>
+					</div>
+				</div>
+			</main>
+		</div>
+
+		<!-- SCRIPTS -->
+		<script>
+			window.staticBlocksHTML = {};
+			document.addEventListener("DOMContentLoaded", () => {
+				document.querySelectorAll("pre[id]").forEach((pre) => {
+					const id = pre.id.replace("-code", "");
+					window.staticBlocksHTML[id] = pre.innerHTML;
+				});
+			});
+		</script>
+		<script src="../assets/js/editor.js"></script>
+		<script>
+			window.staticBlocks = {
+				ex1: `console.log(10 > 3)\nconsole.log(3 < 1)\nconsole.log(10 >= 10)\nconsole.log(12 <= 10)\nconsole.log(5 > 10)`,
+				ex2: `console.log("apple" < "banana")\nconsole.log("cat" > "car")\nconsole.log("apple" < "Zebra")\nconsole.log("abc" === "ABC")`,
+				ex3: `console.log(10 > 2)\nconsole.log("10" > "2")\nconsole.log("2" > "10")`,
+				ex4: `console.log("5" ==  5)\nconsole.log("5" === 5)\nconsole.log(0   ==  false)\nconsole.log(0   === false)\nconsole.log(""  ==  false)\nconsole.log(""  === false)`,
+				ex5: `console.log("5" !=  5)\nconsole.log("5" !== 5)\nconsole.log(1   !=  2)\nconsole.log(1   !== 2)`,
+				ex6: `let age        = 22\nlet hasLicence = true\nlet isStudent  = false\nconsole.log(age > 18 && hasLicence)\nconsole.log(age > 18 && isStudent)\nconsole.log(age > 18 || isStudent)\nconsole.log(!hasLicence)\nconsole.log(!isStudent)`,
+				ex7: `console.log(true && "hello")\nconsole.log(false && "hello")\nconsole.log(0 && "hello")\nconsole.log(false || "hello")\nconsole.log("hi" || "hello")\nconsole.log(0 || 42)`,
+				ex8a: `console.log(5 > 3 || 10 < 2 && 4 === 4)`,
+				ex8b: `console.log((5 > 3 || 10 < 2) && 4 === 4)`,
+				ex8c: `console.log(!false && 3 > 1)`,
+				ex9: `let count = 0\nfalse && (count += 1)\nconsole.log(count)\ntrue || (count += 1)\nconsole.log(count)\nfalse || (count += 1)\nconsole.log(count)`,
+				ex10: `let username = ""\nlet display  = username || "Guest"\nconsole.log(display)\nlet loggedIn = "Priya"\nlet display2 = loggedIn || "Guest"\nconsole.log(display2)`,
+			};
+
+			window.editorDefaults = {
+				editor1: `// Predict each result, then run to check\nconsole.log(100 >= 100)\nconsole.log("grape" > "mango")\nconsole.log("20" > "9")\nconsole.log(0 === false)\nconsole.log(0 == false)\nconsole.log("apple" !== "Apple")\n`,
+				editor2: `let age             = 17\nlet membershipYears = 3\nlet isPremium       = false\nlet clubName        = "Eagles"\n\nconsole.log(\`Is adult: \${}\`)\nconsole.log(\`Can vote: \${}\`)\nconsole.log(\`Has seniority: \${}\`)\nconsole.log(\`Discount eligible: \${}\`)\nconsole.log(\`Full member: \${}\`)`,
+			};
+
+			window.checkConfigs = {
+				ex1: {
+					editorId: "editor1",
+					resultId: "checkResult1",
+					expected: ["true", "false", "true", "false", "true", "true"],
+					successMsg: "All six results are correct.",
+					failMsg:
+						"Remember that string comparison is lexicographic, and === checks type as well as value.",
+				},
+				ex2: {
+					editorId: "editor2",
+					resultId: "checkResult2",
+					expected: [
+						"Is adult: false",
+						"Can vote: false",
+						"Has seniority: true",
+						"Discount eligible: true",
+						"Full member: false",
+					],
+					successMsg: "All five outputs are correct.",
+					failMsg:
+						"Check each expression. Remember membershipYears is 3, age is 17, and isPremium is false.",
+				},
+			};
+
+			window.quizConfig = {
+				questions: [
+					{
+						id: 1,
+						answer: "b",
+						feedback: {
+							correct:
+								'<strong>Correct.</strong> Both sides are strings, so JavaScript compares them lexicographically. It looks at the first character: "2" versus "1". Since "1" comes before "2" in Unicode, "10" is considered smaller than "2".',
+							wrong:
+								'<strong>Not quite.</strong> When both sides are strings, JavaScript does not convert them to numbers. It compares character by character. "2" vs "1" -- "1" comes first in Unicode, so "10" is less than "2".',
+						},
+					},
+					{
+						id: 2,
+						answer: "c",
+						feedback: {
+							correct:
+								'<strong>Correct.</strong> null is falsy, so || moves to the right side and returns "fallback". This is the fallback pattern in action.',
+							wrong:
+								'<strong>Not quite.</strong> || returns one of its operands, not a boolean. Since null is falsy, || skips it and returns the right side: "fallback".',
+						},
+					},
+					{
+						id: 3,
+						answer: "b",
+						feedback: {
+							correct:
+								"<strong>Correct.</strong> Comparisons run first, producing booleans. Then && binds those booleans. Then || combines the groups. Left-to-right order is secondary to precedence.",
+							wrong:
+								"<strong>Not quite.</strong> Operator precedence, not left-to-right position, determines the order. Comparisons go first, then &&, then ||. The expression groups as: (a > 0) || ((b > 0) && (c > 0)).",
+						},
+					},
+				],
+				messages: {
+					perfect: "Excellent work. You have completed all five modules.",
+					good: "Good. Review the missed question before moving on.",
+					retry: "Revisit sections 2 through 8, then try again.",
+				},
+			};
+		</script>
+		<script src="../assets/js/quiz.js"></script>
+		<script src="../assets/js/flashcards.js"></script>
+		<script src="../assets/js/ui.js"></script>
+	</body>
+</html>

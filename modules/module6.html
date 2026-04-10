@@ -1,0 +1,1276 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Module 6: Conditionals</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="../assets/css/main.css" />
+	</head>
+	<body>
+		<nav class="top-nav">
+			<a class="top-nav-home" href="../index.html" title="Home">
+				<span class="material-icons">home</span>
+			</a>
+		</nav>
+
+		<header class="lesson-header">
+			<div class="header-inner">
+				<div class="lesson-meta">
+					<span class="badge">Module 6 of 10</span>
+				</div>
+				<h1>Conditionals</h1>
+			</div>
+			<div class="progress-bar-wrap">
+				<div class="progress-bar-fill" style="width: 60%"></div>
+			</div>
+		</header>
+
+		<div class="page-wrap">
+			<aside class="sidebar" id="sidebar">
+				<div class="sidebar-label">In this module</div>
+				<ul class="sidebar-nav">
+					<li><a href="#s1">Learning Objectives</a></li>
+					<li><a href="#s2">What is a Conditional?</a></li>
+					<li><a href="#s3">The if Statement</a></li>
+					<li><a href="#s4">Truthy Conditions</a></li>
+					<li><a href="#s5">else</a></li>
+					<li><a href="#s6">else if</a></li>
+					<li><a href="#s7">Knowledge Check</a></li>
+					<li><a href="#s8">Nested Conditionals</a></li>
+					<li><a href="#s9">Ternary Operator</a></li>
+					<li><a href="#s10">Coding Exercise</a></li>
+					<li><a href="#s11">Summary</a></li>
+				</ul>
+			</aside>
+
+			<button
+				class="sidebar-toggle"
+				id="sidebarToggle"
+				aria-label="Toggle menu"
+			>
+				<svg
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<line x1="3" y1="6" x2="21" y2="6" />
+					<line x1="3" y1="12" x2="21" y2="12" />
+					<line x1="3" y1="18" x2="21" y2="18" />
+				</svg>
+			</button>
+
+			<main class="lesson-body">
+				<!-- 1. LEARNING OBJECTIVE -->
+				<div class="section" id="s1">
+					<div class="section-label">
+						<div class="section-num">1</div>
+						<span class="section-title-sm">Learning Objectives</span>
+					</div>
+					<div class="objective-box">
+						<p class="obj-intro">
+							By the end of this module you will be able to:
+						</p>
+						<ul class="obj-list">
+							<li>
+								Write if, else if, and else statements to control program flow
+							</li>
+							<li>Evaluate multiple conditions in the correct order</li>
+							<li>Simplify nested conditionals using logical operators</li>
+							<li>Use the ternary operator for simple two-way decisions</li>
+						</ul>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 2. WHAT IS A CONDITIONAL -->
+				<div class="section" id="s2">
+					<div class="section-label">
+						<div class="section-num">2</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>What is a Conditional?</h2>
+
+					<p>
+						In Module 5 you learned how to compare values and combine
+						conditions. But a comparison on its own does not do anything. It
+						just produces a result and that result is not useful unless
+						something acts on it. We can use conditionals to make that result
+						useful in our code. It is a structure that says: if this condition
+						is true, run this code; otherwise, do something else or nothing at
+						all.
+					</p>
+
+					<p>
+						Conditional statements are what turn a passive script into a program that dynamically
+						responds to its data. Without them, every line of code runs every
+						time, in the same order, regardless of what the values actually are.
+						With conditionals, different paths through the code become possible.
+						A price might be calculated one way for members and another way for
+						guests. Or an error message might appear only when input is missing.
+						A result might be labelled differently depending on how high a value
+						is. All of this requires conditionals.
+					</p>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 3. THE IF STATEMENT -->
+				<div class="section" id="s3">
+					<div class="section-label">
+						<div class="section-num">3</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>The if Statement</h2>
+
+					<p>
+						The <code>if</code> statement is the most fundamental conditional.
+						It starts by taking a condition in parentheses. If the condition
+						evaluates to something truthy, the block of code inside the curly
+						braces runs. If the condition is falsy, the block is skipped
+						entirely.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex1')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex1')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex1-code"
+						><span class="kw">let</span> balance <span class="op">=</span> <span class="num">200</span>
+
+<span class="kw">if</span> (balance <span class="op">&gt;</span> <span class="num">0</span>) {
+  <span class="fn">console</span>.log(<span class="str">"Funds available"</span>)
+}
+
+<span class="fn">console</span>.log(<span class="str">"Done"</span>)</pre>
+						<div class="code-output" id="ex1-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						Change the balance to <strong>0</strong> and run it again. The
+						message disappears but "Done" still prints. The code after the block
+						always runs but the code inside the braces is conditional.
+					</p>
+
+					<div class="callout warn">
+						<div class="callout-label">Always use curly braces</div>
+						<p>
+							JavaScript allows you to omit the curly braces when the block
+							contains only one line. As a beginner, this may be a common source
+							of bugs. Always include the braces for now. They make it explicit
+							which lines belong to the conditional and prevent mistakes when
+							you add a second line later.
+						</p>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 4. TRUTHY CONDITIONS -->
+				<div class="section" id="s4">
+					<div class="section-label">
+						<div class="section-num">4</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Truthy Conditions</h2>
+
+					<p>
+						An <code>if</code> statement does not require a boolean. JavaScript
+						automatically converts whatever you put in the condition to either
+						true or false. This means you can write conditions that are shorter
+						and more direct but only when it is appropriate to do so.
+					</p>
+
+					<h3>When shorthand is appropriate</h3>
+					<p>
+						Use shorthand when you only care whether something exists or is
+						present, not what the specific value is.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex2a')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex2a')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex2a-code"
+						><span class="kw">let</span> isSunny  <span class="op">=</span> <span class="kw">true</span>
+<span class="kw">let</span> userName <span class="op">=</span> <span class="str">"Kofi"</span>
+
+<span class="cmt">// Is it true?</span>
+<span class="kw">if</span> (isSunny) {
+  <span class="fn">console</span>.log(<span class="str">"It is sunny"</span>)
+}
+
+<span class="cmt">// Is there a value?</span>
+<span class="kw">if</span> (userName) {
+  <span class="fn">console</span>.log(<span class="str">"Hello, "</span> <span class="op">+</span> userName)
+}
+
+<span class="cmt">// Writing === true is unnecessary here because JavaScript already converts it to a boolean</span>
+<span class="kw">if</span> (isSunny <span class="op">===</span> <span class="kw">true</span>) {
+  <span class="fn">console</span>.log(<span class="str">"This works but is redundant"</span>)
+}</pre>
+						<div class="code-output" id="ex2a-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>When you must use explicit comparison</h3>
+					<p>
+						Use an explicit comparison when you care about a specific value, not
+						just whether something is present.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex2b')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex2b')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex2b-code"
+						><span class="kw">let</span> count <span class="op">=</span> <span class="num">0</span>
+
+<span class="cmt">// We want to check the that count is exactly zero</span>
+
+<span class="cmt">// WRONG -> 0 is falsy, so this block never runs even though count exists</span>
+<span class="kw">if</span> (count) {
+  <span class="fn">console</span>.log(<span class="str">"This will not run"</span>)
+}
+
+<span class="cmt">// CORRECT -> === 0 checks the exact value, not just whether count has a value</span>
+<span class="kw">if</span> (count <span class="op">===</span> <span class="num">0</span>) {
+  <span class="fn">console</span>.log(<span class="str">"This will run"</span>)
+}</pre>
+						<div class="code-output" id="ex2b-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<div class="callout warn">
+						<div class="callout-label">Simple rule</div>
+						<p>
+							Use <code>if (value)</code> when you mean "does this exist or is
+							it set?" Use <code>if (value === x)</code> when you mean "does
+							this equal exactly this?" The shorthand is a convenience, not a
+							replacement for all comparisons.
+						</p>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 5. ELSE -->
+				<div class="section" id="s5">
+					<div class="section-label">
+						<div class="section-num">5</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>else</h2>
+
+					<p>
+						An <code>if</code> statement runs its block when the condition is
+						true. But what happens when it is false and we want an alternative
+						output? The <code>else</code> block handles that. If the
+						<code>if</code> condition evaluates to false, the
+						<code>if</code> block is skipped and the <code>else</code> block
+						runs instead. Exactly one of the two will always run but not both.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex3')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex3')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex3-code"
+						><span class="kw">let</span> stock <span class="op">=</span> <span class="num">2</span>
+
+<span class="kw">if</span> (stock <span class="op">&gt;</span> <span class="num">10</span>) {
+  <span class="fn">console</span>.log(<span class="str">"Plenty of stock"</span>)
+} <span class="kw">else</span> {
+  <span class="fn">console</span>.log(<span class="str">"Low stock"</span>)
+}</pre>
+						<div class="code-output" id="ex3-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						The <code>else</code> branch runs because 2 is not greater than 10,
+						so the condition is false. Change the stock to
+						<strong>50</strong> and run again. Now the condition is true and the
+						<code>if</code> branch executes instead of the <code>else</code>.
+					</p>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 6. ELSE IF -->
+				<div class="section" id="s6">
+					<div class="section-label">
+						<div class="section-num">6</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>else if</h2>
+
+					<p>
+						When there are more than two possible outcomes, you can chain
+						conditions using <code>else if</code>. JavaScript evaluates each
+						condition from top to bottom and runs the first block whose
+						condition is true. Once a match is found, the remaining branches are
+						skipped entirely, even if they would also be true.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex4')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex4')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex4-code"
+						><span class="kw">let</span> duration <span class="op">=</span> <span class="num">95</span>
+
+<span class="kw">if</span> (duration <span class="op">&gt;=</span> <span class="num">120</span>) {
+  <span class="fn">console</span>.log(<span class="str">"Long flight"</span>)
+} <span class="kw">else if</span> (duration <span class="op">&gt;=</span> <span class="num">60</span>) {
+  <span class="fn">console</span>.log(<span class="str">"Medium flight"</span>)
+} <span class="kw">else if</span> (duration <span class="op">&gt;=</span> <span class="num">30</span>) {
+  <span class="fn">console</span>.log(<span class="str">"Short flight"</span>)
+} <span class="kw">else</span> {
+  <span class="fn">console</span>.log(<span class="str">"Very short flight"</span>)
+}</pre>
+						<div class="code-output" id="ex4-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>Order matters</h3>
+					<p>
+						JavaScript stops at the first condition that matches. If you put a
+						less restrictive condition above a more restrictive one, the more
+						restrictive branch will never run. Here is the same logic written in
+						the wrong order.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex4b')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex4b')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex4b-code"
+						><span class="kw">let</span> duration <span class="op">=</span> <span class="num">95</span>
+
+<span class="cmt">// Wrong order -> the greater than or equal to 30 check matches first and always executes</span>
+<span class="kw">if</span> (duration <span class="op">&gt;=</span> <span class="num">30</span>) {
+  <span class="fn">console</span>.log(<span class="str">"Short flight"</span>)
+} <span class="kw">else if</span> (duration <span class="op">&gt;=</span> <span class="num">60</span>) {
+  <span class="fn">console</span>.log(<span class="str">"Medium flight"</span>)
+} <span class="kw">else if</span> (duration <span class="op">&gt;=</span> <span class="num">120</span>) {
+  <span class="fn">console</span>.log(<span class="str">"Long flight"</span>)
+}</pre>
+						<div class="code-output" id="ex4b-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						A duration of 95 should print "Medium flight" but the wrong order
+						makes it print "Short flight" instead. Neither of the two else if
+						branches will ever be reached. Therefore, always start with the most
+						restrictive condition and work downward.
+					</p>
+
+					<p>
+						You must always start with an <code>if</code> statement if using
+						conditionals. You can have as many <code>else if</code> branches as
+						you need. The final <code>else</code> is optional but acts as a
+						safety net for any value that does not match any condition above it.
+					</p>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 7. KNOWLEDGE CHECK -->
+				<div class="section" id="s7">
+					<div class="section-label">
+						<div class="section-num question">?</div>
+						<span class="section-title-sm">Knowledge Check</span>
+					</div>
+					<h2>Check for Understanding</h2>
+
+					<div class="quiz-box">
+						<div class="quiz-intro">
+							<div class="quiz-intro-label">Module 6</div>
+							<h3>Select one answer per question</h3>
+						</div>
+						<div class="quiz-questions">
+							<div class="quiz-q">
+								<div class="q-num">Question 1 of 3</div>
+								<div class="q-text">
+									What does this code print?
+									<pre
+										style="
+											margin-top: 8px;
+											padding: 10px 14px;
+											background: #1e2a3a;
+											border-radius: 6px;
+											font-size: 13px;
+											color: #abb2bf;
+											font-family: &quot;JetBrains Mono&quot;, monospace;
+											font-variant-ligatures: none;
+										"
+									>
+let stock = 0
+
+if (stock) {
+  console.log("In stock")
+} else {
+  console.log("Out of stock")
+}</pre
+									>
+								</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="1" data-val="a">
+										<input type="radio" name="q1" /> In stock
+									</li>
+									<li class="q-option" data-q="1" data-val="b">
+										<input type="radio" name="q1" /> Out of stock
+									</li>
+									<li class="q-option" data-q="1" data-val="c">
+										<input type="radio" name="q1" /> Nothing because the
+										condition is not a boolean
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb1"></div>
+							</div>
+
+							<div class="quiz-q">
+								<div class="q-num">Question 2 of 3</div>
+								<div class="q-text">
+									What does this code print when points is 95?
+									<pre
+										style="
+											margin-top: 8px;
+											padding: 10px 14px;
+											background: #1e2a3a;
+											border-radius: 6px;
+											font-size: 13px;
+											color: #abb2bf;
+											font-family: &quot;JetBrains Mono&quot;, monospace;
+											font-variant-ligatures: none;
+										"
+									>
+let points = 95
+
+if (points > 90) {
+  console.log("Gold")
+} else if (points > 70) {
+  console.log("Silver")
+} else if (points > 50) {
+  console.log("Bronze")
+}</pre
+									>
+								</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="2" data-val="a">
+										<input type="radio" name="q2" /> Gold
+									</li>
+									<li class="q-option" data-q="2" data-val="b">
+										<input type="radio" name="q2" /> Silver
+									</li>
+									<li class="q-option" data-q="2" data-val="c">
+										<input type="radio" name="q2" /> Gold, Silver, and Bronze
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb2"></div>
+							</div>
+
+							<div class="quiz-q">
+								<div class="q-num">Question 3 of 3</div>
+								<div class="q-text">
+									What does this code print?
+									<pre
+										style="
+											margin-top: 8px;
+											padding: 10px 14px;
+											background: #1e2a3a;
+											border-radius: 6px;
+											font-size: 13px;
+											color: #abb2bf;
+											font-family: &quot;JetBrains Mono&quot;, monospace;
+											font-variant-ligatures: none;
+										"
+									>
+let isWeekend = true
+let hasTicket = false
+
+if (isWeekend && hasTicket) {
+  console.log("Entry granted")
+} else if (isWeekend || hasTicket) {
+  console.log("Partial access")
+} else {
+  console.log("No access")
+}</pre
+									>
+								</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="3" data-val="a">
+										<input type="radio" name="q3" /> Entry granted
+									</li>
+									<li class="q-option" data-q="3" data-val="b">
+										<input type="radio" name="q3" /> Partial access
+									</li>
+									<li class="q-option" data-q="3" data-val="c">
+										<input type="radio" name="q3" /> No access
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb3"></div>
+							</div>
+
+							<div class="quiz-error" id="quizError">
+								Please answer all three questions before submitting.
+							</div>
+							<button class="quiz-submit" id="submitQuiz">
+								Submit Answers
+							</button>
+							<div class="quiz-result" id="quizResult">
+								<div class="result-score" id="resultScore"></div>
+								<div class="result-msg" id="resultMsg"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 8. NESTED CONDITIONALS -->
+				<div class="section" id="s8">
+					<div class="section-label">
+						<div class="section-num">8</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Nested Conditionals</h2>
+
+					<p>
+						You can place an <code>if</code> statement inside another
+						<code>if</code> block. This is called <strong>nesting</strong>. But
+						nesting adds indentation and makes code harder to follow. Every
+						extra level of nesting is another thing a reader has to hold in
+						their head while parsing the logic.
+					</p>
+
+					<p>
+						Here is a nested example that checks whether a user can access a
+						feature.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex5')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex5')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex5-code"
+						><span class="kw">let</span> hasTicket  <span class="op">=</span> <span class="kw">true</span>
+<span class="kw">let</span> isValidAge <span class="op">=</span> <span class="kw">true</span>
+
+<span class="cmt">// Nested conditional</span>
+<span class="kw">if</span> (hasTicket) {
+  <span class="kw">if</span> (isValidAge) {
+    <span class="fn">console</span>.log(<span class="str">"Entry granted"</span>)
+  } <span class="kw">else</span> {
+    <span class="fn">console</span>.log(<span class="str">"Age restriction applies"</span>)
+  }
+} <span class="kw">else</span> {
+  <span class="fn">console</span>.log(<span class="str">"No ticket"</span>)
+}</pre>
+						<div class="code-output" id="ex5-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						The same logic can be expressed with logical operators in a single
+						level. This is easier to read because the conditions are stated
+						together rather than buried inside each other.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex6')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex6')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex6-code"
+						><span class="kw">let</span> hasTicket  <span class="op">=</span> <span class="kw">true</span>
+<span class="kw">let</span> isValidAge <span class="op">=</span> <span class="kw">true</span>
+
+<span class="cmt">// Flattened -> same result but easier to read</span>
+<span class="kw">if</span> (hasTicket <span class="op">&amp;&amp;</span> isValidAge) {
+  <span class="fn">console</span>.log(<span class="str">"Entry granted"</span>)
+} <span class="kw">else if</span> (hasTicket <span class="op">&amp;&amp;</span> <span class="op">!</span>isValidAge) {
+  <span class="fn">console</span>.log(<span class="str">"Age restriction applies"</span>)
+} <span class="kw">else</span> {
+  <span class="fn">console</span>.log(<span class="str">"No ticket"</span>)
+}</pre>
+						<div class="code-output" id="ex6-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<div class="callout warn">
+						<div class="callout-label">Prefer flat over nested</div>
+						<p>
+							If you find yourself writing a third level of nesting, stop and
+							ask whether the conditions can be combined with
+							<code>&&</code> or <code>||</code>. Flat code is almost always
+							easier to read, test, and change later.
+						</p>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 9. TERNARY OPERATOR -->
+				<div class="section" id="s9">
+					<div class="section-label">
+						<div class="section-num">9</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Ternary Operator</h2>
+
+					<p>
+						The ternary operator is a compact way to write a two-branch
+						conditional in a single expression. It takes a condition, a value to
+						use if the condition is true, and a value to use if it is false. The
+						syntax is <br />
+						<code>condition ? valueIfTrue : valueIfFalse</code>.
+					</p>
+
+					<p>
+						It is most useful when you need to assign one of two values to a
+						variable based on a condition. For anything more complex than that,
+						a regular <code>if/else</code> is clearer.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex7')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex7')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex7-code"
+						><span class="kw">let</span> fileSize <span class="op">=</span> <span class="num">2.4</span>
+
+<span class="cmt">// if/else version</span>
+<span class="kw">let</span> sizeLabel
+<span class="kw">if</span> (fileSize <span class="op">&gt;</span> <span class="num">1</span>) {
+  sizeLabel <span class="op">=</span> <span class="str">"Large"</span>
+} <span class="kw">else</span> {
+  sizeLabel <span class="op">=</span> <span class="str">"Small"</span>
+}
+<span class="fn">console</span>.log(sizeLabel)
+
+<span class="cmt">// Ternary version -- same result</span>
+<span class="kw">let</span> sizeLabel2 <span class="op">=</span> fileSize <span class="op">&gt;</span> <span class="num">1</span> <span class="op">?</span> <span class="str">"Large"</span> <span class="op">:</span> <span class="str">"Small"</span>
+<span class="fn">console</span>.log(sizeLabel2)</pre>
+						<div class="code-output" id="ex7-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						Because the ternary is an expression that returns a value, it can be
+						placed directly inside <code>${}</code> in a template string.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex8')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex8')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex8-code"
+						><span class="kw">let</span> downloadSpeed <span class="op">=</span> <span class="num">85</span>
+
+<span class="cmt">// Ternary embedded directly inside a template string</span>
+<span class="fn">console</span>.log(<span class="str">`Connection: ${downloadSpeed <span class="op">&gt;</span> <span class="num">50</span> <span class="op">?</span> <span class="str">"Fast"</span> <span class="op">:</span> <span class="str">"Slow"</span>}`</span>)
+
+<span class="kw">let</span> remaining <span class="op">=</span> <span class="num">3</span>
+<span class="fn">console</span>.log(<span class="str">`Items left: ${remaining} (${remaining <span class="op">===</span> <span class="num">1</span> <span class="op">?</span> <span class="str">"item"</span> <span class="op">:</span> <span class="str">"items"</span>})`</span>)</pre>
+						<div class="code-output" id="ex8-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<div class="callout warn">
+						<div class="callout-label">Do not nest ternaries</div>
+						<p>
+							You can chain ternaries to handle more than two outcomes, but the
+							result becomes difficult to read very quickly. If you need more
+							than two branches, use <code>if/else if</code> instead.
+						</p>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 10. CODING EXERCISE -->
+				<div class="section" id="s10">
+					<div class="section-label">
+						<div class="section-num question">?</div>
+						<span class="section-title-sm">Coding Exercise</span>
+					</div>
+					<h2>Amara's Grade Calculator</h2>
+
+					<div class="activity-box">
+						<div class="activity-header">
+							<span class="activity-tag">Coding Exercise</span>
+						</div>
+						<div class="activity-scenario">
+							<strong>Question:</strong> Amara has three students whose scores
+							have come in as strings from a form. She needs a script that
+							converts each score to a number, then prints a result for each
+							student using the grading rules below. Use conditionals to
+							determine the label. Use template strings to print the output.
+							<ol style="margin-top: 12px; padding-left: 18px; line-height: 2">
+								<li>80 and above: Distinction</li>
+								<li>50 to 79: Pass</li>
+								<li>Below 50: Fail</li>
+							</ol>
+						</div>
+
+						<table class="score-table">
+							<thead>
+								<tr>
+									<th>Variable</th>
+									<th>Raw value</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>score1</td>
+									<td>"82"</td>
+								</tr>
+								<tr>
+									<td>score2</td>
+									<td>"67"</td>
+								</tr>
+								<tr>
+									<td>score3</td>
+									<td>"41"</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-bottom: 10px;
+							"
+						>
+							Expected output:
+						</p>
+						<div class="code-block" style="margin-bottom: 16px">
+							<pre style="padding: 12px 18px; color: #abb2bf; font-size: 13px">
+Student 1: 82 -- Distinction
+Student 2: 67 -- Pass
+Student 3: 41 -- Fail</pre
+							>
+						</div>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-top: 20px;
+								margin-bottom: 8px;
+							"
+						>
+							Write your code below.
+						</p>
+						<div class="editor-wrap" id="editor1">
+							<div class="editor-header">
+								<span class="editor-label">JavaScript Editor</span>
+							</div>
+							<textarea
+								class="editor-textarea"
+								id="editor1-code"
+								spellcheck="false"
+							>
+let score1 = "82"
+let score2 = "67"
+let score3 = "41"
+
+// Convert scores to numbers, then determine and print each result
+</textarea
+							>
+							<div class="editor-footer">
+								<button
+									class="editor-reset-btn"
+									onclick="resetEditor('editor1')"
+									title="Reset code"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg>
+									Reset
+								</button>
+								<div class="spacer"></div>
+								<button class="run-btn" onclick="runCode('editor1')">
+									Run
+								</button>
+								<button class="check-btn" onclick="checkAnswer('ex1')">
+									Check Answer
+								</button>
+							</div>
+							<div class="output-area" id="editor1-output">
+								<div class="output-label">Output</div>
+							</div>
+						</div>
+						<div class="check-result" id="checkResult1"></div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 11. SUMMARY -->
+				<div class="section" id="s11">
+					<div class="section-label">
+						<div class="section-num">11</div>
+						<span class="section-title-sm">Summary</span>
+					</div>
+					<h2>Module Summary</h2>
+					<div class="summary-box">
+						<h3>Key takeaways</h3>
+						<ul class="summary-list">
+							<li>
+								An <code>if</code> statement runs a block of code only when its
+								condition is true. The condition can be any expression, not just
+								a boolean.
+							</li>
+
+							<li>
+								<code>else</code> handles the default case when no
+								<code>if</code> condition is met.
+							</li>
+							<li>
+								<code>else if</code> is used to handle multiple outcomes.
+								JavaScript starts at the if statements, executes at the first
+								match and skips the rest. Order matters.
+							</li>
+
+							<li>
+								The ternary operator is a compact two-branch conditional. Use it
+								for simple value assignments. Use <code>if/else</code> for
+								anything more complex.
+							</li>
+						</ul>
+
+						<div class="ref-scroll-hint">Scroll right to see full table</div>
+						<div class="ref-table-wrap">
+							<table class="ref-table">
+								<thead>
+									<tr>
+										<th>Structure</th>
+										<th>Purpose</th>
+										<th>Example</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><code>if (condition) {}</code></td>
+										<td>Run if truthy</td>
+										<td><code>if (age >= 18) {}</code></td>
+									</tr>
+									<tr>
+										<td><code>if () {} else {}</code></td>
+										<td>Two branches</td>
+										<td><code>if (x) { } else { }</code></td>
+									</tr>
+									<tr>
+										<td><code>else if (condition) {}</code></td>
+										<td>Additional branch</td>
+										<td><code>else if (x > 50) {}</code></td>
+									</tr>
+									<tr>
+										<td><code>condition ? a : b</code></td>
+										<td>Ternary shorthand</td>
+										<td><code>x >= 18 ? "Adult" : "Minor"</code></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="module-nav">
+						<a class="prev-module" href="module5.html">
+							<div class="prev-arrow-icon">
+								<svg
+									viewBox="0 0 24 24"
+									width="18"
+									height="18"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<line x1="19" y1="12" x2="5" y2="12"></line>
+									<polyline points="12 19 5 12 12 5"></polyline>
+								</svg>
+							</div>
+							<div class="prev-text">
+								<span class="prev-label">Back to</span>
+								<span class="prev-title"
+									>Module 5: Comparison and Logical Operators</span
+								>
+							</div>
+						</a>
+						<a class="next-module" href="module7.html">
+							<div class="next-text">
+								<span class="next-label">Up Next</span>
+								<span class="next-title">Module 7: Arrays</span>
+							</div>
+							<div class="next-arrow-icon">
+								<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<line x1="5" y1="12" x2="19" y2="12"></line>
+									<polyline points="12 5 19 12 12 19"></polyline>
+								</svg>
+							</div>
+						</a>
+					</div>
+
+					<div class="designer-note">
+						<span>JavaScript Crash Course - Module 6 of 10</span>
+					</div>
+				</div>
+			</main>
+		</div>
+
+		<!-- SCRIPTS -->
+		<script>
+			window.staticBlocksHTML = {};
+			document.addEventListener("DOMContentLoaded", () => {
+				document.querySelectorAll("pre[id]").forEach((pre) => {
+					const id = pre.id.replace("-code", "");
+					window.staticBlocksHTML[id] = pre.innerHTML;
+				});
+			});
+		</script>
+		<script src="../assets/js/editor.js"></script>
+		<script>
+			window.staticBlocks = {
+				ex1: `let balance = 200\n\nif (balance > 0) {\n  console.log("Funds available")\n}\n\nconsole.log("Done")`,
+				ex2a: `let isSunny  = true\nlet userName = "Kofi"\n\nif (isSunny) {\n  console.log("It is sunny")\n}\n\nif (userName) {\n  console.log("Hello, " + userName)\n}\n\nif (isSunny === true) {\n  console.log("This works but is redundant")\n}`,
+				ex2b: `let status = "active"\nlet count  = 0\n\nif (status === "active") {\n  console.log("Account is active")\n}\n\nif (count === 0) {\n  console.log("No items yet")\n}`,
+				ex3: `let stock = 0\n\nif (stock > 0) {\n  console.log("In stock")\n} else {\n  console.log("Out of stock")\n}`,
+				ex4b: `let duration = 95\n\nif (duration >= 30) {\n  console.log("Short flight")\n} else if (duration >= 60) {\n  console.log("Medium flight")\n} else if (duration >= 120) {\n  console.log("Long flight")\n}`,
+				ex4: `let duration = 95\n\nif (duration >= 120) {\n  console.log("Long flight")\n} else if (duration >= 60) {\n  console.log("Medium flight")\n} else if (duration >= 30) {\n  console.log("Short flight")\n} else {\n  console.log("Very short flight")\n}`,
+				ex4b: `let fileSize = 85\n\nif (fileSize > 10) {\n  console.log("Standard upload")\n} else if (fileSize > 50) {\n  console.log("Large file")\n} else if (fileSize > 100) {\n  console.log("File too large")\n}`,
+				ex5: `let hasTicket  = true\nlet isValidAge = true\n\nif (hasTicket) {\n  if (isValidAge) {\n    console.log("Entry granted")\n  } else {\n    console.log("Age restriction applies")\n  }\n} else {\n  console.log("No ticket")\n}`,
+				ex6: `let hasTicket  = true\nlet isValidAge = true\n\nif (hasTicket && isValidAge) {\n  console.log("Entry granted")\n} else if (hasTicket && !isValidAge) {\n  console.log("Age restriction applies")\n} else {\n  console.log("No ticket")\n}`,
+				ex7: `let fileSize = 2.4\n\nlet sizeLabel\nif (fileSize > 1) {\n  sizeLabel = "Large"\n} else {\n  sizeLabel = "Small"\n}\nconsole.log(sizeLabel)\n\nlet sizeLabel2 = fileSize > 1 ? "Large" : "Small"\nconsole.log(sizeLabel2)`,
+				ex8: `let downloadSpeed = 85\n\nconsole.log(\`Connection: \${downloadSpeed > 50 ? "Fast" : "Slow"}\`)\n\nlet remaining = 3\nconsole.log(\`Items left: \${remaining} (\${remaining === 1 ? "item" : "items"})\`)`,
+			};
+
+			window.editorDefaults = {
+				editor1: `let score1 = "82"\nlet score2 = "67"\nlet score3 = "41"\n\n// Convert scores to numbers, then determine and print each result\n`,
+			};
+
+			window.checkConfigs = {
+				ex1: {
+					editorId: "editor1",
+					resultId: "checkResult1",
+					expected: [
+						"Student 1: 82 -- Distinction",
+						"Student 2: 67 -- Pass",
+						"Student 3: 41 -- Fail",
+					],
+					successMsg:
+						"All three results are correct. Amara's calculator works.",
+					failMsg:
+						"Check that you converted each score to a number before comparing, and that your thresholds are in the right order.",
+				},
+			};
+
+			window.quizConfig = {
+				questions: [
+					{
+						id: 1,
+						answer: "b",
+						feedback: {
+							correct:
+								"<strong>Correct.</strong> 0 is falsy, so the if block is skipped and the else block runs instead.",
+							wrong:
+								'<strong>Not quite.</strong> 0 is one of the six falsy values. The if condition fails and the else branch runs, printing "Out of stock".',
+						},
+					},
+					{
+						id: 2,
+						answer: "a",
+						feedback: {
+							correct:
+								'<strong>Correct.</strong> 95 passes the first condition (greater than 90), so "Gold" prints. JavaScript stops there and skips the remaining branches entirely.',
+							wrong:
+								'<strong>Not quite.</strong> JavaScript evaluates conditions top to bottom and stops at the first match. 95 is greater than 90, so the first branch runs and "Gold" prints. The Silver and Bronze branches are never reached.',
+						},
+					},
+					{
+						id: 3,
+						answer: "b",
+						feedback: {
+							correct:
+								'<strong>Correct.</strong> isWeekend is true and hasTicket is false. The && condition fails because both must be true. The || condition passes because at least one is true. "Partial access" prints.',
+							wrong:
+								'<strong>Not quite.</strong> The first condition uses &&, which requires both sides to be truthy. Since hasTicket is false, it fails. The second condition uses ||, which only needs one side to be truthy. Since isWeekend is true, it passes and "Partial access" prints.',
+						},
+					},
+				],
+				messages: {
+					perfect: "Solid. Move on to nested conditionals.",
+					good: "Good. Review the missed question before moving on.",
+					retry: "Revisit sections 3 through 6, then try again.",
+				},
+			};
+		</script>
+		<script src="../assets/js/quiz.js"></script>
+		<script src="../assets/js/flashcards.js"></script>
+		<script src="../assets/js/ui.js"></script>
+	</body>
+</html>

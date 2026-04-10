@@ -1,0 +1,1964 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Module 10: Objects</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="../assets/css/main.css" />
+	</head>
+	<body>
+		<nav class="top-nav">
+			<a class="top-nav-home" href="../index.html" title="Home">
+				<span class="material-icons">home</span>
+			</a>
+		</nav>
+
+		<header class="lesson-header">
+			<div class="header-inner">
+				<div class="lesson-meta">
+					<span class="badge">Module 10 of 10</span>
+				</div>
+				<h1>Objects</h1>
+			</div>
+			<div class="progress-bar-wrap">
+				<div class="progress-bar-fill" style="width: 100%"></div>
+			</div>
+		</header>
+
+		<div class="page-wrap">
+			<aside class="sidebar" id="sidebar">
+				<div class="sidebar-label">In this module</div>
+				<ul class="sidebar-nav">
+					<li><a href="#s1">Learning Objectives</a></li>
+					<li><a href="#s2">What is an Object?</a></li>
+					<li><a href="#s3">Syntax</a></li>
+					<li><a href="#s4">Accessing Properties</a></li>
+					<li><a href="#s5">Shorthand Properties</a></li>
+					<li><a href="#s6">Updating and Adding Properties</a></li>
+					<li><a href="#s7">Coding Exercise 1</a></li>
+					<li><a href="#s8">Checking Existence</a></li>
+					<li><a href="#s9">Looping Through Objects</a></li>
+					<li><a href="#s10">Object Methods</a></li>
+					<li><a href="#s11">Functions as Values</a></li>
+					<li><a href="#s12">Knowledge Check</a></li>
+					<li><a href="#s13">Arrays of Objects</a></li>
+					<li><a href="#s14">Nested Objects</a></li>
+					<li><a href="#s15">Coding Exercise 2</a></li>
+					<li><a href="#s16">Summary</a></li>
+				</ul>
+			</aside>
+
+			<button
+				class="sidebar-toggle"
+				id="sidebarToggle"
+				aria-label="Toggle menu"
+			>
+				<svg
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<line x1="3" y1="6" x2="21" y2="6" />
+					<line x1="3" y1="12" x2="21" y2="12" />
+					<line x1="3" y1="18" x2="21" y2="18" />
+				</svg>
+			</button>
+
+			<main class="lesson-body">
+				<!-- 1. LEARNING OBJECTIVE -->
+				<div class="section" id="s1">
+					<div class="section-label">
+						<div class="section-num">1</div>
+						<span class="section-title-sm">Learning Objectives</span>
+					</div>
+					<div class="objective-box">
+						<p class="obj-intro">
+							By the end of this module you will be able to:
+						</p>
+						<ul class="obj-list">
+							<li>
+								Create objects using object literal syntax and understand when
+								to use an object over an array
+							</li>
+							<li>Access properties using dot and bracket notation</li>
+							<li>Update, add, and delete object properties</li>
+							<li>
+								Check if a property exists using the <code>in</code> operator
+							</li>
+							<li>Loop through objects using <code>for...in</code> loop</li>
+							<li>Define and call methods on objects</li>
+						</ul>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 2. WHAT IS AN OBJECT -->
+				<div class="section" id="s2">
+					<div class="section-label">
+						<div class="section-num">2</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>What is an Object?</h2>
+
+					<p>
+						Arrays are great for ordered lists of similar values such as a list
+						of scores or names. But sometimes you need to describe a single
+						thing that has multiple distinct properties. For example, a book has
+						a title, an author, a year, and a page count. A user has a name, an
+						email address, and an account status. These are not lists of similar
+						items but collections of different pieces of information that belong
+						to one entity.
+					</p>
+
+					<p>
+						An object lets you group related data under named keys. It is not
+						indexed. So instead of accessing values by their position like in an
+						array or string, you access them by name.
+					</p>
+
+					<p>
+						Use an array when order matters and the values are of the same kind.
+						Use an object when you are describing a single entity with named
+						properties.
+					</p>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 3. SYNTAX -->
+				<div class="section" id="s3">
+					<div class="section-label">
+						<div class="section-num">3</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Syntax</h2>
+
+					<p>
+						You create an object with curly braces. Inside, each entry is a
+						<strong>key-value pair</strong> separated by a colon. Multiple pairs
+						are separated by commas. The keys are called
+						<strong>properties</strong>. The values can be any type be it
+						strings, numbers, booleans, arrays, or even other objects.
+					</p>
+
+					<p>
+						By convention, keys are written without quotes when they follow
+						standard variable naming rules. You can also write them with quotes
+						. Both forms work, but unquoted is more common. However, you
+						<em>must</em> use quotes if the key contains a space or special
+						character.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex1')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex1')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex1-code"
+						><span class="kw">let</span> satellite <span class="op">=</span> {
+  name:        <span class="str">"Hubble"</span>,
+  launchYear:  <span class="num">1990</span>,
+  operational: <span class="kw">true</span>,
+  orbitKm:     <span class="num">547</span>
+}
+
+<span class="cmt">// Keys can also be written with quotes -> Works just fine</span>
+<span class="kw">let</span> satellite2 <span class="op">=</span> {
+  <span class="str">"name"</span>:        <span class="str">"James Webb"</span>,
+  <span class="str">"launchYear"</span>:  <span class="num">2021</span>,
+  <span class="str">"operational"</span>: <span class="kw">true</span>,
+  <span class="str">"orbitKm"</span>:     <span class="num">1500000</span>
+}
+
+<span class="fn">console</span>.log(satellite)
+<span class="fn">console</span>.log(satellite2)</pre>
+						<div class="code-output" id="ex1-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<div class="callout warn">
+						<div class="callout-label">
+							Objects, arrays, and functions are all objects
+						</div>
+						<p>
+							In JavaScript, <strong>object</strong> is the umbrella type for
+							anything that is not a primitive. An object literal, an array, and
+							a function are all objects under the hood. They all have
+							properties and methods. This is why <code>typeof {}</code> and
+							<code>typeof []</code> both return <code>"object"</code>. It also
+							explains why arrays have built-in properties like
+							<code>length</code> and methods like <code>push()</code>. To check
+							specifically whether something is an array, use
+							<code>Array.isArray()</code> rather than <code>typeof</code>.
+						</p>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 4. ACCESSING PROPERTIES -->
+				<div class="section" id="s4">
+					<div class="section-label">
+						<div class="section-num">4</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Accessing Properties</h2>
+
+					<h3>Dot notation</h3>
+					<p>
+						The most common way to access a property is to use dot notation by
+						writing the object name, a dot and then the property name. Use this
+						whenever you know the property name at the time you are writing the
+						code.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex2')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex2')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex2-code"
+						><span class="kw">let</span> planet <span class="op">=</span> {
+  name:     <span class="str">"Mars"</span>,
+  moons:    <span class="num">2</span>,
+  diameter: <span class="num">6779</span>,
+  hasWater: <span class="kw">true</span>
+}
+
+<span class="fn">console</span>.log(planet.name)
+<span class="fn">console</span>.log(planet.moons)
+<span class="fn">console</span>.log(<span class="str">`${planet.name} has ${planet.moons} moon(s)`</span>)</pre>
+						<div class="code-output" id="ex2-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>Bracket notation</h3>
+					<p>
+						Bracket notation lets you access a property using a string inside
+						square brackets. You’ll need it in two main cases: when the property
+						name doesn’t follow normal variable naming rules (so dot notation
+						won’t work), and when the property name is stored in a variable.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex3a')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex3a')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex3a-code"
+						><span class="kw">let</span> profile <span class="op">=</span> {
+  <span class="str">"full name"</span>:    <span class="str">"Mwangi Cheza"</span>,
+  <span class="str">"sign-up year"</span>: <span class="num">2022</span>,
+  <span class="str">"account type"</span>: <span class="str">"premium"</span>
+}
+
+<span class="cmt">// dot notation would be a syntax error here</span>
+<span class="fn">console</span>.log(profile[<span class="str">"full name"</span>])
+<span class="fn">console</span>.log(profile[<span class="str">"sign-up year"</span>])
+<span class="fn">console</span>.log(profile[<span class="str">"account type"</span>])</pre>
+						<div class="code-output" id="ex3a-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						When the property name is stored in a variable, bracket notation
+						accepts the variable directly. Dot notation only works with a name
+						written literally in the code.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex3b')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex3b')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex3b-code"
+						><span class="kw">let</span> settings <span class="op">=</span> {
+  theme:    <span class="str">"dark"</span>,
+  language: <span class="str">"en"</span>,
+  fontSize: <span class="num">16</span>
+}
+
+<span class="kw">let</span> field <span class="op">=</span> <span class="str">"theme"</span>
+<span class="fn">console</span>.log(settings[field])  <span class="cmt">// same as settings["theme"]</span>
+
+<span class="fn">console</span>.log(settings.field)  <span class="cmt">// doesn't work -> dot notation produces undefined</span></pre>
+						<div class="code-output" id="ex3b-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<div class="callout warn">
+						<div class="callout-label">When to use each</div>
+						<p>
+							Use <strong>dot notation</strong> by default. It is cleaner and
+							more readable. Use <strong>bracket notation</strong> when the key
+							is stored in a variable, or when the key contains spaces or
+							special characters.
+						</p>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 5. SHORTHAND PROPERTIES -->
+				<div class="section" id="s5">
+					<div class="section-label">
+						<div class="section-num">5</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Shorthand Properties</h2>
+
+					<p>
+						When you create an object and the value you want to assign to a key
+						is already stored in a variable with the same name, you can use
+						shorthand property syntax. Instead of writing
+						<code>key: variable</code>, you write just the name once. JavaScript
+						understands that the key and the value are the same name.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex4')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex4')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex4-code"
+						><span class="kw">let</span> username <span class="op">=</span> <span class="str">"kofi92"</span>
+<span class="kw">let</span> email    <span class="op">=</span> <span class="str">"kofi@example.com"</span>
+<span class="kw">let</span> age      <span class="op">=</span> <span class="num">30</span>
+
+<span class="cmt">// Without shorthand</span>
+<span class="kw">let</span> user1 <span class="op">=</span> {
+  username: username,
+  email:    email,
+  age:      age
+}
+
+<span class="cmt">// With shorthand -> same result, less repetition</span>
+<span class="kw">let</span> user2 <span class="op">=</span> { username, email, age }
+
+<span class="fn">console</span>.log(user1)
+<span class="fn">console</span>.log(user2)</pre>
+						<div class="code-output" id="ex4-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						This is common in modern JavaScript, especially when building
+						objects from variables you have already declared. You will see it
+						frequently in real codebases.
+					</p>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 6. UPDATING AND ADDING PROPERTIES -->
+				<div class="section" id="s6">
+					<div class="section-label">
+						<div class="section-num">6</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Updating and Adding Properties</h2>
+
+					<h3>Updating a property</h3>
+					<p>
+						You update an existing property by assigning a new value to it,
+						exactly like reassigning a variable. The key stays the same and only
+						the value changes.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex5a')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex5a')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex5a-code"
+						><span class="kw">let</span> device <span class="op">=</span> {
+  brand: <span class="str">"Lenovo"</span>,
+  ramGB: <span class="num">16</span>
+}
+
+device.ramGB <span class="op">=</span> <span class="num">32</span>
+<span class="fn">console</span>.log(device)</pre>
+						<div class="code-output" id="ex5a-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>Adding a property</h3>
+					<p>
+						If you assign to a key that does not exist yet, JavaScript creates
+						it. There is no separate method for adding a new property. The same
+						assignment syntax handles both updating and adding.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex5b')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex5b')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex5b-code"
+						><span class="kw">let</span> device <span class="op">=</span> {
+  brand: <span class="str">"Lenovo"</span>,
+  ramGB: <span class="num">16</span>
+}
+
+device.storageGB <span class="op">=</span> <span class="num">512</span>  <span class="cmt">// new key-value pair gets created</span>
+device.colour    <span class="op">=</span> <span class="str">"black"</span>
+<span class="fn">console</span>.log(device)</pre>
+						<div class="code-output" id="ex5b-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>Deleting a property</h3>
+					<p>
+						To remove a property entirely, use the <code>delete</code> operator.
+						After deletion, accessing that key returns
+						<strong>undefined</strong>.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex5c')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex5c')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex5c-code"
+						><span class="kw">let</span> device <span class="op">=</span> {
+  brand:   <span class="str">"Lenovo"</span>,
+  ramGB:   <span class="num">16</span>,
+  model:   <span class="str">"X1 Carbon"</span>
+}
+
+<span class="kw">delete</span> device.model
+<span class="fn">console</span>.log(device)
+<span class="fn">console</span>.log(device.model)  <span class="cmt">// undefined -> key no longer exists</span></pre>
+						<div class="code-output" id="ex5c-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 7. CODING EXERCISE 1 -->
+				<div class="section" id="s7">
+					<div class="section-label">
+						<div class="section-num question">?</div>
+						<span class="section-title-sm">Coding Exercise 1</span>
+					</div>
+					<h2>Working with an Object</h2>
+
+					<div class="activity-box">
+						<div class="activity-header">
+							<span class="activity-tag">Coding Exercise</span>
+						</div>
+						<div class="activity-scenario">
+							<strong>Question:</strong> You are given a film object. Complete
+							each task in order.
+							<ol style="margin-top: 12px; padding-left: 18px; line-height: 2">
+								<li>Print the film title and director using dot notation</li>
+								<li>Update the rating from 8.1 to 8.4</li>
+								<li>
+									Add a new property <strong>streamingOn</strong> with the value
+									<strong>"Netflix"</strong>
+								</li>
+								<li>Delete the <strong>runtime</strong> property</li>
+								<li>Print the entire object to confirm the changes</li>
+							</ol>
+						</div>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-bottom: 10px;
+							"
+						>
+							Expected output:
+						</p>
+						<div class="code-block" style="margin-bottom: 16px">
+							<pre style="padding: 12px 18px; color: #abb2bf; font-size: 13px">
+Dune
+Denis Villeneuve
+{title: "Dune", director: "Denis Villeneuve", year: 2021, rating: 8.4, streamingOn: "Netflix"}</pre
+							>
+						</div>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-top: 20px;
+								margin-bottom: 8px;
+							"
+						>
+							Write your code below.
+						</p>
+						<div class="editor-wrap" id="editor1">
+							<div class="editor-header">
+								<span class="editor-label">JavaScript Editor</span>
+							</div>
+							<textarea
+								class="editor-textarea"
+								id="editor1-code"
+								spellcheck="false"
+							>
+let film = {
+  title:    "Dune",
+  director: "Denis Villeneuve",
+  year:     2021,
+  rating:   8.1,
+  runtime:  155
+}
+
+// 1. Print title and director
+
+
+// 2. Update rating to 8.4
+
+
+// 3. Add streamingOn: "Netflix"
+
+
+// 4. Delete runtime
+
+
+// 5. Print the object
+</textarea
+							>
+							<div class="editor-footer">
+								<button
+									class="editor-reset-btn"
+									onclick="resetEditor('editor1')"
+									title="Reset code"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg>
+									Reset
+								</button>
+								<div class="spacer"></div>
+								<button class="run-btn" onclick="runCode('editor1')">
+									Run
+								</button>
+								<button class="check-btn" onclick="checkAnswer('ex1')">
+									Check Answer
+								</button>
+							</div>
+							<div class="output-area" id="editor1-output">
+								<div class="output-label">Output</div>
+							</div>
+						</div>
+						<div class="check-result" id="checkResult1"></div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 8. CHECKING EXISTENCE -->
+				<div class="section" id="s8">
+					<div class="section-label">
+						<div class="section-num">8</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Checking Existence</h2>
+
+					<p>
+						Sometimes you need to know whether a property exists on an object
+						before using it. There are three approaches we can use, each with
+						different behaviour. Understanding the difference matters because
+						choosing the wrong one can introduce silent bugs.
+					</p>
+
+					<h3>if (obj.key)</h3>
+					<p>
+						The most intuitive approach is to check the property directly in an
+						<code>if</code> statement. The problem is that this checks whether
+						the value is truthy, not whether the key exists. If the key is
+						present but its value is <strong>0</strong>, <strong>false</strong>,
+						or an empty string, the check fails even though the key is there.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex6a')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex6a')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex6a-code"
+						><span class="kw">let</span> server <span class="op">=</span> {
+  host:   <span class="str">"localhost"</span>,
+  port:   <span class="num">0</span>,
+  secure: <span class="kw">false</span>
+}
+
+<span class="cmt">// PROBLEM -> port is 0 and secure is false, both falsy</span>
+<span class="cmt">// These fail even though the keys exist</span>
+<span class="kw">if</span> (server.port) <span class="fn">console</span>.log(<span class="str">"port exists"</span>)    <span class="cmt">// does not run</span>
+<span class="kw">if</span> (server.secure) <span class="fn">console</span>.log(<span class="str">"secure exists"</span>)  <span class="cmt">// does not run</span></pre>
+						<div class="code-output" id="ex6a-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>if (obj.key !== undefined)</h3>
+					<p>
+						A step up is comparing the value to <strong>undefined</strong>. A
+						missing property returns <strong>undefined</strong> when accessed,
+						so this catches most cases. However it still fails in one edge case:
+						if the key exists and its value has been explicitly set to
+						<strong>undefined</strong>, the check will incorrectly treat it as
+						missing. This is because conditional statements only execute when
+						the condition is truthy.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex6b')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex6b')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex6b-code"
+						><span class="kw">let</span> server <span class="op">=</span> {
+  host: <span class="str">"localhost"</span>,
+  port: <span class="num">0</span>,
+  secure: <span class="kw">false</span>
+}
+
+<span class="cmt">// Works for falsy values -> port and secure are now found correctly</span>
+<span class="kw">if</span> (server.port <span class="op">!==</span> <span class="kw">undefined</span>) <span class="fn">console</span>.log(<span class="str">"port exists"</span>)
+<span class="kw">if</span> (server.secure <span class="op">!==</span> <span class="kw">undefined</span>) <span class="fn">console</span>.log(<span class="str">"secure exists"</span>)
+<span class="kw">if</span> (server.timeout <span class="op">!==</span> <span class="kw">undefined</span>) <span class="fn">console</span>.log(<span class="str">"timeout exists"</span>)  <span class="cmt">// missing -- does not run</span></pre>
+						<div class="code-output" id="ex6b-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>"key" in obj</h3>
+					<p>
+						The <code>in</code> operator is the most reliable way to check
+						existence. It checks whether the <strong>key</strong> is present on
+						the object, regardless of what the value is including if the value
+						is <strong>undefined</strong>, <strong>0</strong>,
+						<strong>false</strong>, or anything else falsy.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex6c')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex6c')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex6c-code"
+						><span class="kw">let</span> server <span class="op">=</span> {
+  host: <span class="str">"localhost"</span>,
+  port: <span class="num">0</span>,
+  secure: <span class="kw">false</span>
+}
+
+<span class="kw">if</span> (<span class="str">"port"</span> <span class="kw">in</span> server) <span class="fn">console</span>.log(<span class="str">"port exists"</span>)
+<span class="kw">if</span> (<span class="str">"secure"</span> <span class="kw">in</span> server) <span class="fn">console</span>.log(<span class="str">"secure exists"</span>)
+<span class="kw">if</span> (<span class="str">"timeout"</span> <span class="kw">in</span> server) <span class="fn">console</span>.log(<span class="str">"timeout exists"</span>)  <span class="cmt">// key not present -> does not run</span></pre>
+						<div class="code-output" id="ex6c-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 9. LOOPING THROUGH OBJECTS -->
+				<div class="section" id="s9">
+					<div class="section-label">
+						<div class="section-num">9</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Looping Through Objects</h2>
+
+					<p>
+						Objects are not iterable the same way arrays are, so you cannot use
+						<code>for...of</code> directly on an object. Instead, use
+						<code>for...in</code>, which loops over the <strong>keys</strong> of
+						an object. On each iteration you get one key as a string (there is
+						no numeric index like in a <code>for</code> loop). Use bracket
+						notation inside the loop to access the corresponding value.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex7')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex7')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex7-code"
+						><span class="kw">let</span> stadium <span class="op">=</span> {
+  name:     <span class="str">"Wembley"</span>,
+  country:  <span class="str">"England"</span>,
+  capacity: <span class="num">90000</span>,
+  opened:   <span class="num">2007</span>
+}
+
+<span class="kw">for</span> (<span class="kw">let</span> key <span class="kw">in</span> stadium) {
+  <span class="fn">console</span>.log(<span class="str">`${key}: ${stadium[key]}`</span>)
+}</pre>
+						<div class="code-output" id="ex7-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 10. OBJECT METHODS -->
+				<div class="section" id="s10">
+					<div class="section-label">
+						<div class="section-num">10</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Object Methods</h2>
+
+					<p>
+						JavaScript provides built-in methods that extract the keys or values
+						of an object as an array. Once you have an array, you can use all
+						the array tools you already know i.e <code>length</code>,
+						<code>for...of</code>, and so on.
+					</p>
+
+					<h3>Object.keys()</h3>
+					<p>
+						Returns an array of all the property names in the object. Saving it
+						to a variable lets you use it in multiple places without calling the
+						method twice.
+					</p>
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex8a')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex8a')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex8a-code"
+						><span class="kw">let</span> recipe <span class="op">=</span> {
+  name:     <span class="str">"Jollof Rice"</span>,
+  servings: <span class="num">4</span>,
+  prepMins: <span class="num">20</span>,
+  cookMins: <span class="num">45</span>
+}
+
+<span class="kw">let</span> keys <span class="op">=</span> <span class="fn">Object</span>.keys(recipe)
+<span class="fn">console</span>.log(keys)
+<span class="fn">console</span>.log(<span class="str">`This recipe has ${keys.length} properties`</span>)
+
+<span class="kw">for</span> (<span class="kw">let</span> key <span class="kw">of</span> keys) {
+  <span class="fn">console</span>.log(key)
+}</pre>
+						<div class="code-output" id="ex8a-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<h3>Object.values()</h3>
+					<p>
+						Returns an array of all the property values in the same order as the
+						keys. Again, saving to a variable before using it keeps the code
+						clean.
+					</p>
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex8b')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex8b')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex8b-code"
+						><span class="kw">let</span> scores <span class="op">=</span> {
+  maths:   <span class="num">88</span>,
+  english: <span class="num">74</span>,
+  science: <span class="num">91</span>
+}
+
+<span class="kw">let</span> values <span class="op">=</span> <span class="fn">Object</span>.values(scores)
+<span class="fn">console</span>.log(values)
+
+<span class="kw">for</span> (<span class="kw">let</span> score <span class="kw">of</span> values) {
+  <span class="fn">console</span>.log(score)
+}</pre>
+						<div class="code-output" id="ex8b-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 11. FUNCTIONS AS VALUES -->
+				<div class="section" id="s11">
+					<div class="section-label">
+						<div class="section-num">11</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Functions as Values</h2>
+
+					<p>
+						Because functions are objects in JavaScript, they can be stored as
+						property values just like a string or number. When a function is
+						stored inside an object, it is called a <strong>method</strong>. You
+						call it using dot notation followed by parentheses.
+					</p>
+
+					<p>
+						A function stored in an object can reference other properties on the
+						same object by using the object's variable name. This works because
+						the object is declared in the outer scope so the function can see it
+						the same way any code in that scope can. The issue of scope is a bit
+						of an advanced topic so don't worry too much about it.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex9')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex9')">Run</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex9-code"
+						><span class="kw">let</span> timer <span class="op">=</span> {
+  duration: <span class="num">30</span>,
+  unit:     <span class="str">"seconds"</span>,
+  start: <span class="kw">function</span>() {
+    <span class="fn">console</span>.log(<span class="str">"Timer started"</span>)
+  },
+  describe: <span class="kw">function</span>() {
+    <span class="cmt">// timer is in the outer scope so this function can read its properties</span>
+    <span class="fn">console</span>.log(<span class="str">`Running for ${timer.duration} ${timer.unit}`</span>)
+  }
+}
+
+timer.start()
+timer.describe()</pre>
+						<div class="code-output" id="ex9-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						You have already been using methods throughout this course.
+						<code>console.log()</code>, <code>array.push()</code>, and
+						<code>string.toUpperCase()</code> are all functions stored as
+						properties on objects and called using dot notation.
+					</p>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 12. KNOWLEDGE CHECK -->
+				<div class="section" id="s12">
+					<div class="section-label">
+						<div class="section-num question">?</div>
+						<span class="section-title-sm">Knowledge Check</span>
+					</div>
+					<h2>Check for Understanding</h2>
+
+					<div class="quiz-box">
+						<div class="quiz-intro">
+							<div class="quiz-intro-label">Module 10</div>
+							<h3>Select one answer per question</h3>
+						</div>
+						<div class="quiz-questions">
+							<div class="quiz-q">
+								<div class="q-num">Question 1 of 3</div>
+								<div class="q-text">
+									What does this print?
+									<pre
+										style="
+											margin-top: 8px;
+											padding: 10px 14px;
+											background: #1e2a3a;
+											border-radius: 6px;
+											font-size: 13px;
+											color: #abb2bf;
+											font-family: &quot;JetBrains Mono&quot;, monospace;
+											font-variant-ligatures: none;
+										"
+									>
+let config = {
+  retries: 0,
+  verbose: false
+}
+
+if ("retries" in config) {
+  console.log("retries exists")
+}
+
+if (config.verbose) {
+  console.log("verbose exists")
+}</pre
+									>
+								</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="1" data-val="a">
+										<input type="radio" name="q1" /> retries exists, then
+										verbose exists
+									</li>
+									<li class="q-option" data-q="1" data-val="b">
+										<input type="radio" name="q1" /> retries exists only
+									</li>
+									<li class="q-option" data-q="1" data-val="c">
+										<input type="radio" name="q1" /> Nothing -- both values are
+										falsy
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb1"></div>
+							</div>
+
+							<div class="quiz-q">
+								<div class="q-num">Question 2 of 3</div>
+								<div class="q-text">
+									What does this print?
+									<pre
+										style="
+											margin-top: 8px;
+											padding: 10px 14px;
+											background: #1e2a3a;
+											border-radius: 6px;
+											font-size: 13px;
+											color: #abb2bf;
+											font-family: &quot;JetBrains Mono&quot;, monospace;
+											font-variant-ligatures: none;
+										"
+									>
+let palette = {
+  primary: "blue",
+  secondary: "green"
+}
+
+console.log(Object.keys(palette))</pre
+									>
+								</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="2" data-val="a">
+										<input type="radio" name="q2" /> ["blue", "green"]
+									</li>
+									<li class="q-option" data-q="2" data-val="b">
+										<input type="radio" name="q2" /> ["primary", "secondary"]
+									</li>
+									<li class="q-option" data-q="2" data-val="c">
+										<input type="radio" name="q2" /> {primary: "blue",
+										secondary: "green"}
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb2"></div>
+							</div>
+
+							<div class="quiz-q">
+								<div class="q-num">Question 3 of 3</div>
+								<div class="q-text">
+									What does this print?
+									<pre
+										style="
+											margin-top: 8px;
+											padding: 10px 14px;
+											background: #1e2a3a;
+											border-radius: 6px;
+											font-size: 13px;
+											color: #abb2bf;
+											font-family: &quot;JetBrains Mono&quot;, monospace;
+											font-variant-ligatures: none;
+										"
+									>
+let counter = {
+  count: 0,
+  increment: function() {
+    counter.count++
+  }
+}
+
+counter.increment()
+counter.increment()
+console.log(counter.count)</pre
+									>
+								</div>
+								<ul class="q-options">
+									<li class="q-option" data-q="3" data-val="a">
+										<input type="radio" name="q3" /> 0
+									</li>
+									<li class="q-option" data-q="3" data-val="b">
+										<input type="radio" name="q3" /> 1
+									</li>
+									<li class="q-option" data-q="3" data-val="c">
+										<input type="radio" name="q3" /> 2
+									</li>
+								</ul>
+								<div class="q-feedback" id="fb3"></div>
+							</div>
+
+							<div class="quiz-error" id="quizError">
+								Please answer all three questions before submitting.
+							</div>
+							<button class="quiz-submit" id="submitQuiz">
+								Submit Answers
+							</button>
+							<div class="quiz-result" id="quizResult">
+								<div class="result-score" id="resultScore"></div>
+								<div class="result-msg" id="resultMsg"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 13. ARRAYS OF OBJECTS -->
+				<div class="section" id="s13">
+					<div class="section-label">
+						<div class="section-num">13</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Arrays of Objects</h2>
+
+					<p>
+						One of the most common data structures you will encounter is an
+						array of objects. Often each object has the same keys, but in
+						practice some keys may be absent on certain objects. You access a
+						single object by its index, then access its properties using dot
+						notation.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex10')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex10')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex10-code"
+						><span class="kw">let</span> runners <span class="op">=</span> [
+  { name: <span class="str">"Aisha"</span>,  timeMin: <span class="num">42</span> },
+  { name: <span class="str">"Carlos"</span>, timeMin: <span class="num">38</span> },
+  { name: <span class="str">"Priya"</span>,  timeMin: <span class="num">45</span> }
+]
+
+<span class="cmt">// Access a single object by index, then its property</span>
+<span class="fn">console</span>.log(runners[<span class="num">0</span>])    <span class="cmt">// Gives the first object</span>
+<span class="fn">console</span>.log(runners[<span class="num">0</span>].name)    <span class="cmt">// Aisha</span>
+<span class="fn">console</span>.log(runners[<span class="num">1</span>].timeMin)  <span class="cmt">// 38</span></pre>
+						<div class="code-output" id="ex10-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+
+					<p>
+						To process every object in the array, we can combine a loop with
+						property access. On each iteration the loop variable holds the
+						entire object, and you use dot notation to read from it.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex11')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex11')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex11-code"
+						><span class="kw">let</span> runners <span class="op">=</span> [
+  { name: <span class="str">"Aisha"</span>,  timeMin: <span class="num">42</span> },
+  { name: <span class="str">"Carlos"</span>, timeMin: <span class="num">38</span> },
+  { name: <span class="str">"Priya"</span>,  timeMin: <span class="num">45</span> }
+]
+
+<span class="kw">for</span> (<span class="kw">let</span> runner <span class="kw">of</span> runners) {
+  <span class="fn">console</span>.log(<span class="str">`${runner.name} finished in ${runner.timeMin} minutes`</span>)
+}</pre>
+						<div class="code-output" id="ex11-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 14. NESTED OBJECTS -->
+				<div class="section" id="s14">
+					<div class="section-label">
+						<div class="section-num">14</div>
+						<span class="section-title-sm">Core Concept</span>
+					</div>
+					<h2>Nested Objects</h2>
+
+					<p>
+						A property value can itself be an object. This is called a nested
+						object. You access its properties by chaining the obejct with first
+						the outer key, then the inner key. We will only go one level deep
+						here, but as you advances you will encounter nested objects that are
+						even higher than four levels.
+					</p>
+
+					<div class="code-block">
+						<div class="code-block-header">
+							<span class="code-lang">JavaScript</span>
+							<div class="code-block-btns">
+								<button
+									class="reset-btn"
+									onclick="resetStatic('ex12')"
+									title="Reset"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg></button
+								><button class="run-btn" onclick="runStatic('ex12')">
+									Run
+								</button>
+							</div>
+						</div>
+						<pre
+							contenteditable="true"
+							spellcheck="false"
+							id="ex12-code"
+						><span class="kw">let</span> company <span class="op">=</span> {
+  name:    <span class="str">"Savanna Tech"</span>,
+  founded: <span class="num">2018</span>,
+  address: {
+    city:    <span class="str">"Kampala"</span>,
+    country: <span class="str">"Uganda"</span>
+  }
+}
+
+<span class="fn">console</span>.log(company.name)
+<span class="fn">console</span>.log(company.address.city)
+<span class="fn">console</span>.log(company.address.country)
+<span class="fn">console</span>.log(<span class="str">`${company.name} is based in ${company.address.city}, ${company.address.country}`</span>)</pre>
+						<div class="code-output" id="ex12-output">
+							<div class="output-label">Output</div>
+						</div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 15. CODING EXERCISE 2 -->
+				<div class="section" id="s15">
+					<div class="section-label">
+						<div class="section-num question">?</div>
+						<span class="section-title-sm">Coding Exercise 2</span>
+					</div>
+					<h2>Amara's Student Report</h2>
+
+					<div class="activity-box">
+						<div class="activity-header">
+							<span class="activity-tag">Coding Exercise</span>
+						</div>
+						<div class="activity-scenario">
+							<strong>Question:</strong> Amara now has an array of student
+							objects. Each object has a <strong>name</strong> and a
+							<strong>score</strong>. Use the <strong>getGrade</strong> function
+							from Module 9 to produce the full class report. Loop through the
+							array, print each student's name, score, and grade, then print the
+							class average and a list of students who earned a Distinction.
+							<ul style="margin-top: 12px; padding-left: 18px; line-height: 2">
+								<li>80 and above → A -- Distinction</li>
+								<li>60 to 79 → B -- Merit</li>
+								<li>50 to 59 → C -- Credit</li>
+								<li>40 to 49 → D -- Pass</li>
+								<li>Below 40 → F -- Fail</li>
+							</ul>
+						</div>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-bottom: 10px;
+							"
+						>
+							Expected output:
+						</p>
+						<div class="code-block" style="margin-bottom: 16px">
+							<pre style="padding: 12px 18px; color: #abb2bf; font-size: 13px">
+Oliver: 72 -- B -- Merit
+Charlotte: 85 -- A -- Distinction
+Harry: 43 -- D -- Pass
+Emily: 91 -- A -- Distinction
+James: 58 -- C -- Credit
+Sophie: 34 -- F -- Fail
+William: 67 -- B -- Merit
+Class average: 64.29
+Distinctions: Charlotte, Emily</pre
+							>
+						</div>
+
+						<p
+							style="
+								font-size: 13.5px;
+								color: var(--muted);
+								margin-top: 20px;
+								margin-bottom: 8px;
+							"
+						>
+							Write your code below.
+						</p>
+						<div class="editor-wrap" id="editor2">
+							<div class="editor-header">
+								<span class="editor-label">JavaScript Editor</span>
+							</div>
+							<textarea
+								class="editor-textarea"
+								id="editor2-code"
+								spellcheck="false"
+							>
+let students = [
+  { name: "Oliver",    score: 72 },
+  { name: "Charlotte", score: 85 },
+  { name: "Harry",     score: 43 },
+  { name: "Emily",     score: 91 },
+  { name: "James",     score: 58 },
+  { name: "Sophie",    score: 34 },
+  { name: "William",   score: 67 }
+]
+
+// getGrade function from Module 9
+
+
+// Loop and print each student's name, score, and grade
+
+
+// Class average (use toFixed(2))
+
+
+// Distinctions list (names only)
+</textarea
+							>
+							<div class="editor-footer">
+								<button
+									class="editor-reset-btn"
+									onclick="resetEditor('editor2')"
+									title="Reset code"
+								>
+									<svg
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2.2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+									>
+										<polyline points="1 4 1 10 7 10"></polyline>
+										<path d="M3.51 15a9 9 0 1 0 .49-4.5"></path>
+									</svg>
+									Reset
+								</button>
+								<div class="spacer"></div>
+								<button class="run-btn" onclick="runCode('editor2')">
+									Run
+								</button>
+								<button class="check-btn" onclick="checkAnswer('ex2')">
+									Check Answer
+								</button>
+							</div>
+							<div class="output-area" id="editor2-output">
+								<div class="output-label">Output</div>
+							</div>
+						</div>
+						<div class="check-result" id="checkResult2"></div>
+					</div>
+				</div>
+
+				<hr class="divider" />
+
+				<!-- 16. SUMMARY -->
+				<div class="section" id="s16">
+					<div class="section-label">
+						<div class="section-num">16</div>
+						<span class="section-title-sm">Summary</span>
+					</div>
+					<h2>Module Summary</h2>
+					<div class="summary-box">
+						<h3>Key takeaways</h3>
+						<ul class="summary-list">
+							<li>
+								An object stores related data as named key-value pairs. Use
+								objects when data has named properties; use arrays when order
+								matters and values are of the same kind.
+							</li>
+							<li>
+								Keys can be written with or without quotes. Use quotes when the
+								key contains a space or special character.
+							</li>
+							<li>
+								Access properties with dot notation by default. Use bracket
+								notation when the key is in a variable or contains spaces or
+								special characters.
+							</li>
+							<li>
+								Shorthand property syntax lets you write
+								<code>{ name }</code> instead of
+								<code>{ name: name }</code> when the variable and key share the
+								same name.
+							</li>
+							<li>
+								Assign to a key to update or add it. Use
+								<code>delete obj.key</code> to remove a property entirely.
+							</li>
+							<li>
+								Use <code>"key" in obj</code> to check existence reliably. Avoid
+								<code>if (obj.key)</code> for falsy values.
+							</li>
+							<li>
+								<code>for...in</code> loops over keys with no numeric index.
+								<code>Object.keys()</code> and
+								<code>Object.values()</code> return arrays you can loop with
+								<code>for...of</code>.
+							</li>
+							<li>
+								A function stored as a property is called a method. It can
+								reference other properties on the same object by using the
+								object's name.
+							</li>
+							<li>
+								In arrays of objects, often each element shares the same keys,
+								but some keys may be absent on certain objects.
+							</li>
+							<li>
+								Nested objects store an object as a property value. Access inner
+								properties by chaining dot notation:
+								<code>obj.outer.inner</code>.
+							</li>
+						</ul>
+
+						<div class="ref-scroll-hint">Scroll right to see full table</div>
+						<div class="ref-table-wrap">
+							<table class="ref-table">
+								<thead>
+									<tr>
+										<th>Concept</th>
+										<th>Syntax</th>
+										<th>Notes</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Create object</td>
+										<td><code>{ key: value }</code></td>
+										<td>Keys unquoted or quoted</td>
+									</tr>
+									<tr>
+										<td>Shorthand property</td>
+										<td><code>{ name }</code></td>
+										<td>Same as <code>{ name: name }</code></td>
+									</tr>
+									<tr>
+										<td>Dot access</td>
+										<td><code>obj.key</code></td>
+										<td>Use by default</td>
+									</tr>
+									<tr>
+										<td>Bracket access</td>
+										<td><code>obj["key"]</code> or <code>obj[var]</code></td>
+										<td>Dynamic keys or special characters</td>
+									</tr>
+									<tr>
+										<td>Update / add</td>
+										<td><code>obj.key = value</code></td>
+										<td>Creates key if missing</td>
+									</tr>
+									<tr>
+										<td>Delete</td>
+										<td><code>delete obj.key</code></td>
+										<td>Removes key entirely</td>
+									</tr>
+									<tr>
+										<td>Check existence</td>
+										<td><code>"key" in obj</code></td>
+										<td>Checks key, not value</td>
+									</tr>
+									<tr>
+										<td>Loop keys</td>
+										<td><code>for (let key in obj)</code></td>
+										<td>No numeric index</td>
+									</tr>
+									<tr>
+										<td>Keys array</td>
+										<td><code>Object.keys(obj)</code></td>
+										<td>Returns array of key names</td>
+									</tr>
+									<tr>
+										<td>Values array</td>
+										<td><code>Object.values(obj)</code></td>
+										<td>Returns array of values</td>
+									</tr>
+									<tr>
+										<td>Method call</td>
+										<td><code>obj.method()</code></td>
+										<td>Function stored as property</td>
+									</tr>
+									<tr>
+										<td>Nested access</td>
+										<td><code>obj.outer.inner</code></td>
+										<td>Chain dot notation</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					<div class="module-nav">
+						<a class="prev-module" href="module9.html">
+							<div class="prev-arrow-icon">
+								<svg
+									viewBox="0 0 24 24"
+									width="18"
+									height="18"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<line x1="19" y1="12" x2="5" y2="12"></line>
+									<polyline points="12 19 5 12 12 5"></polyline>
+								</svg>
+							</div>
+							<div class="prev-text">
+								<span class="prev-label">Back to</span>
+								<span class="prev-title">Module 9: Functions</span>
+							</div>
+						</a>
+						<a class="next-module" href="../completion.html">
+							<div class="next-text">
+								<span class="next-label">You did it</span>
+								<span class="next-title">Course Complete</span>
+							</div>
+							<div class="next-arrow-icon">
+								<svg
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								>
+									<line x1="5" y1="12" x2="19" y2="12"></line>
+									<polyline points="12 5 19 12 12 19"></polyline>
+								</svg>
+							</div>
+						</a>
+					</div>
+
+					<div class="designer-note">
+						<span>JavaScript Crash Course - Module 10 of 10</span>
+					</div>
+				</div>
+			</main>
+		</div>
+
+		<script>
+			window.staticBlocksHTML = {};
+			document.addEventListener("DOMContentLoaded", () => {
+				document.querySelectorAll("pre[id]").forEach((pre) => {
+					const id = pre.id.replace("-code", "");
+					window.staticBlocksHTML[id] = pre.innerHTML;
+				});
+			});
+		</script>
+		<script src="../assets/js/editor.js"></script>
+		<script>
+			window.staticBlocks = {
+				ex1: `let satellite = {\n  name:        "Hubble",\n  launchYear:  1990,\n  operational: true,\n  orbitKm:     547\n}\nlet satellite2 = {\n  "name":        "Hubble",\n  "launchYear":  1990,\n  "operational": true,\n  "orbitKm":     547\n}\nconsole.log(satellite)\nconsole.log(satellite2)`,
+				ex2: `let planet = {\n  name:     "Mars",\n  moons:    2,\n  diameter: 6779,\n  hasWater: true\n}\nconsole.log(planet.name)\nconsole.log(planet.moons)\nconsole.log(\`\${planet.name} has \${planet.moons} moon(s)\`)`,
+				ex3a: `let profile = {\n  "full name":    "Mwangi Cheza",\n  "sign-up year": 2022,\n  "account type": "premium"\n}\nconsole.log(profile["full name"])\nconsole.log(profile["sign-up year"])\nconsole.log(profile["account type"])`,
+				ex3b: `let settings = {\n  theme:    "dark",\n  language: "en",\n  fontSize: 16\n}\nlet field = "theme"\nconsole.log(settings[field])\nfield = "fontSize"\nconsole.log(settings[field])`,
+				ex4: `let username = "kofi92"\nlet email    = "kofi@example.com"\nlet age      = 30\nlet user1 = {\n  username: username,\n  email:    email,\n  age:      age\n}\nlet user2 = { username, email, age }\nconsole.log(user1)\nconsole.log(user2)`,
+				ex5a: `let device = {\n  brand: "Lenovo",\n  ramGB: 16\n}\ndevice.ramGB = 32\nconsole.log(device)`,
+				ex5b: `let device = {\n  brand: "Lenovo",\n  ramGB: 16\n}\ndevice.storageGB = 512\ndevice.colour    = "black"\nconsole.log(device)`,
+				ex5c: `let device = {\n  brand: "Lenovo",\n  ramGB: 16,\n  model: "X1 Carbon"\n}\ndelete device.model\nconsole.log(device)\nconsole.log(device.model)`,
+				ex6a: `let server = {\n  host:   "localhost",\n  port:   0,\n  secure: false\n}\nif (server.port)   console.log("port exists")\nif (server.secure) console.log("secure exists")`,
+				ex6b: `let server = {\n  host:   "localhost",\n  port:   0,\n  secure: false\n}\nif (server.port   !== undefined) console.log("port exists")\nif (server.secure !== undefined) console.log("secure exists")\nif (server.timeout !== undefined) console.log("timeout exists")`,
+				ex6c: `let server = {\n  host:   "localhost",\n  port:   0,\n  secure: false\n}\nif ("port"    in server) console.log("port exists")\nif ("secure"  in server) console.log("secure exists")\nif ("timeout" in server) console.log("timeout exists")`,
+				ex7: `let stadium = {\n  name:     "Wembley",\n  country:  "England",\n  capacity: 90000,\n  opened:   2007\n}\nfor (let key in stadium) {\n  console.log(\`\${key}: \${stadium[key]}\`)\n}`,
+				ex8a: `let recipe = {\n  name:     "Jollof Rice",\n  servings: 4,\n  prepMins: 20,\n  cookMins: 45\n}\nlet keys = Object.keys(recipe)\nconsole.log(keys)\nconsole.log(\`This recipe has \${keys.length} properties\`)\nfor (let key of keys) {\n  console.log(key)\n}`,
+				ex8b: `let scores = {\n  maths:   88,\n  english: 74,\n  science: 91\n}\nlet values = Object.values(scores)\nconsole.log(values)\nfor (let score of values) {\n  console.log(score)\n}`,
+				ex9: `let timer = {\n  duration: 30,\n  unit:     "seconds",\n  start: function() {\n    console.log("Timer started")\n  },\n  describe: function() {\n    console.log(\`Running for \${timer.duration} \${timer.unit}\`)\n  }\n}\ntimer.start()\ntimer.describe()`,
+				ex10: `let runners = [\n  { name: "Aisha",  timeMin: 42 },\n  { name: "Carlos", timeMin: 38 },\n  { name: "Priya",  timeMin: 45 }\n]\nconsole.log(runners[0].name)\nconsole.log(runners[1].timeMin)`,
+				ex11: `let runners = [\n  { name: "Aisha",  timeMin: 42 },\n  { name: "Carlos", timeMin: 38 },\n  { name: "Priya",  timeMin: 45 }\n]\nfor (let runner of runners) {\n  console.log(\`\${runner.name} finished in \${runner.timeMin} minutes\`)\n}`,
+				ex12: `let company = {\n  name:    "Savanna Tech",\n  founded: 2018,\n  address: {\n    city:    "Kampala",\n    country: "Uganda"\n  }\n}\nconsole.log(company.name)\nconsole.log(company.address.city)\nconsole.log(company.address.country)\nconsole.log(\`\${company.name} is based in \${company.address.city}, \${company.address.country}\`)`,
+			};
+
+			window.editorDefaults = {
+				editor1: `let film = {\n  title:    "Dune",\n  director: "Denis Villeneuve",\n  year:     2021,\n  rating:   8.1,\n  runtime:  155\n}\n\n// 1. Print title and director\n\n\n// 2. Update rating to 8.4\n\n\n// 3. Add streamingOn: "Netflix"\n\n\n// 4. Delete runtime\n\n\n// 5. Print the object\n`,
+				editor2: `let students = [\n  { name: "Oliver",    score: 72 },\n  { name: "Charlotte", score: 85 },\n  { name: "Harry",     score: 43 },\n  { name: "Emily",     score: 91 },\n  { name: "James",     score: 58 },\n  { name: "Sophie",    score: 34 },\n  { name: "William",   score: 67 }\n]\n\n// getGrade function from Module 9\n\n\n// Loop and print each student's name, score, and grade\n\n\n// Class average (use toFixed(2))\n\n\n// Distinctions list (names only)\n`,
+			};
+
+			window.checkConfigs = {
+				ex1: {
+					editorId: "editor1",
+					resultId: "checkResult1",
+					expected: [
+						"Dune",
+						"Denis Villeneuve",
+						'{title: "Dune", director: "Denis Villeneuve", year: 2021, rating: 8.4, streamingOn: "Netflix"}',
+					],
+					successMsg: "All outputs correct.",
+					failMsg:
+						"Check that you updated rating to 8.4, added streamingOn, deleted runtime, then printed the object.",
+				},
+				ex2: {
+					editorId: "editor2",
+					resultId: "checkResult2",
+					expected: [
+						"Oliver: 72 -- B -- Merit",
+						"Charlotte: 85 -- A -- Distinction",
+						"Harry: 43 -- D -- Pass",
+						"Emily: 91 -- A -- Distinction",
+						"James: 58 -- C -- Credit",
+						"Sophie: 34 -- F -- Fail",
+						"William: 67 -- B -- Merit",
+						"Class average: 64.29",
+						"Distinctions: Charlotte, Emily",
+					],
+					successMsg:
+						"All outputs correct. Amara's student report is complete.",
+					failMsg:
+						"Check that you are accessing student.name and student.score, that getGrade returns a string, and that your average uses toFixed(2).",
+				},
+			};
+
+			window.quizConfig = {
+				questions: [
+					{
+						id: 1,
+						answer: "b",
+						feedback: {
+							correct:
+								'<strong>Correct.</strong> The "in" operator checks for the key regardless of value, so "retries exists" prints. But config.verbose is false -- falsy -- so that if block does not run.',
+							wrong:
+								'<strong>Not quite.</strong> "retries" in config returns true regardless of the value 0. But config.verbose is false, which is falsy, so that if block does not run. Only "retries exists" prints.',
+						},
+					},
+					{
+						id: 2,
+						answer: "b",
+						feedback: {
+							correct:
+								"<strong>Correct.</strong> Object.keys() returns an array of the property names, not the values.",
+							wrong:
+								'<strong>Not quite.</strong> Object.keys() returns the keys -- the property names. Object.values() would return the values. The result is ["primary", "secondary"].',
+						},
+					},
+					{
+						id: 3,
+						answer: "c",
+						feedback: {
+							correct:
+								"<strong>Correct.</strong> increment is called twice. Each call adds 1 to counter.count. Starting at 0, after two calls it is 2.",
+							wrong:
+								"<strong>Not quite.</strong> increment() adds 1 to counter.count on each call. It is called twice, so count goes 0 → 1 → 2.",
+						},
+					},
+				],
+				messages: {
+					perfect: "Excellent. You have completed all ten modules.",
+					good: "Good. Review the missed question before moving on.",
+					retry: "Revisit sections 8 through 11, then try again.",
+				},
+			};
+		</script>
+		<script src="../assets/js/quiz.js"></script>
+		<script src="../assets/js/flashcards.js"></script>
+		<script src="../assets/js/ui.js"></script>
+	</body>
+</html>
